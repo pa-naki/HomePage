@@ -1,42 +1,47 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
+import { Navbar, Nav, NavItem, NavbarBrand } from "react-bootstrap"
 
 const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+  <Navbar bg="light" variant="light" expand="lg">
+    <Navbar.Brand as={Link} href="/">
+      {siteTitle}  
+    </Navbar.Brand>
+    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+    <Navbar.Collapse id="basic-navbar-nav">
+      <Nav className="mr-auto">
+        <NavItem href="/about">
+          <Nav.Link as={Link} activeClassName="active" to="/about">
+            会社概要  
+          </Nav.Link> 
+        </NavItem>
+        <NavItem href="/about">
+          <Nav.Link as={Link} activeClassName="active" to="/jigyo">
+            会社概要  
+          </Nav.Link> 
+        </NavItem>
+        <NavItem href="/about">
+          <Nav.Link as={Link} activeClassName="active" to="/information">
+            会社概要  
+          </Nav.Link> 
+        </NavItem>
+        <NavItem href="/about">
+          <Nav.Link as={Link} activeClassName="active" to="/contact">
+            会社概要  
+          </Nav.Link> 
+        </NavItem>
+      </Nav>
+    </Navbar.Collapse>
+  </Navbar>
+);
 
 Header.propTypes = {
-  siteTitle: PropTypes.string,
+  siteTitle: PropTypes.string
 }
 
 Header.defaultProps = {
   siteTitle: ``,
-}
+};
 
 export default Header
