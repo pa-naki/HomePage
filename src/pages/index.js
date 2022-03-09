@@ -11,7 +11,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Home" />
-      <Row style={{border:`solid green`}}></Row>
+      
     </Layout>
   )
 }
