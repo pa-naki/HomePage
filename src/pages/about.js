@@ -5,14 +5,32 @@ import SEO from "../components/seo";
 
 const AboutPage = () => {
     return (
-        <Layout>
-            <SEO title="aboutページ"/>
-            <h1>aboutページです</h1>
-            <p>aboutページにようこそ</p>
-            <Link to="/">ホームに戻る</Link>
-            <a href="https://google.com" rel="noreferrer noopener">Googleへ</a>
-        </Layout>
-    )
+        <div
+          css={{
+            margin: `0 auto`,
+            border: `1px solid gray`,
+          }}
+        >
+          <h1
+            css={{
+              color: `red`,
+              // Pseudo styles are supported!
+              ':hover': {
+                textDecoration: `underline`,
+              },
+              // As are media queries!
+              '@media (min-width: 400px)': {
+                color: `blue`,
+              },
+            }}
+          >
+            This is the title!
+          </h1>
+          <div>
+            The body!
+          </div>
+        </div>
+      )
 }
 
 export default AboutPage;
