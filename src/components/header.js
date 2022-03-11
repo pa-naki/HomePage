@@ -3,15 +3,7 @@ import PropTypes from "prop-types"
 import { Link } from "gatsby"
 
 const Header = ({ siteTitle }) => {
-  const linkModel = [
-    { value: "/search", name: "製品検索", className: "daiwaSearch"},
-    { value: "/details", name: "注目の製品", className: "daiwaDetails"},
-    { value: "/research", name: "研究開発", className: "daiwaResearch"},
-    { value: "/about", name: "評価技術センター", className: "daiwaAbout"},
-    { value: "/company", name: "会社案内", className: "daiwaCompany"},
-    { value: "/recruit", name: "採用情報", className: "daiwaRecruit"},
-    { value: "/contact", name: "お問い合わせ", className: "daiwaContact"},
-  ];
+
   return (
     <>
       <header>

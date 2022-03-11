@@ -628,3 +628,7 @@ nav {
   text-decoration: none;
   line-height: 3;
 }
+
+.dropdown {
+  display: none;
+}
