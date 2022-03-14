@@ -1,6 +1,6 @@
 import * as React from "react"
 import PropTypes from "prop-types"
-import { Link } from "gatsby"
+import Navigation from "./navigation"; 
 
 const Header = ({ siteTitle }) => {
 
@@ -14,17 +14,7 @@ const Header = ({ siteTitle }) => {
             {/* サイト内検索対応 */}
           </div>
         </div>
-        <nav>
-            <ul className="demo2">
-              <li><Link to="/search">製品検索</Link></li>
-              <li><Link to="/details">注目の製品はこちら</Link></li>
-              <li><Link to="/research">研究開発</Link></li>
-              <li><Link to="/about">評価技術センター</Link></li>
-              <li><Link to="/company">会社案内</Link></li>
-              <li><Link to="/recruit">採用情報</Link></li>
-              <li><Link to="/contact">お問い合わせ</Link></li>
-            </ul>
-        </nav>
+        <Navigation />
       </header>
     </>
   )
