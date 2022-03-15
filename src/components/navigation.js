@@ -1,10 +1,7 @@
 import React from 'react'
 import { graphql, StaticQuery, Link } from 'gatsby';
-import { Nav } from 'react-bootstrap';
-import { Navbar } from 'react-bootstrap';
-import { NavDropdown } from 'react-bootstrap';
 
-function menuLinks () {
+export default function menuLinks () {
   return (
     <StaticQuery
       query={graphql`
@@ -23,42 +20,31 @@ function menuLinks () {
           }
         }  
      `} render={data => (
-      <>
-        {data.site.siteMetadata.MenuLinks.map((path) => (
-          <Nav.Link as='li' key={path.title}>
-            <Link to={path.link}>
-              {path.title}
-            </Link>
-            {path.subMenu && (
-              <NavDropdown class='sub-items responsive-navbar-nav'>
-                {path.subMenu.map((subpath) => (
-                  <NavDropdown.Item a href={subpath.link}>
-                    {subpath.title}
-                  </NavDropdown.Item>
+        <nav>
+          <div className='navbar'>
+            <div className='logo'><Link to='/'>大和化学工業</Link></div>
+            <div className='navLinks'>
+              <ul className='links'>
+                {data.site.siteMetadata.MenuLinks.map((path) => (
+                  <li>
+                    <Link to={path.link}>{path.title}</Link>
+                    {path.subMenu && (
+                      <>
+                        <ul className='htmlCssSubMenu subMenu'>
+                          <li>
+                            {path.subMenu.map((subpath) => (
+                              <Link to={subpath.link}>{subpath.title}</Link>
+                            ))}
+                          </li>
+                        </ul>
+                      </>
+                    )}
+                  </li>
                 ))}
-              </NavDropdown>
-            )}
-          </Nav.Link>
-        ))} 
-      </>
-    )}
-    />
-  );
-}
-
-class Navigation extends React.Component {
-  render () {
-    return (
-      <Navbar collapseOnSelect expand='md' className='site-navigation'> 
-        <Navbar.Toggle aria-controls='responsive-navbar-nav' />
-        <Navbar.Collapse id='responsive-navbar-nav'>
-          <ul>
-            {menuLinks()}
-          </ul>
-        </Navbar.Collapse>
-      </Navbar>
-    );
-  }
-}
-
-export default Navigation;
+              </ul>
+            </div>
+          </div>
+        </nav>
+     )}
+      />
+  )}
