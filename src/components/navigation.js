@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql, StaticQuery, Link } from 'gatsby';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faUserEdit } from '@fortawesome/fontawesome-svg-core';
+import './styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../util/font-awesome';
 
@@ -36,15 +35,15 @@ export default function menuLinks () {
                     <Link to={path.link}>{path.title}</Link>
                     {path.subMenu && (
                       <>
-                        <FontAwesomeIcon icon={'coffee'}/>
-                        <ul className='htmlCssSubMenu subMenu'>
-                          <li>
+                      <FontAwesomeIcon icon={'fa-angle-up'} className="htmlCssArrow arrow"/>
+                      <ul className='htmlCssSubMenu subMenu'>
+                        <li>
                             {path.subMenu.map((subpath) => (
                               <Link to={subpath.link}>{subpath.title}</Link>
-                            ))}
-                          </li>
-                        </ul>
-                      </>
+                              ))}
+                            </li>
+                          </ul>
+                        </>
                     )}
                   </li>
                 ))}
