@@ -1,9 +1,11 @@
 import React from 'react'
 import { graphql, StaticQuery, Link } from 'gatsby';
-import './styles.css';
+// import './styles.css';
+import './demo.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../util/font-awesome';
 import { StaticImage } from 'gatsby-plugin-image';
+import * as styles from './Navigation.module.css';
 
 // import '@fortawesome/fontawesome-svg-core/styles.css'
 
@@ -40,10 +42,10 @@ export default function menuLinks () {
        }
        return (
         <nav>
-          <div className='navbar'>
-            <FontAwesomeIcon icon={'fa-list'} className="listMenu" onClick={() => menuOpen()}/>
-            <div className='logo'>
-              <Link to='/'>
+          <div className={styles.navbar}>
+            <FontAwesomeIcon icon={'fa-list'} className={styles.listMenu} onClick={() => menuOpen()}/>
+            <div className={styles.logo}>
+              <Link to='/' className={styles.logoImage}>
                 <StaticImage 
                   src='../images/daiwa_logo2.png'
                   alt='logo'
@@ -52,22 +54,22 @@ export default function menuLinks () {
                 />
               </Link>
             </div>
-            <div className='navLinks'>
-            <div className='sidebarLogo'>
-                <span className='logoName'>大和化学工業</span>
-                <FontAwesomeIcon icon={'fa-xmark'} className="xMark" onClick={() => manuClose()} />
+            <div className={styles.navLinks}>
+            <div className={styles.sidebarLogo}>
+                <span className={styles.logoName}>大和化学工業</span>
+                <FontAwesomeIcon icon={'fa-xmark'} className={styles.xMark} onClick={() => manuClose()} />
               </div>
-              <ul className='links'>
+              <ul className={styles.links}>
                 {data.site.siteMetadata.MenuLinks.map((path) => (
-                  <li>
-                    <Link to={path.link}>{path.title}</Link>
+                  <li className={styles.menuLinks}>
+                    <Link to={path.link} className={styles.menuLink}>{path.title}</Link>
                     {path.subMenu && (
                       <>
-                      <FontAwesomeIcon icon={'fa-angle-up'} className="htmlCssArrow" onClick={() => subMenuOpen()}/>
-                      <ul className='htmlCssSubMenu subMenu'>
+                      <FontAwesomeIcon icon={'fa-angle-up'} className={styles.htmlCssArrow} onClick={() => subMenuOpen()}/>
+                      <ul className={styles.subMenu} >
                         {path.subMenu.map((subpath) => (
-                          <li>
-                            <Link to={subpath.link}>{subpath.title}</Link>
+                          <li className={styles.subMenuLinks}>
+                            <Link to={subpath.link} className={styles.subMenuLink}>{subpath.title}</Link>
                           </li>
                         ))}
                           </ul>
