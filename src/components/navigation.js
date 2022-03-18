@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { graphql, StaticQuery, Link } from 'gatsby';
 // import './styles.css';
 import './demo.css';
@@ -28,22 +28,13 @@ export default function menuLinks () {
           }
         }  
      `} render={data => {
-       function menuOpen() {
-        let navLinks = document.querySelector('.navLinks');
-        return navLinks.style.left = "0";
-       }
-       function manuClose() {
-        let navLinks = document.querySelector('.navLinks');
-        return navLinks.style.left = "-100%";
-       }
-       async function subMenuOpen(e) {
-        let navLinks = document.querySelector('.navLinks');
-        return navLinks.classList.toggle('show1');
-       }
+       const [sidebar, setSidebar] = useState(false);
+
+       const toggle = () => setSidebar(!sidebar);
        return (
         <nav>
           <div className={styles.navbar}>
-            <FontAwesomeIcon icon={'fa-list'} className={styles.listMenu} onClick={() => menuOpen()}/>
+            <FontAwesomeIcon icon={'fa-list'} className={styles.listMenu} onClick={toggle}/>
             <div className={styles.logo}>
               <Link to='/' className={styles.logoImage}>
                 <StaticImage 
@@ -55,9 +46,9 @@ export default function menuLinks () {
               </Link>
             </div>
             <div className={styles.navLinks}>
-            <div className={styles.sidebarLogo}>
+              <div className={styles.sidebarLogo}>
                 <span className={styles.logoName}>大和化学工業</span>
-                <FontAwesomeIcon icon={'fa-xmark'} className={styles.xMark} onClick={() => manuClose()} />
+                <FontAwesomeIcon icon={'fa-xmark'} className={styles.xMark} onClick={toggle} />
               </div>
               <ul className={styles.links}>
                 {data.site.siteMetadata.MenuLinks.map((path) => (
@@ -65,7 +56,7 @@ export default function menuLinks () {
                     <Link to={path.link} className={styles.menuLink}>{path.title}</Link>
                     {path.subMenu && (
                       <>
-                      <FontAwesomeIcon icon={'fa-angle-up'} className={styles.htmlCssArrow} onClick={() => subMenuOpen()}/>
+                      <FontAwesomeIcon icon={'fa-angle-up'} className={styles.htmlCssArrow} onClick={toggle}/>
                       <ul className={styles.subMenu} >
                         {path.subMenu.map((subpath) => (
                           <li className={styles.subMenuLinks}>
