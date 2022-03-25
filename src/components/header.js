@@ -2,23 +2,28 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import Navigation from "./navigation"; 
 
+import styled from "styled-components";
+
 const Header = ({ siteTitle }) => {
 
   return (
-    <>
-      <header>
+    <StyledHeader>
+      <div>
+        {/* <img src="" alt="" /> */}
         <div>
-          {/* <img src="" alt="" /> */}
-          <div>
-            {/* English対応 */}
-            {/* サイト内検索対応 */}
-          </div>
+          {/* English対応 */}
+          {/* サイト内検索対応 */}
         </div>
-        <Navigation />
-      </header>
-    </>
+      </div>
+      <Navigation />
+    </StyledHeader>
   )
 };
+
+const StyledHeader = styled.header`
+  margin-top: 10px
+
+`
 
 Header.propTypes = {
   siteTitle: PropTypes.string
