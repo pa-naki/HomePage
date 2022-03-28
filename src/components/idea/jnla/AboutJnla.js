@@ -19,7 +19,7 @@ const AboutJnla = () => {
 }
 
 const Wrapper = styledComponents.section`
-
+  background-color: red;
 `
 
 export default AboutJnla

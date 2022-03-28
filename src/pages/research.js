@@ -1,5 +1,5 @@
 import * as React from "react"
-import {Rdefforts, RelateCouncil} from "../components/idea"
+import {Rdefforts, RelateCouncil} from "../components/idea/development"
 import styledComponents from "styled-components"
 
 import Layout from "../components/layout"
