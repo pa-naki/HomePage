@@ -1,9 +1,12 @@
 import * as React from "react"
-import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import {Philosophy, Comfort} from "../components/idea/company"
+import {
+  Philosophy, 
+  Comfort,
+  Quality
+} from "../components/idea/company"
 
 const company_business = () => (
   <Layout>
@@ -12,6 +15,7 @@ const company_business = () => (
     <p>私ども大和化学工業は、次の4つの理念を使命として、地球に優しい高品質の製品を提供するとともに、人と自然環境の融合を理念においた製品づくりを目指しています。</p>
     <Philosophy />
     <Comfort />
+    <Quality />
   </Layout>
 )
 
