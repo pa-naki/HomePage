@@ -1,4 +1,5 @@
 import React from 'react'
+import navItem from './navItem'
 
 const SubNav = () => {
   return (
