@@ -1,11 +1,13 @@
-import * as React from "react"
+import React, { useContext } from "react"
 import PropTypes from "prop-types"
-import Navigation from "./navigation"; 
+// import Navigation from "./header/Navigation.js"; 
+import { GatsbyContext } from "../context/context";
 
-import styled from "styled-components";
+import styledComponents from "styled-components";
 
 const Header = ({ siteTitle }) => {
-
+  const data = useContext(GatsbyContext);
+  console.log(data);
   return (
     <StyledHeader>
       <div>
@@ -15,12 +17,12 @@ const Header = ({ siteTitle }) => {
           {/* サイト内検索対応 */}
         </div>
       </div>
-      <Navigation />
+      {/* <Navigation /> */}
     </StyledHeader>
   )
 };
 
-const StyledHeader = styled.header`
+const StyledHeader = styledComponents.header`
   margin-top: 10px
 
 `
