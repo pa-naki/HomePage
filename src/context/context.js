@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, createContext, useContext } from 'react';
 import navitem from '../constants/navitem.js';
 
-export const GatsbyContext = React.createContext();
+
+
+const GatsbyContext = createContext();
 
 const GatsbyProvider = ({ children }) => {
   const [navLinks, setNavLinks] = useState(navitem);
@@ -13,4 +15,4 @@ const GatsbyProvider = ({ children }) => {
   )
 }
 
-export default ({ element }) => <GatsbyProvider>{element}</GatsbyProvider>;
+export { GatsbyProvider, GatsbyContext}

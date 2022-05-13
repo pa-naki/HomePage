@@ -5,10 +5,10 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import * as React from "react"
+import React, { useContext } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import { GatsbyContext } from "../context/context"
+import { GatsbyProvider } from "../context/context"
 
 import Header from "./header"
 
@@ -22,12 +22,12 @@ const Layout = ({ children }) => {
   //     }
   //   }
   // // `)
-  const { navLinks, isSidebarOpen } = React.useContext(GatsbyContext);
-  console.log(navLinks);
   return (
     <>
       {/* <Header siteTitle={data.site.siteMetadata?.title || `Title`} /> */}
-      <Header />
+      <GatsbyProvider>
+        <Header /> 
+      </GatsbyProvider>
       <div
         style={{
           margin: `0 auto`,

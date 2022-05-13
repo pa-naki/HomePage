@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import Link from 'gatsby';
+import { Link } from 'gatsby';
 // import './styles.css';
 import '../demo.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,11 +9,10 @@ import * as styles from './Navigation.module.css';
 import navitem from '../../constants/navitem';
 import { GatsbyContext } from '../../context/context';
 
-const Navigation = () => {
+const navigation = ({ navLinks }) => {
   // const [sidebar, setSidebar] = useState(false);
   // const toggle = () => setSidebar(!sidebar);
-  const data = useContext(GatsbyContext);
-  console.log(data);
+  // console.log(navLinks);
   return (
     <nav>
       <div className={styles.navbar}>
@@ -42,12 +41,12 @@ const Navigation = () => {
             />
           </div>
           <ul className={styles.links}>
-            {navitem.map((sublink, index) => {
-              const { link, title, subMenu } = sublink;
+            {navLinks.map((nuvlink, index) => {
+              const { url, label, subMenu } = nuvlink;
               return (
                 <li className={styles.menuLinks}>
-                  <Link to={link} key={index} className={styles.menuLink}>
-                    {title}
+                  <Link to={url} key={index} className={styles.menuLink}>
+                    {label}
                   </Link>
                   {subMenu && (
                     <>
@@ -60,11 +59,11 @@ const Navigation = () => {
                         {subMenu.map((subpath, index) => (
                           <li className={styles.subMenuLinks}>
                             <Link
-                              to={subpath.link}
+                              to={subpath.url}
                               key={index}
                               className={styles.subMenuLink}
                             >
-                              {subpath.title}
+                              {subpath.label}
                             </Link>
                           </li>
                         ))}
@@ -81,4 +80,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default navigation;
