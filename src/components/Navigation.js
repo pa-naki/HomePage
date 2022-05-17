@@ -1,30 +1,28 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'gatsby';
 // import './styles.css';
-import '../demo.css';
+import './demo.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import '../../util/font-awesome';
+import '../util/font-awesome';
 import { StaticImage } from 'gatsby-plugin-image';
 import * as styles from './Navigation.module.css';
-import navitem from '../../constants/navitem';
-import { GatsbyContext } from '../../context/context';
+import { GatsbyContext } from '../context/context';
 
-const navigation = ({ navLinks }) => {
+const Navigation = () => {
+  const { navLinks, isSidebarOpen, showSidebar } = useContext(GatsbyContext);
   // const [sidebar, setSidebar] = useState(false);
-  // const toggle = () => setSidebar(!sidebar);
+  // const show = () => setSidebar(!sidebar);
   // console.log(navLinks);
   return (
     <nav>
       <div className={styles.navbar}>
-        <FontAwesomeIcon
-          icon={'fa-list'}
-          className={styles.listMenu}
-          // onClick={toggle}
-        />
+        <button className={styles.listMenu} onClick={showSidebar}>
+          <FontAwesomeIcon icon={'fa-list'} />
+        </button>
         <div className={styles.logo}>
           <Link to="/" className={styles.logoImage}>
             <StaticImage
-              src="../../images/daiwa_logo2.png"
+              src="../images/daiwa_logo2.png"
               alt="logo"
               placeholder="blurred"
               layout="fixed"
@@ -37,7 +35,7 @@ const navigation = ({ navLinks }) => {
             <FontAwesomeIcon
               icon={'fa-xmark'}
               className={styles.xMark}
-              // onClick={toggle}
+              onClick={showSidebar}
             />
           </div>
           <ul className={styles.links}>
@@ -53,7 +51,7 @@ const navigation = ({ navLinks }) => {
                       <FontAwesomeIcon
                         icon={'fa-angle-up'}
                         className={styles.htmlCssArrow}
-                        // onClick={toggle}
+                        // onClick={show}
                       />
                       <ul className={styles.subMenu}>
                         {subMenu.map((subpath, index) => (
@@ -80,4 +78,4 @@ const navigation = ({ navLinks }) => {
   );
 };
 
-export default navigation;
+export default Navigation;

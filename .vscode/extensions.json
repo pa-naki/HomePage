@@ -1,24 +1,26 @@
 {
-	// See https://go.microsoft.com/fwlink/?LinkId=827846 to learn about workspace recommendations.
-	// Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
+  // See https://go.microsoft.com/fwlink/?LinkId=827846 to learn about workspace recommendations.
+  // Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
 
-	// List of extensions which should be recommended for users of this workspace.
-	"recommendations": [
-		"oderwat.indent-rainbow",
-		"ritwickdey.liveserver",
-		"silvenon.mdx",
-		"esbenp.prettier-vscode",
-		"mikestead.dotenv",
-		"digitalbrainstem.javascript-ejs-support",
-		"rodrigovallades.es7-react-js-snippets",
-		"coenraads.bracket-pair-colorizer",
-		"mrmlnc.vscode-autoprefixer",
-		"formulahendry.auto-rename-tag",
-		"ecmel.vscode-html-css",
-		"styled-components.vscode-styled-components"
-	],
-	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
-	"unwantedRecommendations": [
-		
-	]
+  // List of extensions which should be recommended for users of this workspace.
+  "recommendations": [
+    "oderwat.indent-rainbow",
+    "ritwickdey.liveserver",
+    "silvenon.mdx",
+    "esbenp.prettier-vscode",
+    "mikestead.dotenv",
+    "digitalbrainstem.javascript-ejs-support",
+    "rodrigovallades.es7-react-js-snippets",
+    "coenraads.bracket-pair-colorizer",
+    "mrmlnc.vscode-autoprefixer",
+    "formulahendry.auto-rename-tag",
+    "ecmel.vscode-html-css",
+    "styled-components.vscode-styled-components",
+    "christian-kohler.path-intellisense",
+    "pkief.material-icon-theme",
+    "soerenuhrbach.vscode-deepl",
+    "mosapride.zenkaku"
+  ],
+  // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
+  "unwantedRecommendations": []
 }

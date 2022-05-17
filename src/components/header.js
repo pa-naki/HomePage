@@ -1,13 +1,14 @@
 import React, { useContext } from "react"
 import PropTypes from "prop-types"
 // import Navigation from "./header/Navigation.js"; 
-import { GatsbyContext, GatsbyProvider } from "../context/context";
-import Navigation from "./header/navigation";
+import { GatsbyProvider } from "../context/context";
+import Navigation from "./Navigation";
+import Sidebar from "./Sidebar";
 
 import styledComponents from "styled-components";
 
 const Header = ({ siteTitle }) => {
-  const { navLinks } = useContext(GatsbyContext)
+  // const { navLinks, isSidebarOpen, toggleSidebar } = useContext(GatsbyContext);
   return (
     <StyledHeader>
       <div>
@@ -17,7 +18,7 @@ const Header = ({ siteTitle }) => {
           {/* サイト内検索対応 */}
         </div>
       </div>
-      <Navigation navLinks={navLinks} />
+
     </StyledHeader>
   )
 };
