@@ -1,23 +1,18 @@
-import React from "react";
-import Layout from "../components/layout";
-import { 
-  AboutJnla, 
-  QualityPolicy, 
-  RegistJnla,
-} from "../components/idea/jnla";
+import React from 'react';
+import Layout from '../components/layout';
+import { AboutJnla, QualityPolicy, RegistJnla } from '../components/idea/jnla';
 
-
-import SEO from "../components/seo";
+import SEO from '../components/Seo';
 
 const AboutPage = () => {
-    return (
-        <Layout>
-          <SEO title="評価技術センター"/>
-          <AboutJnla />
-          <RegistJnla />
-          <QualityPolicy />
-        </Layout>
-      )
-}
+  return (
+    <Layout>
+      <SEO title="評価技術センター" />
+      <AboutJnla />
+      <RegistJnla />
+      <QualityPolicy />
+    </Layout>
+  );
+};
 
 export default AboutPage;

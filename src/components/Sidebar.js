@@ -11,35 +11,35 @@ const Sidebar = () => {
     <Wrapper>
       <div className="container">
         <div className="links">
-          <ul>
-            {navLinks.map((nuvlink, index) => {
-              const { url, label, subMenu } = nuvlink;
-              return (
+          {navLinks.map((nuvlink, index) => {
+            const { url, label, subMenu } = nuvlink;
+            console.log('first:', index);
+            return (
+              <ul>
                 <li>
-                  <Link to={url} key={index} onClick={hideSidebar}>
-                    {label}
-                  </Link>
+                  <h2>
+                    <Link to={url} onClick={hideSidebar}>
+                      {label}
+                    </Link>
+                  </h2>
                   {subMenu && (
-                    <>
-                      <ul>
-                        {subMenu.map((subpath, index) => (
+                    <ul>
+                      {subMenu.map((subpath, index) => {
+                        console.log('second', index);
+                        return (
                           <li>
-                            <Link
-                              to={subpath.url}
-                              key={index}
-                              onClick={hideSidebar}
-                            >
+                            <Link to={subpath.url} onClick={hideSidebar}>
                               {subpath.label}
                             </Link>
                           </li>
-                        ))}
-                      </ul>
-                    </>
+                        );
+                      })}
+                    </ul>
                   )}
                 </li>
-              );
-            })}
-          </ul>
+              </ul>
+            );
+          })}
         </div>
       </div>
     </Wrapper>

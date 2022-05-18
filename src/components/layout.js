@@ -5,16 +5,12 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import React, { useContext } from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-import { GatsbyContext } from "../context/context";
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
+import { useStaticQuery, graphql } from 'gatsby';
+import { GatsbyContext } from '../context/context';
 
-import {
-  Header, 
-  Sidebar,
-  Navigation, 
-} from "./index";
+import { Header, Sidebar, Navigation, Footer } from './index';
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -25,13 +21,13 @@ const Layout = ({ children }) => {
         }
       }
     }
-   `)
-   const { isSidebarOpen } = useContext(GatsbyContext);
+  `);
+  const { isSidebarOpen } = useContext(GatsbyContext);
   return (
     <>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <Navigation />
-      { isSidebarOpen && <Sidebar /> }
+      {isSidebarOpen && <Sidebar />}
       <div
         style={{
           margin: `0 auto`,
@@ -40,22 +36,14 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
       </div>
+      <Footer />
     </>
-  )
-}
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;

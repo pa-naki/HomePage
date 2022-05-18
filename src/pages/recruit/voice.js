@@ -1,8 +1,8 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import * as React from 'react';
+import { Link } from 'gatsby';
 
-import Layout from "../../components/layout"
-import Seo from "../../components/seo"
+import Layout from '../../components/layout';
+import Seo from '../../components/Seo';
 
 const recruit_voice = () => (
   <Layout>
@@ -11,6 +11,6 @@ const recruit_voice = () => (
     <p>Welcome to recruit_voice</p>
     <Link to="/">Go back to the homepage</Link>
   </Layout>
-)
+);
 
-export default recruit_voice
+export default recruit_voice;

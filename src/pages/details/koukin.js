@@ -1,8 +1,8 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import * as React from 'react';
+import { Link } from 'gatsby';
 
-import Layout from "../../components/layout"
-import Seo from "../../components/seo"
+import Layout from '../../components/layout';
+import Seo from '../../components/Seo';
 
 const details_koukin = () => (
   <Layout>
@@ -11,6 +11,6 @@ const details_koukin = () => (
     <p>Welcome to details_koukin</p>
     <Link to="/">Go back to the homepage</Link>
   </Layout>
-)
+);
 
-export default details_koukin
+export default details_koukin;

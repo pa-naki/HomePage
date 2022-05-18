@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 
 import Layout from '../../components/layout';
-import Seo from '../../components/seo';
+import Seo from '../../components/Seo';
 
 const company_access = () => (
   <Layout>
@@ -16,8 +16,7 @@ const company_access = () => (
         <div class="subtitle">
           <h3>本社・大阪工場</h3>
         </div>
-        <div align="center">
-        </div>
+        <div align="center"></div>
         <div class="access_box">
           <div class="catch_text_red_13">
             大和化学工業株式会社（大阪工場）までの道順　（※内環状線、ローソン手前を目印に）
@@ -53,8 +52,7 @@ const company_access = () => (
         <div class="subtitle2">
           <h3>東京支社・東京工場</h3>
         </div>
-        <div align="center">
-        </div>
+        <div align="center"></div>
         <div class="access_box">
           <div class="catch_text_red_13">
             大和化学工業株式会社（東京支社・東京工場）までの道順

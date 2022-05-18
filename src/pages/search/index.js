@@ -1,8 +1,8 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import * as React from 'react';
+import { Link } from 'gatsby';
 
-import Layout from "../../components/layout"
-import Seo from "../../components/seo"
+import Layout from '../../components/layout';
+import Seo from '../../components/Seo';
 
 const Search = () => (
   <Layout>
@@ -11,6 +11,6 @@ const Search = () => (
     <p>Welcome to search</p>
     <Link to="/">Go back to the homepage</Link>
   </Layout>
-)
+);
 
-export default Search
+export default Search;

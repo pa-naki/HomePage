@@ -1,8 +1,8 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import * as React from 'react';
+import { Link } from 'gatsby';
 
-import Layout from "../../components/layout"
-import Seo from "../../components/seo"
+import Layout from '../../components/layout';
+import Seo from '../../components/Seo';
 
 const search_sozai = () => (
   <Layout>
@@ -11,6 +11,6 @@ const search_sozai = () => (
     <p>Welcome to search_sozai</p>
     <Link to="/">Go back to the homepage</Link>
   </Layout>
-)
+);
 
-export default search_sozai
+export default search_sozai;
