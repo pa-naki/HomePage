@@ -1,5 +1,6 @@
 import React from 'react';
 import { faCarCrash } from '@fortawesome/free-solid-svg-icons';
+const wbr = <wbr />;
 export default [
   {
     url: `/search`,
@@ -8,7 +9,7 @@ export default [
     subMenu: [
       {
         url: `/search/sozai`,
-        label: '素材・用途から検索',
+        label: '素材･用途から検索',
         icon: <faCarCrash />,
       },
       {
