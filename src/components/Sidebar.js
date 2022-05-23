@@ -47,14 +47,15 @@ const Sidebar = () => {
 };
 
 const Wrapper = styled.aside`
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 1fr;
+  height: 1fr;
   background: #faf9f9;
   z-index: 999;
   display: flex;
+  flex-flow: column wrap;
   align-items: center;
   justify-content: center;
   @media (min-width: 921px) {

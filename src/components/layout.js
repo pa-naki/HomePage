@@ -25,8 +25,8 @@ const Layout = ({ children }) => {
   const { isSidebarOpen } = useContext(GatsbyContext);
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <Navigation />
+      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       {isSidebarOpen && <Sidebar />}
       <div
         style={{

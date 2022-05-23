@@ -7,6 +7,7 @@ import '../util/font-awesome';
 import { StaticImage } from 'gatsby-plugin-image';
 import * as styles from './Navigation.module.css';
 import { GatsbyContext } from '../context/context';
+import styled from 'styled-components';
 
 const Navigation = () => {
   const { navLinks, isSidebarOpen, showSidebar } = useContext(GatsbyContext);
@@ -14,7 +15,7 @@ const Navigation = () => {
   // const show = () => setSidebar(!sidebar);
   // console.log(navLinks);
   return (
-    <nav>
+    <Wrapper>
       <div className={styles.navbar}>
         <button className={styles.listMenu} onClick={showSidebar}>
           <FontAwesomeIcon icon={'fa-list'} />
@@ -74,8 +75,12 @@ const Navigation = () => {
           </ul>
         </div>
       </div>
-    </nav>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.nav`
+  position: fixed;
+`;
 
 export default Navigation;
