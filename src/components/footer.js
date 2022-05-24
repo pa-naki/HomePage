@@ -69,7 +69,7 @@ const Wrapper = styled.footer`
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
-  padding: 2rem 0.5rem;
+  padding: 1.5rem 0.5rem;
   align-items: center;
   li {
     list-style: none;
@@ -93,7 +93,7 @@ const Wrapper = styled.footer`
   .footerSecondaryMapAddress {
   }
   .footerNav {
-    width: 600px;
+    width: 800px;
     height: 270px;
     display: flex;
     flex-flow: column wrap;
@@ -102,6 +102,10 @@ const Wrapper = styled.footer`
   .footerParentMenu {
   }
   .footerParentList {
+    h3 {
+      line-height: 0.7;
+      font-size: 1.5rem;
+    }
   }
   .footerParentItem {
   }
@@ -112,7 +116,6 @@ const Wrapper = styled.footer`
     margin-left: 10px;
   }
   .footerSubItem {
-    width: auto;
   }
   /* @media (max-width: 600px) {
     .footerParentMenu {

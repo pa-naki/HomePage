@@ -18,6 +18,7 @@ const Header = ({ siteTitle }) => {
           {/* サイト内検索対応 */}
         </div>
       </div>
+      <Navigation />
     </StyledHeader>
   );
 };

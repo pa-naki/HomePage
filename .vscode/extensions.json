@@ -19,7 +19,8 @@
     "christian-kohler.path-intellisense",
     "pkief.material-icon-theme",
     "soerenuhrbach.vscode-deepl",
-    "mosapride.zenkaku"
+    "mosapride.zenkaku",
+    "bierner.color-info"
   ],
   // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
   "unwantedRecommendations": []

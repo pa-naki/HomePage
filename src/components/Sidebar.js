@@ -4,36 +4,44 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../util/font-awesome';
 import { GatsbyContext } from '../context/context';
 import styled from 'styled-components';
+import { icon } from '@fortawesome/fontawesome-svg-core';
 
 const Sidebar = () => {
   const { navLinks, showSidebar, hideSidebar } = useContext(GatsbyContext);
   return (
     <Wrapper>
       <div className="container">
+        <button onClick={hideSidebar}>
+          <FontAwesomeIcon icon={'fa-xmark'} />
+        </button>
         <div className="links">
           {navLinks.map((nuvlink, index) => {
             const { url, label, subMenu } = nuvlink;
-            console.log('first:', index);
             return (
-              <ul>
-                <li>
-                  <h2>
-                    <Link to={url} onClick={hideSidebar}>
+              <ul className="sidebarParentMenu">
+                <li className="sidebarParentList">
+                  <h3>
+                    <Link
+                      to={url}
+                      className="sidebarParentItem"
+                      onClick={hideSidebar}
+                    >
                       {label}
                     </Link>
-                  </h2>
+                  </h3>
                   {subMenu && (
-                    <ul>
-                      {subMenu.map((subpath, index) => {
-                        console.log('second', index);
-                        return (
-                          <li>
-                            <Link to={subpath.url} onClick={hideSidebar}>
-                              {subpath.label}
-                            </Link>
-                          </li>
-                        );
-                      })}
+                    <ul className="sidebarSubMenu">
+                      {subMenu.map((subpath, index) => (
+                        <li className="sidebarSubList">
+                          <Link
+                            to={subpath.url}
+                            className="sidebarSubItem"
+                            onClick={hideSidebar}
+                          >
+                            {subpath.label}
+                          </Link>
+                        </li>
+                      ))}
                     </ul>
                   )}
                 </li>
@@ -47,17 +55,22 @@ const Sidebar = () => {
 };
 
 const Wrapper = styled.aside`
-  position: relative;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 1fr;
-  height: 1fr;
+  width: 100%;
+  height: 100%;
   background: #faf9f9;
   z-index: 999;
   display: flex;
-  flex-flow: column wrap;
   align-items: center;
   justify-content: center;
+  ul {
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+  }
   @media (min-width: 921px) {
     display: none;
   }
@@ -67,11 +80,14 @@ const Wrapper = styled.aside`
     height: 90vh;
     border-radius: var(--radius);
     position: relative;
-    padding: 1rem 2rem 2rem 2rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
     button {
       position: absolute;
       top: 0.5rem;
-      right: 0.5rem;
+      right: 3rem;
       background: transparent;
       border: transparent;
       font-size: 2rem;
@@ -79,21 +95,23 @@ const Wrapper = styled.aside`
       color: var(--clr-grey-5);
     }
     .links {
-      display: grid;
-      gap: 1rem 2rem;
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: space-between;
+      width: 80vw;
+      height: 80vh;
       @media (min-width: 921px) {
-        grid-template-columns: 1fr 1fr;
       }
       a {
         display: grid;
-        grid-template-columns: auto 1fr;
+        width: 100%;
         gap: 0.75rem;
         grid-gap: 0.75rem;
         align-items: center;
         color: #0a2540;
-        text-transform: capitalize;
         font-weight: 700;
-        font-size: 1.2rem;
+        text-align: left;
+        font-size: 2.2vmin;
         .icon {
           color: #88add2;
           font-size: 2rem;
@@ -104,6 +122,21 @@ const Wrapper = styled.aside`
             color: #0a2540;
           }
         }
+      }
+      .sidebarParentMenu {
+        height: 25%;
+      }
+      .sidebarParentList {
+      }
+      .sidebarParentItem {
+        font-size: 4.8vmin;
+      }
+      .sidebarSubMenu {
+        margin-left: 0.5rem;
+      }
+      .sidebarSubList {
+      }
+      .sidebarSubItem {
       }
     }
   }

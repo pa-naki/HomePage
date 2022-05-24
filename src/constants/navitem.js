@@ -59,7 +59,7 @@ export default [
   },
   {
     url: `/about`,
-    label: '評価技術センター',
+    label: '評価技術',
     icon: <faCarCrash />,
     subMenu: null,
   },
@@ -85,7 +85,7 @@ export default [
       },
       {
         url: `/company/download`,
-        label: '会社案内ダウンロード',
+        label: '会社案内',
         icon: <faCarCrash />,
       },
       {
@@ -117,22 +117,22 @@ export default [
     subMenu: [
       {
         url: `/recruit/work`,
-        label: '大和化学の仕事とは',
+        label: '仕事内容',
         icon: <faCarCrash />,
       },
       {
         url: `/recruit/voice`,
-        label: '研究員の生の声',
+        label: 'インタビュー',
         icon: <faCarCrash />,
       },
       {
         url: `/recruit/entry`,
-        label: 'エントリーフォーム',
+        label: 'エントリー',
         icon: <faCarCrash />,
       },
       {
         url: `/recruit/treatment`,
-        label: '入社後の待遇',
+        label: '待遇',
         icon: <faCarCrash />,
       },
       {
