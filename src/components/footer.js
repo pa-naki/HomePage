@@ -18,18 +18,22 @@ const Footer = () => {
             <br />
             大阪本社･工場
             <br />
-            <a href="https://g.page/daiwa-chemical?share" target={'_blank'}>
-              Google Map
-            </a>
+            <button>
+              <a href="https://g.page/daiwa-chemical?share" target={'_blank'}>
+                Google Map
+              </a>
+            </button>
           </address>
           <address className="footerSecondaryMapAddress">
             〒132-0021 東京都江戸川区中央4-17-19
             <br />
             東京支社
             <br />
-            <a href="https://goo.gl/maps/jbbpvnx222gRuJBv7" target={'_blank'}>
-              Google Map
-            </a>
+            <button>
+              <a href="https://goo.gl/maps/jbbpvnx222gRuJBv7" target={'_blank'}>
+                Google Map
+              </a>
+            </button>
           </address>
         </figcaption>
       </figure>

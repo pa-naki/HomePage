@@ -142,7 +142,7 @@ export default [
       },
       {
         url: `/recruit/faq`,
-        label: 'Q&A',
+        label: 'よくある質問',
         icon: <faCarCrash />,
       },
     ],
