@@ -81,7 +81,7 @@ const Navigation = () => {
 
 const Wrapper = styled.nav`
   position: fixed;
-  z-index: 1;
+  z-index: 997;
 `;
 
 export default Navigation;

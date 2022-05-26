@@ -44,7 +44,7 @@
 }
 
 .menuLinks:hover .htmlCssArrow {
-  transform: rotate(180deg)
+  transform: rotate(180deg);
 }
 
 .menuLinks:hover .menuLink {
@@ -114,7 +114,7 @@
   display: none;
 }
 
-@media (max-width:1000px) {
+@media (max-width: 1000px) {
   .navbar {
     max-width: 100%;
     padding: 0 25px;
@@ -133,7 +133,7 @@
   }
 }
 
-@media (max-width:920px) {
+@media (max-width: 920px) {
   .navLinks {
     display: block;
     position: fixed;
@@ -203,6 +203,6 @@
   }
 
   .menuLinks:hover .htmlCssArrow {
-    transform: rotate(90deg)
+    transform: rotate(90deg);
   }
 }

@@ -19,7 +19,7 @@ const Video = () => {
 
 const Wrapper = styled.div`
   margin-top: -70px;
-  z-index: 2;
+  z-index: 998;
   position: relative;
   iframe {
     width: 100vw;
