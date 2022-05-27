@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import backGroundImage from 'gatsby-background-image';
 
 const Philosophy = () => {
-  const [imageUrl, setImageUrl] = useState('../../../images/slide02.jpg');
   // const changeImageUrl = () => {
   //   setImageUrl();
   // };
@@ -14,13 +13,7 @@ const Philosophy = () => {
         <h1>私たちが目指していること</h1>
         <ol>
           <li>
-            <button
-              onClick={() => {
-                setImageUrl('../../../images/gatsby-astronaut.png');
-              }}
-            >
-              日々挑戦と創造に努力
-            </button>
+            <button>日々挑戦と創造に努力</button>
           </li>
 
           <li>
@@ -36,7 +29,7 @@ const Philosophy = () => {
           </li>
         </ol>
       </div>
-      <StaticImage src={`${imageUrl}`} className="image" />
+      {/* <StaticImage src={'../../../images/slide02.jpg'} className="image" /> */}
     </Wrapper>
   );
 };
@@ -52,7 +45,7 @@ const Wrapper = styled.section`
     position: absolute;
     z-index: 4;
     top: 10px;
-    right: 100px;
+    left: 300px;
     h1 {
       margin-top: 3rem;
     }
@@ -78,7 +71,7 @@ const Wrapper = styled.section`
     position: relative;
     display: block;
     width: 100%;
-    height: 100%;
+    height: 60%;
     z-index: 1;
   }
 `;
