@@ -5,7 +5,11 @@ import { StaticImage } from 'gatsby-plugin-image';
 const Product = () => {
   return (
     <Wrapper>
-      <StaticImage src="../../../images/gatsby-astronaut.png" width={300} />
+      <StaticImage
+        src="../../../images/gatsby-astronaut.png"
+        width={500}
+        placeholder="blurred"
+      />
     </Wrapper>
   );
 };
