@@ -164,8 +164,8 @@ const Wrapper = styled.article`
 export default SingleInterview;
 
 export const query = graphql`
-  query SingleInterview {
-    markdownRemark {
+  query SingleInterview($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
         department
         episode1_question

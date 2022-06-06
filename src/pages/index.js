@@ -5,7 +5,7 @@ import SEO from '../components/Seo';
 import { Link } from 'gatsby';
 import Video from '../components/Video';
 import { Philosophy, Promotion } from '../components/idea/top';
-import Interview from '../components/idea/top/Interview';
+import Interview from '../components/Interview';
 // import image from "../components/image";
 // import homeImg from "../images/home.jpg"
 // import jigyonaiyoImg from "../images/jigyo-naiyo.svg";
