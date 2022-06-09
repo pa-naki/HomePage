@@ -56,6 +56,7 @@ const Interview = () => {
   };
   return (
     <Wrapper>
+      <h1>従業員の声</h1>
       <Swiper
         style={{
           '--swiper-navigation-color': '#fff',
@@ -130,6 +131,11 @@ const Interview = () => {
 
 const Wrapper = styled.section`
   background-color: whitesmoke;
+  h1 {
+    padding-top: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
   .mySwiper2 {
   }
   .inSwiper {

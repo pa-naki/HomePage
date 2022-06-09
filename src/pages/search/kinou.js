@@ -1,16 +1,19 @@
 import * as React from 'react';
-import { Link } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 
 import Layout from '../../components/layout';
 import Seo from '../../components/Seo';
+import AllProducts from '../../components/AllProducts';
 
-const search_kinou = () => (
-  <Layout>
-    <Seo title="search_kinou" />
-    <h1>Hi from the search_kinou</h1>
-    <p>Welcome to search_kinou</p>
-    <Link to="/">Go back to the homepage</Link>
-  </Layout>
-);
+const search_kinou = ({ data }) => {
+  return (
+    <Layout>
+      <Seo title="search_kinou" />
+      <h1>Hi from the search_kinou</h1>
+      <p>Welcome to search_kinou</p>
+      <AllProducts />
+    </Layout>
+  );
+};
 
 export default search_kinou;
