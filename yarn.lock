@@ -6163,6 +6163,11 @@
   "resolved" "https://registry.npmjs.org/functions-have-names/-/functions-have-names-1.2.3.tgz"
   "version" "1.2.3"
 
+"fuse.js@^6.6.2":
+  "integrity" "sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA=="
+  "resolved" "https://registry.npmjs.org/fuse.js/-/fuse.js-6.6.2.tgz"
+  "version" "6.6.2"
+
 "gatsby-background-image@^1.6.0":
   "integrity" "sha512-d3HkZnpfU5KHrjt0Z5Mw6ezOY5OFuPfrHIarN7CMhq+CyUnPTxUuFtic0OV7bgi5J6Z/RGVg36FvcnX69xuDgw=="
   "resolved" "https://registry.npmjs.org/gatsby-background-image/-/gatsby-background-image-1.6.0.tgz"
@@ -10099,7 +10104,14 @@
   "resolved" "https://registry.npmjs.org/q/-/q-1.5.1.tgz"
   "version" "1.5.1"
 
-"qs@^6.9.4", "qs@6.10.3":
+"qs@^6.10.5", "qs@^6.9.4":
+  "integrity" "sha512-O5RlPh0VFtR78y79rgcgKK4wbAI0C5zGVLztOIdpWX6ep368q5Hv6XRxDvXuZ9q3C6v+e3n8UfZZJw7IIG27eQ=="
+  "resolved" "https://registry.npmjs.org/qs/-/qs-6.10.5.tgz"
+  "version" "6.10.5"
+  dependencies:
+    "side-channel" "^1.0.4"
+
+"qs@6.10.3":
   "integrity" "sha512-wr7M2E0OFRfIfJZjKGieI8lBKb7fRCH4Fv5KNPEs7gJ8jadvotdsS08PzOKR7opXhZ/Xkjtt3WF9g38drmyRqQ=="
   "resolved" "https://registry.npmjs.org/qs/-/qs-6.10.3.tgz"
   "version" "6.10.3"

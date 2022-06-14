@@ -4,24 +4,29 @@ import { Link } from 'gatsby';
 import Layout from '../../components/layout';
 import Seo from '../../components/Seo';
 
-const company_access = () => (
+const Access = () => (
   <Layout>
     <Seo title="company_access" />
-    <div id="mainBox">
-      <div id="main">
+    <div>
+      <div>
         <p>
           大和化学工業株式会社の本社・大阪工場と東京支社・東京工場のアクセスマップをご紹介します。
         </p>
-        <div id="osaka"></div>
-        <div class="subtitle">
+        <div></div>
+        <div>
           <h3>本社・大阪工場</h3>
         </div>
-        <div align="center"></div>
-        <div class="access_box">
-          <div class="catch_text_red_13">
+        <div>
+          <iframe
+            src="https://www.google.com/maps/d/embed?mid=1Pdq3i6rBTBFSqh8_8DS20WtaAfWV1JCg"
+            frameBorder={1}
+          />
+        </div>
+        <div>
+          <div>
             大和化学工業株式会社（大阪工場）までの道順　（※内環状線、ローソン手前を目印に）
           </div>
-          <div class="access_l_image">
+          <div>
             ■大阪方面からお越しの場合：
             <br />
             阪急梅田駅から阪急京都線
@@ -38,7 +43,7 @@ const company_access = () => (
             ・阪急京都線　南方駅より京都方面行きへ乗換
             <br />
             ・阪急京都線　上新庄駅北出口より徒歩5分
-            <div class="access_l_image">
+            <div>
               ■本社・大阪工場
               <br />
               〒533-0006　大阪府大阪市東淀川区上新庄3-1-11
@@ -46,18 +51,21 @@ const company_access = () => (
               ＴＥＬ：(06)6328-0500
             </div>
           </p>
-          <div class="clear"></div>
+          <div></div>
         </div>
-        <div id="tokyo"></div>
-        <div class="subtitle2">
+        <div></div>
+        <div>
           <h3>東京支社・東京工場</h3>
         </div>
-        <div align="center"></div>
-        <div class="access_box">
-          <div class="catch_text_red_13">
-            大和化学工業株式会社（東京支社・東京工場）までの道順
-          </div>
-          <div class="access_l_image">
+        <div>
+          <iframe
+            src="https://www.google.com/maps/d/embed?mid=1FhCzyB3bSsv4utgJl-kmo-d76bPy9pZY"
+            frameBorder={1}
+          />
+        </div>
+        <div>
+          <div>大和化学工業株式会社（東京支社・東京工場）までの道順</div>
+          <div>
             ■JR総武線もしくは総武快速　新小岩駅南口より　徒歩15分
             <br />
             ・江戸川区総合文化センターを目印にお越しください
@@ -70,7 +78,7 @@ const company_access = () => (
             ・東京駅からJR総武快速に乗車
             <br />
             ・新小岩駅南口より徒歩15分
-            <div class="access_l_image">
+            <div>
               ■東京支社
               <br />
               〒132-0021　東京都江戸川区中央　4-17-19
@@ -85,10 +93,10 @@ const company_access = () => (
             </div>
           </p>
 
-          <div class="clear"></div>
+          <div></div>
         </div>
         <br />
-        <div class="access_box2">
+        <div>
           <p>
             <b>アクセスマップのダウンロード</b>
           </p>
@@ -97,8 +105,6 @@ const company_access = () => (
               <img
                 src="img/company_access/pdficon.jpg"
                 alt="本社・大阪工場アクセスマップ　ダウンロード"
-                width="20"
-                height="16"
               />
               本社・大阪工場アクセスマップ　ダウンロード（88KB）
             </a>
@@ -108,8 +114,6 @@ const company_access = () => (
               <img
                 src="img/company_access/pdficon.jpg"
                 alt="東京工場アクセスマップ　ダウンロード"
-                width="20"
-                height="16"
               />
               東京支社・東京工場アクセスマップ　ダウンロード（57KB）
             </a>
@@ -122,8 +126,6 @@ const company_access = () => (
               <img
                 src="img/company_access/pdficon2.jpg"
                 alt="Adobe Acrobat Reader"
-                width="21"
-                height="18"
               />
               Adobe Acrobat Reader
             </a>
@@ -133,11 +135,11 @@ const company_access = () => (
             Readerをインストール必要があります。 最新のAdobe Acrobat
             Readerは無料でAdobeのサイトからダウンロードできます。
           </p>
-          <div class="clear"></div>
+          <div></div>
         </div>
 
-        <div id="pageupBox">
-          <div class="pageup">
+        <div>
+          <div>
             <a href="#top">▲このページの先頭へ</a>
           </div>
         </div>
@@ -146,4 +148,4 @@ const company_access = () => (
   </Layout>
 );
 
-export default company_access;
+export default Access;

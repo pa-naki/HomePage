@@ -1,6 +1,4 @@
 import React from 'react';
-import { faCarCrash } from '@fortawesome/free-solid-svg-icons';
-const wbr = <wbr />;
 export default [
   {
     url: `/search`,
@@ -121,7 +119,7 @@ export default [
         icon: <faCarCrash />,
       },
       {
-        url: `/recruit/voice`,
+        url: `/recruit/interview`,
         label: 'インタビュー',
         icon: <faCarCrash />,
       },

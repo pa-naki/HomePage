@@ -43,8 +43,8 @@ const Navigation = () => {
             {navLinks.map((nuvlink, index) => {
               const { url, label, subMenu } = nuvlink;
               return (
-                <li className={styles.menuLinks}>
-                  <Link to={url} key={index} className={styles.menuLink}>
+                <li className={styles.menuLinks} key={index}>
+                  <Link to={url} className={styles.menuLink}>
                     {label}
                   </Link>
                   {subMenu && (
@@ -56,10 +56,9 @@ const Navigation = () => {
                       />
                       <ul className={styles.subMenu}>
                         {subMenu.map((subpath, index) => (
-                          <li className={styles.subMenuLinks}>
+                          <li className={styles.subMenuLinks} key={index}>
                             <Link
                               to={subpath.url}
-                              key={index}
                               className={styles.subMenuLink}
                             >
                               {subpath.label}

@@ -4,9 +4,9 @@ import { Link } from 'gatsby';
 import Layout from '../../components/layout';
 import Seo from '../../components/Seo';
 
-const company_affiliated = () => (
+const Affiliated = () => (
   <Layout>
-    <Seo title="company_affiliated" />
+    <Seo title="Affiliated" />
     <div>
       <div>
         <div>
@@ -178,4 +178,4 @@ const company_affiliated = () => (
   </Layout>
 );
 
-export default company_affiliated;
+export default Affiliated;

@@ -9,6 +9,7 @@ const Product = () => {
         src="../../../images/gatsby-astronaut.png"
         width={500}
         placeholder="blurred"
+        alt="image2"
       />
     </Wrapper>
   );

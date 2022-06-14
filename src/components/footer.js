@@ -11,7 +11,11 @@ const Footer = () => {
       <figure className="footerMap">
         <figcaption className="footerMapInfo">
           <div className="footerMapLogo">
-            <StaticImage src="../images/daiwa_logo2.png" className="logo" />
+            <StaticImage
+              src="../images/daiwa_logo2.png"
+              className="logo"
+              alt="logo"
+            />
           </div>
           <address className="footerFirstMapAddress">
             〒533-0006 大阪市東淀川区上新庄3-1-11
@@ -41,7 +45,7 @@ const Footer = () => {
         {navLinks.map((nuvlink, index) => {
           const { url, label, subMenu } = nuvlink;
           return (
-            <ul className="footerParentMenu">
+            <ul className="footerParentMenu" key={index}>
               <li className="footerParentList">
                 <h3>
                   <Link to={url} className="footerParentItem">
@@ -51,7 +55,7 @@ const Footer = () => {
                 {subMenu && (
                   <ul className="footerSubMenu">
                     {subMenu.map((subpath, index) => (
-                      <li className="footerSubList">
+                      <li className="footerSubList" key={index}>
                         <Link to={subpath.url} className="footerSubItem">
                           {subpath.label}
                         </Link>

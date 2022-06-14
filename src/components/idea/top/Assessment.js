@@ -5,7 +5,11 @@ import styled from 'styled-components';
 const Assessment = () => {
   return (
     <Wrapper>
-      <StaticImage src="../../../images/gatsby-icon.png" width={400} />
+      <StaticImage
+        src="../../../images/gatsby-icon.png"
+        width={400}
+        alt="image"
+      />
     </Wrapper>
   );
 };

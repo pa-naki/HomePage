@@ -7,7 +7,7 @@ const Video = () => {
       <iframe
         src="https://www.youtube.com/embed/QLxtsNOtKqs?autoplay=1&mute=1"
         title="難燃剤"
-        frameborder="0"
+        frameborder="1"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         webkitallowfullscreen="true"
         mozallowfullscreen="true"

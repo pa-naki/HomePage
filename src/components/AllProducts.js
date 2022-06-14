@@ -1,42 +1,81 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import React from 'react';
+import React, { useState } from 'react';
+import styled from 'styled-components';
 import SearchQuery from './SearchQuery';
 import TagsList from './TagsList';
+import Fuse from 'fuse.js';
 
-const query = graphql`
-  {
-    allMicrocmsProducts(sort: { fields: halfProduct, order: ASC }) {
-      edges {
-        node {
-          id
-          feature
-          ionic
-          material
-          packing
-          product
-          property
-          series {
-            series
-          }
-          type {
-            name
-          }
-          application
-        }
-      }
-    }
-  }
-`;
+const AllProducts = ({ data, filters, setFilters }) => {
+  // const data = useStaticQuery(graphql`
+  //   {
+  //     allMicrocmsProducts(sort: { fields: halfProduct, order: ASC }) {
+  //       edges {
+  //         node {
+  //           id
+  //           feature
+  //           ionic
+  //           material
+  //           packing
+  //           product
+  //           property
+  //           series {
+  //             series
+  //           }
+  //           type {
+  //             name
+  //           }
+  //           application
+  //         }
+  //       }
+  //       totalCount
+  //     }
+  //   }
+  // `);
+  const defaultOptions = {
+    shouldSort: true,
+    threshold: 0.6,
+    location: 0,
+    distance: 100,
+    maxPatternLength: 32,
+    minMatchCharLength: 1,
+    keys: [
+      `feature`,
+      `material`,
+      `ionic`,
+      `packing`,
+      `product`,
+      `property`,
+      `series.series`,
+      `type.name`,
+      `application`,
+      `halfProduct`,
+    ],
+  };
+  const [search, setSearch] = useState(``);
+  const [sitesToShow, setSitesToShow] = useState(12);
+  const fuse = new Fuse(data.types.nodes, defaultOptions);
 
-const AllProducts = () => {
-  const data = useStaticQuery(query);
-  const products = data.allMicrocmsProducts.edges;
+  let items = data.types.nodes;
+
+  const products = data.types.edges;
   return (
-    <div>
-      <TagsList products={products} />
+    <Wrapper>
+      <TagsList
+        products={products}
+        items={items}
+        count={sitesToShow}
+        filters={filters}
+        setFilters={setFilters}
+        onCategoryClick={c => setFilters(c)}
+      />
       <SearchQuery products={products} />
-    </div>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.section`
+  display: flex;
+  justify-content: space-between;
+`;
 
 export default AllProducts;
