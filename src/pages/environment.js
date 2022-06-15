@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 import Seo from '../components/Seo';
 
-const environment = () => (
-  <Layout>
+const environment = ({ location }) => (
+  <Layout pathName={location.pathname}>
     <Seo title="environment" />
     <div class="catch_text_green_13">
       ●地球環境の未来から、真の快適性を追求していきます。

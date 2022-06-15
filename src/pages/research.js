@@ -2,11 +2,11 @@ import * as React from 'react';
 import { Rdefforts, RelateCouncil } from '../components/idea/development';
 import styledComponents from 'styled-components';
 
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 import Seo from '../components/Seo';
 
-const Research = () => (
-  <Layout>
+const Research = ({ location }) => (
+  <Layout pathName={location.pathname}>
     <Seo title="research" />
     <div>
       <h1>フィールドは世界！</h1>

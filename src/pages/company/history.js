@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
 
-const company_history = () => (
-  <Layout>
+const history = ({ location }) => (
+  <Layout pathName={location.pathname}>
     <Seo title="company_history" />
     <div>
       <div>
@@ -323,4 +323,4 @@ const company_history = () => (
   </Layout>
 );
 
-export default company_history;
+export default history;

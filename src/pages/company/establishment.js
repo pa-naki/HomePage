@@ -1,36 +1,26 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
 
-const company_establishment = () => (
-  <Layout>
+const establishment = ({ location }) => (
+  <Layout pathName={location.pathname}>
     <Seo title="company_establishment" />
     <div>
       <div>
         <p>大和化学工業株式会社の事業所をご紹介します。</p>
-        <div class="subtitle">
+        <div>
           <h3>本社・大阪工場</h3>
         </div>
-        <table
-          width="645"
-          border="0"
-          cellspacing="1"
-          cellpadding="3"
-          bgcolor="#C8C8C8"
-        >
+        <table>
           <tr>
-            <td bgcolor="#def9e7" width="150" class="tableTitle">
-              所在地
-            </td>
-            <td bgcolor="#ffffff" width="495" class="tableText">
-              <div class="outline_r_image">
+            <td>所在地</td>
+            <td>
+              <div>
                 <img
                   src="./img/company_establishment/image1.jpg"
                   alt="本社・大阪工場"
-                  width="254"
-                  height="179"
                 />
               </div>
               <p>
@@ -46,32 +36,22 @@ const company_establishment = () => (
                 <br />
                 ＦＡＸ：(06)6328-2160
               </p>
-              <div class="clear"></div>
+              <div></div>
             </td>
           </tr>
         </table>
 
-        <div class="subtitle2">
+        <div>
           <h3>東京支社</h3>
         </div>
-        <table
-          width="645"
-          border="0"
-          cellspacing="1"
-          cellpadding="3"
-          bgcolor="#C8C8C8"
-        >
+        <table>
           <tr>
-            <td bgcolor="#def9e7" width="150" class="tableTitle">
-              所在地
-            </td>
-            <td bgcolor="#ffffff" width="495" class="tableText">
-              <div class="outline_r_image">
+            <td>所在地</td>
+            <td>
+              <div>
                 <img
                   src="./img/company_establishment/image2.jpg"
                   alt="東京支社"
-                  width="254"
-                  height="179"
                 />
               </div>
               東京支社
@@ -89,27 +69,17 @@ const company_establishment = () => (
           </tr>
         </table>
 
-        <div class="subtitle2">
+        <div>
           <h3>東京工場</h3>
         </div>
-        <table
-          width="645"
-          border="0"
-          cellspacing="1"
-          cellpadding="3"
-          bgcolor="#C8C8C8"
-        >
+        <table>
           <tr>
-            <td bgcolor="#def9e7" width="150" class="tableTitle">
-              所在地
-            </td>
-            <td bgcolor="#ffffff" width="495" class="tableText">
-              <div class="outline_r_image">
+            <td>所在地</td>
+            <td>
+              <div>
                 <img
                   src="./img/company_establishment/image3.jpg"
                   alt="東京工場"
-                  width="254"
-                  height="179"
                 />
               </div>
               東京工場
@@ -131,4 +101,4 @@ const company_establishment = () => (
   </Layout>
 );
 
-export default company_establishment;
+export default establishment;

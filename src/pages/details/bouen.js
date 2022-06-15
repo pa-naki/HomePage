@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
 
-const details_bouen = () => (
-  <Layout>
+const bouen = ({ location }) => (
+  <Layout pathName={location.pathname}>
     <Seo title="details_bouen" />
     <h1>Hi from the details_bouen</h1>
     <p>Welcome to details_bouen</p>
@@ -13,4 +13,4 @@ const details_bouen = () => (
   </Layout>
 );
 
-export default details_bouen;
+export default bouen;

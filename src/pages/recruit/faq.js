@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
 
-const recruit_faq = () => (
-  <Layout>
+const faq = ({ location }) => (
+  <Layout pathName={location.pathname}>
     <Seo title="recruit_faq" />
     <div id="mainBox">
       <div id="main">
@@ -94,4 +94,4 @@ const recruit_faq = () => (
   </Layout>
 );
 
-export default recruit_faq;
+export default faq;

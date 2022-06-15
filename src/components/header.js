@@ -23,9 +23,7 @@ const Header = ({ siteTitle }) => {
   );
 };
 
-const StyledHeader = styled.header`
-  margin-top: 70px;
-`;
+const StyledHeader = styled.header``;
 
 // Header.propTypes = {
 //   siteTitle: PropTypes.string

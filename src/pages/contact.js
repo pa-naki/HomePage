@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 import Seo from '../components/Seo';
 
-const contact = () => (
-  <Layout>
+const contact = ({ location }) => (
+  <Layout pathName={location.pathname}>
     <Seo title="contact" />
     <p>
       当社では新製品開発のため、また現行製品販売のために新規取引先の開拓を行っています。

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 import Seo from '../components/Seo';
 
-const lineap = () => (
-  <Layout>
+const lineap = ({ location }) => (
+  <Layout pathName={location.pathname}>
     <Seo title="lineap" />
     <h1>Hi from the lineap</h1>
     <p>Welcome to lineap</p>

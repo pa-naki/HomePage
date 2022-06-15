@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
-const cards = ({ arrayItems }) => {
+const Cards = ({ arrayItems }) => {
   return (
     <Wrapper>
       {arrayItems.map((item, index) => {
@@ -39,4 +39,4 @@ const Wrapper = styled.main`
   }
 `;
 
-export default cards;
+export default Cards;

@@ -1,7 +1,7 @@
 import React, { createRef, useEffect, useState } from 'react';
 import { graphql, Link, navigate } from 'gatsby';
 
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
 import AllProducts from '../../components/AllProducts';
 import qs from 'qs';
@@ -33,7 +33,7 @@ const Kinou = ({ data, location }) => {
   }, [filters, location]);
 
   return (
-    <Layout>
+    <Layout pathName={location.pathname}>
       <Seo title="Kinou" />
       <AllProducts filters={filters} setFilters={updateFilters} data={data} />
     </Layout>

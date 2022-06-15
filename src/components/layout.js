@@ -11,8 +11,12 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { GatsbyContext } from '../context/context';
 
 import { Header, Sidebar, Navigation, Footer } from './index';
+import { StaticImage } from 'gatsby-plugin-image';
+import DisplayTemplate from '../templates/display-template';
+import PathTree from '../templates/path-tree';
+import styled from 'styled-components';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, heroImage, imgAlt, pathName, notTemplate }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -28,13 +32,23 @@ const Layout = ({ children }) => {
       {/* <Navigation /> */}
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       {isSidebarOpen && <Sidebar />}
-      <div>
-        <main>{children}</main>
-      </div>
+      {heroImage && <StaticImage src={heroImage} alt={imgAlt} />}
+      {notTemplate ? (
+        <>{children}</>
+      ) : (
+        <Wrapper>
+          {pathName && <PathTree pathTree={pathName} />}
+          <DisplayTemplate>{children}</DisplayTemplate>
+        </Wrapper>
+      )}
       <Footer />
     </>
   );
 };
+
+const Wrapper = styled.main`
+  margin-top: 70px;
+`;
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

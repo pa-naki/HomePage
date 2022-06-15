@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
 import styled from 'styled-components';
 
-import Cards from '../../templates/cards';
+import Cards from '../../templates/Cards';
 
-const recruit_home = () => {
+const home = ({ location }) => {
   const recruitDetailItem = [
     {
       id: 1,
@@ -54,7 +54,7 @@ const recruit_home = () => {
     },
   ];
   return (
-    <Layout>
+    <Layout pathName={location.pathname}>
       <Seo title="recruit_home" />
       <Wrapper>
         <Cards arrayItems={recruitDetailItem} />
@@ -63,6 +63,8 @@ const recruit_home = () => {
   );
 };
 
-const Wrapper = styled.main``;
+const Wrapper = styled.div`
+  width: initial;
+`;
 
-export default recruit_home;
+export default home;

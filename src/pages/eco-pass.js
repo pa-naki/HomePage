@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 import Seo from '../components/Seo';
 
-const eco_pass = () => (
-  <Layout>
+const eco_pass = ({ location }) => (
+  <Layout pathName={location.pathname}>
     <Seo title="eco_pass" />
     <div id="main">
       <div class="logo">

@@ -2,9 +2,9 @@ import { graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React from 'react';
 import styled from 'styled-components';
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 
-const SingleInterview = props => {
+const SingleInterview = (props, { location }) => {
   const {
     title,
     department,
@@ -39,7 +39,7 @@ const SingleInterview = props => {
   const scheduleImage = getImage(schedule.childImageSharp.gatsbyImageData);
 
   return (
-    <Layout>
+    <Layout pathName={location.pathname}>
       <Wrapper>
         <div className="headerInterview">
           <GatsbyImage image={faceupImage} />

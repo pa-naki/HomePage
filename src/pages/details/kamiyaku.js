@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
 
-const details_kamiyaku = () => (
-  <Layout>
+const kamiyaku = ({ location }) => (
+  <Layout pathName={location.pathname}>
     <Seo title="details_kamiyaku" />
     <h1>Hi from the details_kamiyaku</h1>
     <p>Welcome to details_kamiyaku</p>
@@ -13,4 +13,4 @@ const details_kamiyaku = () => (
   </Layout>
 );
 
-export default details_kamiyaku;
+export default kamiyaku;

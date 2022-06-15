@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
 
-const company_greeting = () => (
-  <Layout>
+const greeting = ({ location }) => (
+  <Layout pathName={location.pathname}>
     <Seo title="company_greeting" />
     <div>
       <div>
@@ -43,4 +43,4 @@ const company_greeting = () => (
   </Layout>
 );
 
-export default company_greeting;
+export default greeting;

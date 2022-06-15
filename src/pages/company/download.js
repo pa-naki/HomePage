@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
 
-const company_download = () => (
-  <Layout>
+const download = ({ location }) => (
+  <Layout pathName={location.pathname}>
     <Seo title="company_download" />
     <div id="mainBox">
       <div id="main">
@@ -69,4 +69,4 @@ const company_download = () => (
   </Layout>
 );
 
-export default company_download;
+export default download;

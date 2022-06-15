@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 import Seo from '../components/Seo';
 
-const franCM = () => (
-  <Layout>
+const franCM = ({ location }) => (
+  <Layout pathName={location.pathname}>
     <Seo title="franCM" />
     <div id="main">
       <img

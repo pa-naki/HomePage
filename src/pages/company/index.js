@@ -1,13 +1,11 @@
 import * as React from 'react';
-import { Link } from 'gatsby';
 
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
-import styled from 'styled-components';
 
-import Cards from '../../templates/cards';
+import Cards from '../../templates/Cards';
 
-const Company = () => {
+const company = ({ location }) => {
   const companyDetailItem = [
     {
       id: 1,
@@ -68,18 +66,14 @@ const Company = () => {
     },
   ];
   return (
-    <Layout>
+    <Layout pathName={location.pathname}>
       <Seo title="company" />
       <p>
         こちらでは、大和化学工業株式会社の会社案内をご紹介いたします。ご覧になられる項目をクリックして下さい。
       </p>
-      <Wrapper>
-        <Cards arrayItems={companyDetailItem} />
-      </Wrapper>
+      <Cards arrayItems={companyDetailItem} />
     </Layout>
   );
 };
 
-const Wrapper = styled.main``;
-
-export default Company;
+export default company;

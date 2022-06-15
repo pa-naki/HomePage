@@ -10,6 +10,7 @@ module.exports = {
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
   plugins: [
+    `gatsby-plugin-transition-link`,
     {
       resolve: 'gatsby-source-microcms',
       options: {
@@ -50,7 +51,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
+        name: `大和化学工業株式会社`,
         short_name: `starter`,
         start_url: `/`,
         background_color: `#663399`,

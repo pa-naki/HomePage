@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
 
-const recruit_entry = () => (
-  <Layout>
+const entry = ({ location }) => (
+  <Layout pathName={location.pathname}>
     <Seo title="recruit_entry" />
     <h1>Hi from the recruit_entry</h1>
     <p>Welcome to recruit_entry</p>
@@ -13,4 +13,4 @@ const recruit_entry = () => (
   </Layout>
 );
 
-export default recruit_entry;
+export default entry;

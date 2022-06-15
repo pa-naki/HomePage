@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
 
-const search_series = () => (
-  <Layout>
+const series = ({ location }) => (
+  <Layout pathName={location.pathname}>
     <Seo title="search_series" />
     <h1>Hi from the search_series</h1>
     <p>Welcome to search_series</p>
@@ -13,4 +13,4 @@ const search_series = () => (
   </Layout>
 );
 
-export default search_series;
+export default series;

@@ -1,10 +1,10 @@
 import { graphql } from 'gatsby';
 import React from 'react';
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 
-const Interview = props => {
+const interview = (props, { location }) => {
   return (
-    <Layout>
+    <Layout pathName={location.pathname}>
       <h1>インタビューページ</h1>
       {props.data.allMarkdownRemark.edges.map((singleInterview, index) => {
         const { id, faceupPath, title, name, hireDate, department } =
@@ -20,7 +20,7 @@ const Interview = props => {
   );
 };
 
-export default Interview;
+export default interview;
 
 export const query = graphql`
   query EmployeeQuery {
