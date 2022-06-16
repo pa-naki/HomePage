@@ -4,6 +4,8 @@ import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
 
 import Cards from '../../templates/Cards';
+import DisplayTemplate from '../../templates/display-template';
+import PathTree from '../../templates/path-tree';
 
 const company = ({ location }) => {
   const companyDetailItem = [
@@ -66,8 +68,9 @@ const company = ({ location }) => {
     },
   ];
   return (
-    <Layout pathName={location.pathname}>
+    <Layout>
       <Seo title="company" />
+      <PathTree pathTree={location.pathname} />
       <p>
         こちらでは、大和化学工業株式会社の会社案内をご紹介いたします。ご覧になられる項目をクリックして下さい。
       </p>

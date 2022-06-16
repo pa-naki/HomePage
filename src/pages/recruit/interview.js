@@ -1,21 +1,27 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 import Layout from '../../components/Layout';
+import DisplayTemplate from '../../templates/display-template';
 
-const interview = (props, { location }) => {
+import PathTree from '../../templates/path-tree';
+
+const interview = props => {
   return (
-    <Layout pathName={location.pathname}>
+    <Layout>
+      <PathTree pathTree={props.location.pathname} />
       <h1>インタビューページ</h1>
-      {props.data.allMarkdownRemark.edges.map((singleInterview, index) => {
-        const { id, faceupPath, title, name, hireDate, department } =
-          singleInterview.node.frontmatter;
-        return (
-          <div key={index}>
-            <h1>{title}</h1>
-            <h2>{name}</h2>
-          </div>
-        );
-      })}
+      <DisplayTemplate>
+        {props.data.allMarkdownRemark.edges.map((singleInterview, index) => {
+          const { id, faceupPath, title, name, hireDate, department } =
+            singleInterview.node.frontmatter;
+          return (
+            <div key={index}>
+              <h1>{title}</h1>
+              <h2>{name}</h2>
+            </div>
+          );
+        })}
+      </DisplayTemplate>
     </Layout>
   );
 };

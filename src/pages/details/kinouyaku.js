@@ -4,12 +4,18 @@ import { Link } from 'gatsby';
 import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
 
+import PathTree from '../../templates/path-tree';
+import DisplayTemplate from '../../templates/display-template';
+
 const kinouyaku = ({ location }) => (
-  <Layout pathName={location.pathname}>
+  <Layout>
     <Seo title="details_kinouyaku" />
-    <h1>Hi from the details_kinouyaku</h1>
-    <p>Welcome to details_kinouyaku</p>
-    <Link to="/">Go back to the homepage</Link>
+    <PathTree pathTree={location.pathname} />
+    <DisplayTemplate>
+      <h1>Hi from the details_kinouyaku</h1>
+      <p>Welcome to details_kinouyaku</p>
+      <Link to="/">Go back to the homepage</Link>
+    </DisplayTemplate>
   </Layout>
 );
 

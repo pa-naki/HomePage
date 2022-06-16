@@ -8,9 +8,18 @@ const PathTree = ({ pathTree }) => {
     <Wrapper>
       <div>
         {pTree[1] && <Link to={'/'}>home</Link>}
-        {pTree[1] && <Link to={`/${pTree[1]}`}>&gt;{pTree[1]}</Link>}
+        {pTree[1] && (
+          <>
+            {' '}
+            <span>&gt;</span> <Link to={`/${pTree[1]}`}>{pTree[1]}</Link>
+          </>
+        )}
         {pTree[2] && (
-          <Link to={`/${pTree[1]}/${pTree[2]}`}>&gt;{pTree[2]}</Link>
+          <>
+            {' '}
+            <span>&gt;</span>{' '}
+            <Link to={`/${pTree[1]}/${pTree[2]}`}>{pTree[2]}</Link>
+          </>
         )}
       </div>
     </Wrapper>
@@ -24,11 +33,15 @@ const Wrapper = styled.nav`
   margin: 0;
   height: auto;
   div {
-    width: 85%;
+    width: 90%;
     margin: 0 auto;
+    color: white;
     a {
       text-decoration: none;
       color: white;
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 `;

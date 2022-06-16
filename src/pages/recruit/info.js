@@ -4,9 +4,12 @@ import { Link } from 'gatsby';
 import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
 
+import PathTree from '../../templates/path-tree';
+
 const info = ({ location }) => (
-  <Layout pathName={location.pathname}>
+  <Layout>
     <Seo title="recruit_info" />
+    <PathTree pathTree={location.pathname} />
     <div id="mainBox">
       <div id="main">
         <p>

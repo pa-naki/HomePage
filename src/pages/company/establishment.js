@@ -4,9 +4,15 @@ import { Link } from 'gatsby';
 import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
 
+import PathTree from '../../templates/path-tree';
+import DisplayTemplate from '../../templates/display-template';
+
 const establishment = ({ location }) => (
-  <Layout pathName={location.pathname}>
+  <Layout>
     <Seo title="company_establishment" />
+    <PathTree pathTree={location.pathname} />
+    <DisplayTemplate>
+
     <div>
       <div>
         <p>大和化学工業株式会社の事業所をご紹介します。</p>
@@ -98,6 +104,7 @@ const establishment = ({ location }) => (
         </table>
       </div>
     </div>
+    </DisplayTemplate>
   </Layout>
 );
 

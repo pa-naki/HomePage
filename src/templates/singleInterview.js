@@ -4,7 +4,9 @@ import React from 'react';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 
-const SingleInterview = (props, { location }) => {
+import PathTree from './path-tree';
+
+const SingleInterview = ({ data, location }) => {
   const {
     title,
     department,
@@ -30,7 +32,7 @@ const SingleInterview = (props, { location }) => {
     episodeImage1,
     episodeImage2,
     schedule,
-  } = props.data.markdownRemark.frontmatter;
+  } = data.markdownRemark.frontmatter;
 
   const fullImage = getImage(episodeFullimage1.childImageSharp.gatsbyImageData);
   const faceupImage = getImage(faceupPath.childImageSharp.gatsbyImageData);
@@ -39,7 +41,8 @@ const SingleInterview = (props, { location }) => {
   const scheduleImage = getImage(schedule.childImageSharp.gatsbyImageData);
 
   return (
-    <Layout pathName={location.pathname}>
+    <Layout>
+      <PathTree pathTree={location.pathname} />
       <Wrapper>
         <div className="headerInterview">
           <GatsbyImage image={faceupImage} />

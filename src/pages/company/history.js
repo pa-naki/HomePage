@@ -4,9 +4,15 @@ import { Link } from 'gatsby';
 import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
 
+import PathTree from '../../templates/path-tree';
+import DisplayTemplate from '../../templates/display-template';
+
 const history = ({ location }) => (
-  <Layout pathName={location.pathname}>
+  <Layout>
     <Seo title="company_history" />
+    <PathTree pathTree={location.pathname} />
+    <DisplayTemplate>
+
     <div>
       <div>
         <p>大和化学工業株式会社の沿革をご紹介します。</p>
@@ -320,6 +326,7 @@ const history = ({ location }) => (
         </table>
       </div>
     </div>
+    </DisplayTemplate>
   </Layout>
 );
 

@@ -6,6 +6,8 @@ import Seo from '../../components/Seo';
 import AllProducts from '../../components/AllProducts';
 import qs from 'qs';
 
+import PathTree from '../../templates/path-tree';
+
 const Kinou = ({ data, location }) => {
   const [filters, setFilters] = useState([]);
   // const searchKinou = createRef();
@@ -33,8 +35,9 @@ const Kinou = ({ data, location }) => {
   }, [filters, location]);
 
   return (
-    <Layout pathName={location.pathname}>
+    <Layout>
       <Seo title="Kinou" />
+      <PathTree pathTree={location.pathname} />
       <AllProducts filters={filters} setFilters={updateFilters} data={data} />
     </Layout>
   );

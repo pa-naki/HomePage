@@ -11,7 +11,7 @@ import { Philosophy, Promotion, Interview } from '../components/idea/top';
 
 const IndexPage = ({ location }) => {
   return (
-    <Layout pathName={location.pathname} notTemplate={true}>
+    <Layout pathname={location.pathname} notTemplate={true}>
       <SEO title="Home" />
       <Video />
       <Philosophy />

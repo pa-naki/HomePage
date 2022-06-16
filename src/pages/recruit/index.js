@@ -6,6 +6,8 @@ import Seo from '../../components/Seo';
 import styled from 'styled-components';
 
 import Cards from '../../templates/Cards';
+import PathTree from '../../templates/path-tree';
+import DisplayTemplate from '../../templates/display-template';
 
 const home = ({ location }) => {
   const recruitDetailItem = [
@@ -54,8 +56,9 @@ const home = ({ location }) => {
     },
   ];
   return (
-    <Layout pathName={location.pathname}>
+    <Layout>
       <Seo title="recruit_home" />
+      <PathTree pathTree={location.pathname} />
       <Wrapper>
         <Cards arrayItems={recruitDetailItem} />
       </Wrapper>
