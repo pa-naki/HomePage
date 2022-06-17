@@ -74,6 +74,9 @@ body {
 ul {
   list-style-type: none;
 }
+ol {
+  list-style-type: none;
+}
 a {
   text-decoration: none;
 }

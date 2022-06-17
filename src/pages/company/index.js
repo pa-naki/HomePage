@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { StaticImage } from 'gatsby-plugin-image';
 
 import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
@@ -70,6 +71,12 @@ const company = ({ location }) => {
   return (
     <Layout>
       <Seo title="company" />
+      <StaticImage
+        src="../../images/top/slide01.jpg"
+        layout="fullWidth"
+        placeholder="blurred"
+        height={'100%'}
+      />
       <PathTree pathTree={location.pathname} />
       <p>
         こちらでは、大和化学工業株式会社の会社案内をご紹介いたします。ご覧になられる項目をクリックして下さい。
