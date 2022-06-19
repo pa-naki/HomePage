@@ -16,23 +16,23 @@ const Kinou = ({ data, location }) => {
     setFilters([].concat(filters));
   };
 
-  useEffect(() => {
-    const { search = ``, pathname } = location;
-    const queryString = qs.stringify({ filters });
+  // useEffect(() => {
+  //   const { search = ``, pathname } = location;
+  //   const queryString = qs.stringify({ filters });
 
-    if (search && search.replace(/^\?/, ``) !== queryString) {
-      navigate(`${pathname}?${queryString}`, { replace: true });
-      return;
-    }
+  //   if (search && search.replace(/^\?/, ``) !== queryString) {
+  //     navigate(`${pathname}?${queryString}`, { replace: true });
+  //     return;
+  //   }
 
-    const { filters: incomingFilters } = qs.parse(search.replace(`?`, ``));
-    if (incomingFilters && incomingFilters.length) {
-      updateFilters(filters);
-    }
-    // console.log('qs:', queryString);
-    // console.log('incomingFilters:', incomingFilters);
-    // console.log('updateFilters:', updateFilters(filters));
-  }, [filters, location]);
+  //   const { filters: incomingFilters } = qs.parse(search.replace(`?`, ``));
+  //   if (incomingFilters && incomingFilters.length) {
+  //     updateFilters(filters);
+  //   }
+  //   // console.log('qs:', queryString);
+  //   // console.log('incomingFilters:', incomingFilters);
+  //   // console.log('updateFilters:', updateFilters(filters));
+  // }, [filters, location]);
 
   return (
     <Layout>

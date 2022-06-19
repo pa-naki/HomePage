@@ -1,23 +1,26 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
 
 import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
 
 import PathTree from '../../templates/path-tree';
 import DisplayTemplate from '../../templates/display-template';
+import { HeddingSection } from '../../templates/styles';
+import styled from 'styled-components';
 
 const outline = ({ location }) => (
   <Layout>
     <Seo title="company_outline" />
     <PathTree pathTree={location.pathname} />
     <DisplayTemplate>
-      <div>
-        <div>
-          <p>大和化学工業株式会社の会社概要をご紹介します。</p>
-          <div>
-            <h3>会社概要</h3>
-          </div>
+      <Wrapper>
+        <HeddingSection
+          heddingTitle="会社概要"
+          HeddingTag="h1"
+          heddingWidth="100%"
+        >
           <table>
             <tr>
               <td>商　号</td>
@@ -59,7 +62,12 @@ const outline = ({ location }) => (
               <td>所在地</td>
               <td>
                 <div>
-                  <img src="" alt="本社・大阪工場" />
+                  <StaticImage
+                    src="../../images/company_outline/bill1.jpg"
+                    alt="本社・大阪工場"
+                    layout="fixed"
+                    placeholder="blurred"
+                  />
                 </div>
                 本社・大阪工場
                 <br />
@@ -74,11 +82,11 @@ const outline = ({ location }) => (
                 <br />
                 <br />
                 <div class="outline_r_image">
-                  <img
-                    src="./img/company_outline/bill2.jpg"
+                  <StaticImage
+                    src="../../images/company_outline/bill2.jpg"
                     alt="東京支社"
-                    width="150"
-                    height="100"
+                    layout="fixed"
+                    placeholder="blurred"
                   />
                 </div>
                 東京支社
@@ -94,11 +102,11 @@ const outline = ({ location }) => (
                 <br />
                 <br />
                 <div class="outline_r_image">
-                  <img
-                    src="./img/company_outline/bill3.jpg"
+                  <StaticImage
+                    src="../../images/company_outline/bill3.jpg"
                     alt="東京工場"
-                    width="150"
-                    height="100"
+                    layout="fixed"
+                    placeholder="blurred"
                   />
                 </div>
                 東京工場
@@ -114,10 +122,16 @@ const outline = ({ location }) => (
               </td>
             </tr>
           </table>
-        </div>
-      </div>
+        </HeddingSection>
+      </Wrapper>
     </DisplayTemplate>
   </Layout>
 );
+
+const Wrapper = styled.section`
+  td {
+    padding: 1rem 3rem;
+  }
+`;
 
 export default outline;

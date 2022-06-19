@@ -1,4 +1,3 @@
-import { graphql, useStaticQuery } from 'gatsby';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import SearchQuery from './SearchQuery';
@@ -6,31 +5,6 @@ import TagsList from './TagsList';
 import Fuse from 'fuse.js';
 
 const AllProducts = ({ data, filters, setFilters }) => {
-  // const data = useStaticQuery(graphql`
-  //   {
-  //     allMicrocmsProducts(sort: { fields: halfProduct, order: ASC }) {
-  //       edges {
-  //         node {
-  //           id
-  //           feature
-  //           ionic
-  //           material
-  //           packing
-  //           product
-  //           property
-  //           series {
-  //             series
-  //           }
-  //           type {
-  //             name
-  //           }
-  //           application
-  //         }
-  //       }
-  //       totalCount
-  //     }
-  //   }
-  // `);
   const defaultOptions = {
     shouldSort: true,
     threshold: 0.6,

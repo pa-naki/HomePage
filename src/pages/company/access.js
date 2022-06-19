@@ -6,13 +6,14 @@ import Seo from '../../components/Seo';
 
 import PathTree from '../../templates/path-tree';
 import DisplayTemplate from '../../templates/display-template';
+import styled from 'styled-components';
 
 const access = ({ location }) => (
   <Layout>
     <Seo title="company_access" />
     <PathTree pathTree={location.pathname} />
     <DisplayTemplate>
-      <div>
+      <Wrapper>
         <div>
           <p>
             大和化学工業株式会社の本社・大阪工場と東京支社・東京工場のアクセスマップをご紹介します。
@@ -148,9 +149,11 @@ const access = ({ location }) => (
             </div>
           </div>
         </div>
-      </div>
+      </Wrapper>
     </DisplayTemplate>
   </Layout>
 );
+
+const Wrapper = styled.section``;
 
 export default access;
