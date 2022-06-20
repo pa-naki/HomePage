@@ -34,34 +34,13 @@ const ProductCard = ({
   return (
     <Wrapper>
       <tbody>
-        <TableTree
-          colLength={2}
-          col1="製品名"
-          col2={product}
-          col3="機能"
-          col4={type}
-        />
-        <TableTree
-          colLength={2}
-          col1="機能"
-          col2={type}
-          col3="製品名"
-          col4={product}
-        />
-        <TableTree
-          colLength={2}
-          col1="特徴"
-          col2={feature}
-          col3="製品名"
-          col4={product}
-        />
-        <TableTree
-          col1="性状"
-          col2={property}
-          col3="素材･用途"
-          col4={application}
-        />
-        <TableTree col1="イオン性" col2={ionic} col3="荷姿" col4={packing} />
+        <TableTree colLength={2} col1="製品名" col2={product} />
+        <TableTree colLength={2} col1="機能" col2={type} />
+        <TableTree colLength={2} col1="特徴" col2={feature} />
+        <TableTree colLength={2} col1="性状" col2={property} />
+        <TableTree colLength={2} col1="素材･用途" col2={application} />
+        <TableTree colLength={2} col1="イオン性" col2={ionic} />
+        <TableTree colLength={2} col1="荷姿" col2={packing} />
       </tbody>
     </Wrapper>
   );

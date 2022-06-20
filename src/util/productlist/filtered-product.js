@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import SearchQuery from './SearchQuery';
-import TagsList from './TagsList';
+/** @jsx jsx */
+import * as React from 'react';
+// import { MdArrowDownward } from 'react-icons/md';
+// import { Button } from 'gatsby-interface';
 import Fuse from 'fuse.js';
+
+// import { loadMoreButton } from '../shared/styles';
+import ProductList from './product-list';
+import Filters from './filters';
+// import SearchIcon from '../../components/search-icon';
+import {
+  ContentHeader,
+  ContentTitle,
+  ContentContainer,
+} from '../shared/sidebar';
+// import { themedInput } from '../../utils/styles/org';
+// import { visuallyHiddenCss } from '../../components/shared/styles/a11y';
 
 export const filterByCategories = (list, categories) => {
   const items = list.reduce((aggregated, node) => {
-    if (node.type) {
+    if (node.categories) {
       const nodeCategories = node.type.map(obj => obj.name);
       const filteredCategories = nodeCategories.filter(c =>
         categories.includes(c)
@@ -23,7 +35,7 @@ export const filterByCategories = (list, categories) => {
 
   return items;
 };
-const DEFAULT_SITES_TO_SHOW = 6;
+const DEFAULT_SITES_TO_SHOW = 12;
 const defaultOptions = {
   shouldSort: true,
   threshold: 0.6,
@@ -44,7 +56,7 @@ const defaultOptions = {
     // `series.series`
   ],
 };
-const AllProducts = ({ data, filters, setFilters }) => {
+const FilteredProduct = ({ data, filters, setFilters }) => {
   const [search, setSearch] = React.useState(``);
   const [sitesToShow, setSitesToShow] = React.useState(DEFAULT_SITES_TO_SHOW);
   const fuse = new Fuse(data.allMicrocmsProducts.nodes, defaultOptions);
@@ -89,28 +101,60 @@ const AllProducts = ({ data, filters, setFilters }) => {
     str1.toLowerCase().localeCompare(str2.toLowerCase())
   );
 
-  console.log('items', items);
-  const products = data.types.edges;
   return (
-    <Wrapper>
-      <TagsList
-        products={products}
-        items={items}
-        count={sitesToShow}
-        filters={filters}
+    <section style={{ display: `flex` }}>
+      <Filters
         setFilters={setFilters}
-        onCategoryClick={c => setFilters(c)}
-        aggregatedCategories={aggregatedCategories}
+        filters={filters}
         categoryKeys={categoryKeys}
+        aggregatedCategories={aggregatedCategories}
       />
-      <SearchQuery products={products} items={items} />
-    </Wrapper>
+      <ContentContainer>
+        <ContentHeader>
+          <ContentTitle
+            search={search}
+            filters={filters}
+            label="Site"
+            items={items}
+            nodes={data.allMicrocmsProducts.nodes}
+          />
+          <div>
+            <label>
+              <input
+                type="search"
+                value={search}
+                onChange={event => setSearch(event.target.value)}
+                placeholder="Search sites"
+                aria-label="Search sites"
+              />
+              {/* <span sx={visuallyHiddenCss}>Search sites</span> */}
+              {/* <SearchIcon /> */}
+            </label>
+          </div>
+        </ContentHeader>
+
+        <ProductList
+          items={items}
+          count={sitesToShow}
+          filters={filters}
+          setFilters={setFilters}
+          onCategoryClick={c => setFilters(c)}
+        />
+        {sitesToShow < items.length && (
+          <button
+            // size="L"
+            // sx={loadMoreButton}
+            onClick={() => {
+              setSitesToShow(sitesToShow + 15);
+            }}
+            // rightIcon={<MdArrowDownward />}
+          >
+            Load More
+          </button>
+        )}
+      </ContentContainer>
+    </section>
   );
 };
 
-const Wrapper = styled.section`
-  display: flex;
-  justify-content: space-between;
-`;
-
-export default AllProducts;
+export default FilteredProduct;

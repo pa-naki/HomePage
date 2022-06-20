@@ -15,6 +15,7 @@
     "fuse.js": "^6.6.2",
     "gatsby": "^4.13.1",
     "gatsby-background-image": "^1.6.0",
+    "gatsby-interface": "^0.0.290",
     "gatsby-plugin-algolia": "^0.26.0",
     "gatsby-plugin-gatsby-cloud": "^4.13.0",
     "gatsby-plugin-image": "^2.13.0",
@@ -35,6 +36,7 @@
     "react-bootstrap": "^2.3.1",
     "react-dom": "^18.1.0",
     "react-helmet": "^6.1.0",
+    "react-icons": "^4.4.0",
     "react-instantsearch-dom": "^6.24.2",
     "styled-components": "^5.3.5",
     "swiper": "^8.2.2"

@@ -7,6 +7,8 @@ import AllProducts from '../../components/AllProducts';
 import qs from 'qs';
 
 import PathTree from '../../templates/path-tree';
+// import { scrollToAnchor } from '../../util/scroll-to-anchor';
+// import FilteredProduct from '../../util/productlist/filtered-product';
 
 const Kinou = ({ data, location }) => {
   const [filters, setFilters] = useState([]);
@@ -16,29 +18,34 @@ const Kinou = ({ data, location }) => {
     setFilters([].concat(filters));
   };
 
-  // useEffect(() => {
-  //   const { search = ``, pathname } = location;
-  //   const queryString = qs.stringify({ filters });
+  useEffect(() => {
+    const { search = ``, pathname } = location;
+    const queryString = qs.stringify({ filters });
 
-  //   if (search && search.replace(/^\?/, ``) !== queryString) {
-  //     navigate(`${pathname}?${queryString}`, { replace: true });
-  //     return;
-  //   }
+    if (search && search.replace(/^\?/, ``) !== queryString) {
+      navigate(`${pathname}?${queryString}`, { replace: true });
+      return;
+    }
 
-  //   const { filters: incomingFilters } = qs.parse(search.replace(`?`, ``));
-  //   if (incomingFilters && incomingFilters.length) {
-  //     updateFilters(filters);
-  //   }
-  //   // console.log('qs:', queryString);
-  //   // console.log('incomingFilters:', incomingFilters);
-  //   // console.log('updateFilters:', updateFilters(filters));
-  // }, [filters, location]);
+    const { filters: incomingFilters } = qs.parse(search.replace(`?`, ``));
+    if (incomingFilters && incomingFilters.length) {
+      updateFilters(filters);
+    }
+    // console.log('qs:', queryString);
+    // console.log('incomingFilters:', incomingFilters);
+    // console.log('updateFilters:', updateFilters(filters));
+  }, [filters, location]);
 
   return (
     <Layout>
       <Seo title="Kinou" />
       <PathTree pathTree={location.pathname} />
       <AllProducts filters={filters} setFilters={updateFilters} data={data} />
+      {/* <FilteredProduct
+        filters={filters}
+        setFilters={updateFilters}
+        data={data}
+      /> */}
     </Layout>
   );
 };
@@ -60,6 +67,7 @@ export const query = graphql`
         material
         packing
         product
+        id
         series {
           series
         }
@@ -101,6 +109,7 @@ export const query = graphql`
           series
         }
         property
+        id
       }
       edges {
         node {

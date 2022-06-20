@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import ProductCard from './ProductCard';
 
 let typeName = [];
-const SearchQuery = ({ products = [] }) => {
+const SearchQuery = ({ products = [], items }) => {
   return (
     <Wrapper>
       <div>
-        {products.map((oneProduct, index) => {
+        {/* {products.map((oneProduct, index) => { */}
+        {items.map((oneProduct, index) => {
           const {
             id,
             feature,
@@ -17,12 +18,12 @@ const SearchQuery = ({ products = [] }) => {
             product,
             property,
             application,
-          } = oneProduct.node;
-          const { series } = oneProduct.node.series;
-          const typeLength = oneProduct.node.type.length;
+          } = oneProduct;
+          const { series } = oneProduct.series;
+          const typeLength = oneProduct.type.length;
           typeName = [];
           if (typeLength > 1) {
-            oneProduct.node.type.map(productType => {
+            oneProduct.type.map(productType => {
               typeName.push(productType.name);
             });
             return (
@@ -43,7 +44,7 @@ const SearchQuery = ({ products = [] }) => {
             <ProductCard
               product={product}
               series={series}
-              type={oneProduct.node.type[0].name}
+              type={oneProduct.type[0].name}
               feature={feature}
               property={property}
               application={application}
