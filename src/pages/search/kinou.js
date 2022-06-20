@@ -12,10 +12,20 @@ import PathTree from '../../templates/path-tree';
 
 const Kinou = ({ data, location }) => {
   const [filters, setFilters] = useState([]);
+  const [series, setSeries] = useState([]);
+  const [materialFilters, setMaterialFilters] = useState([]);
   // const searchKinou = createRef();
 
   const updateFilters = filters => {
     setFilters([].concat(filters));
+  };
+
+  const updateSeries = series => {
+    setSeries([].concat(series));
+  };
+
+  const updateMaterials = materials => {
+    setMaterialFilters([].concat(materialFilters));
   };
 
   useEffect(() => {
@@ -31,7 +41,7 @@ const Kinou = ({ data, location }) => {
     if (incomingFilters && incomingFilters.length) {
       updateFilters(filters);
     }
-    // console.log('qs:', queryString);
+    console.log('qs:', queryString);
     // console.log('incomingFilters:', incomingFilters);
     // console.log('updateFilters:', updateFilters(filters));
   }, [filters, location]);
@@ -40,7 +50,15 @@ const Kinou = ({ data, location }) => {
     <Layout>
       <Seo title="Kinou" />
       <PathTree pathTree={location.pathname} />
-      <AllProducts filters={filters} setFilters={updateFilters} data={data} />
+      <AllProducts
+        filters={filters}
+        setFilters={updateFilters}
+        data={data}
+        series={series}
+        setSeries={setSeries}
+        materialFilters={materialFilters}
+        setMaterialFilters={setMaterialFilters}
+      />
       {/* <FilteredProduct
         filters={filters}
         setFilters={updateFilters}

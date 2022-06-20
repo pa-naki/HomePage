@@ -36,7 +36,8 @@ const SearchQuery = ({ products = [], items }) => {
                 application={application}
                 ionic={ionic}
                 packing={packing}
-                key={index}
+                key={id}
+                className="selected"
               />
             );
           }
@@ -50,7 +51,8 @@ const SearchQuery = ({ products = [], items }) => {
               application={application}
               ionic={ionic}
               packing={packing}
-              key={index}
+              key={id}
+              className="selected"
             />
           );
         })}
@@ -62,8 +64,9 @@ const SearchQuery = ({ products = [], items }) => {
 const Wrapper = styled.article`
   display: flex;
   justify-content: right;
-  width: 80%;
+  width: 70%;
   div {
+    width: 100%;
     display: flex;
     flex-flow: row wrap;
   }

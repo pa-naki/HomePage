@@ -30,9 +30,10 @@ const ProductCard = ({
   ionic,
   packing,
   type,
+  className,
 }) => {
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       <tbody>
         <TableTree colLength={2} col1="製品名" col2={product} />
         <TableTree colLength={2} col1="機能" col2={type} />
@@ -48,6 +49,7 @@ const ProductCard = ({
 
 const Wrapper = styled.table`
   width: 30%;
+  min-width: 30%;
   font-size: 12px;
   border: 1px solid black;
   border-collapse: collapse;
@@ -55,11 +57,6 @@ const Wrapper = styled.table`
     margin: 5px auto;
   }
   margin: 5px auto 5px 0;
-  .table {
-    border: 1px solid black;
-  }
-  tbody {
-  }
   td {
     border: 1px solid black;
     white-space: nowrap;

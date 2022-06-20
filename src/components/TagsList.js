@@ -49,7 +49,7 @@ const TagsList = ({
 };
 
 const Wrapper = styled.aside`
-  width: 20%;
+  width: 10%;
   display: flex;
   flex-direction: column;
   line-height: 1.67;
