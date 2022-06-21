@@ -45,7 +45,7 @@ const SeriesList = ({
 };
 
 const Wrapper = styled.aside`
-  width: 10%;
+  min-width: calc(100% / 3);
   display: flex;
   flex-direction: column;
   line-height: 1.67;

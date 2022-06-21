@@ -1,0 +1,15 @@
+export default {
+  slug: 'slug',
+  image: '写真',
+  product: '製品名',
+  halfProduct: '製品名(半角)',
+  type: '機能',
+  feature: '特徴',
+  property: '性状',
+  material: '素材',
+  application: '用途',
+  ionic: 'イオン性',
+  packing: '荷姿',
+  series: 'シリーズ名',
+  attention: '注目製品',
+};

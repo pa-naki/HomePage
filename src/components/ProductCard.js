@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import propTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
@@ -28,42 +29,63 @@ const ProductCard = ({
   property,
   application,
   ionic,
+  slug,
   packing,
   type,
-  className,
+  material,
 }) => {
   return (
-    <Wrapper className={className}>
-      <tbody>
-        <TableTree colLength={2} col1="製品名" col2={product} />
-        <TableTree colLength={2} col1="機能" col2={type} />
-        <TableTree colLength={2} col1="特徴" col2={feature} />
-        <TableTree colLength={2} col1="性状" col2={property} />
-        <TableTree colLength={2} col1="素材･用途" col2={application} />
-        <TableTree colLength={2} col1="イオン性" col2={ionic} />
-        <TableTree colLength={2} col1="荷姿" col2={packing} />
-      </tbody>
+    <Wrapper>
+      <Link to={`/search/${slug}/`}>
+        <table>
+          <tbody>
+            <TableTree colLength={2} col1="製品名" col2={product} />
+            <TableTree colLength={2} col1="機能" col2={type} />
+            <TableTree colLength={2} col1="特徴" col2={feature} />
+            <TableTree colLength={2} col1="性状" col2={property} />
+            <TableTree colLength={2} col1="素材･用途" col2={application} />
+            <TableTree colLength={2} col1="イオン性" col2={ionic} />
+            <TableTree colLength={2} col1="荷姿" col2={packing} />
+            <TableTree colLength={2} col1="素材" col2={material} />
+          </tbody>
+        </table>
+      </Link>
     </Wrapper>
   );
 };
 
-const Wrapper = styled.table`
+const Wrapper = styled.section`
+  display: flex;
   width: 30%;
   min-width: 30%;
-  font-size: 12px;
-  border: 1px solid black;
-  border-collapse: collapse;
   &:not(:nth-child(3n-2)) {
-    margin: 5px auto;
+    margin: 2rem auto;
   }
-  margin: 5px auto 5px 0;
-  td {
-    border: 1px solid black;
-    white-space: nowrap;
-    text-align: center;
+  margin: 2rem auto 2rem 0;
+  a {
+    text-decoration: none;
+    color: black;
+    height: auto;
+    &:hover {
+      tbody {
+        opacity: 0.7;
+        background-color: whitesmoke;
+      }
+    }
   }
-  th {
+  table {
+    height: auto;
+    font-size: 12px;
     border: 1px solid black;
+    border-collapse: collapse;
+    td {
+      border: 1px solid black;
+      white-space: nowrap;
+      text-align: center;
+    }
+    th {
+      border: 1px solid black;
+    }
   }
 `;
 

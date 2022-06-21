@@ -1,5 +1,7 @@
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
+import styled from 'styled-components';
 import Layout from '../../components/Layout';
 import DisplayTemplate from '../../templates/display-template';
 
@@ -9,22 +11,38 @@ const interview = props => {
   return (
     <Layout>
       <PathTree pathTree={props.location.pathname} />
-      <h1>インタビューページ</h1>
       <DisplayTemplate>
-        {props.data.allMarkdownRemark.edges.map((singleInterview, index) => {
-          const { id, faceupPath, title, name, hireDate, department } =
-            singleInterview.node.frontmatter;
-          return (
-            <div key={index}>
-              <h1>{title}</h1>
-              <h2>{name}</h2>
-            </div>
-          );
-        })}
+        <Wrapper>
+          {props.data.allMarkdownRemark.edges.map((singleInterview, index) => {
+            const { id, faceupPath, title, name, hireDate, department } =
+              singleInterview.node.frontmatter;
+            const { slug } = singleInterview.node.fields;
+            return (
+              <Link to={slug} key={id} className="cards">
+                <GatsbyImage
+                  image={faceupPath.childImageSharp.gatsbyImageData}
+                />
+                <hgroup>
+                  <h2>{title}</h2>
+                  <h3>{name}</h3>
+                </hgroup>
+              </Link>
+            );
+          })}
+        </Wrapper>
       </DisplayTemplate>
     </Layout>
   );
 };
+
+const Wrapper = styled.section`
+  display: flex;
+  flex-flow: row wrap;
+  .cards {
+    width: 45%;
+    margin: 20px auto;
+  }
+`;
 
 export default interview;
 
@@ -40,8 +58,18 @@ export const query = graphql`
             id
             name
             faceupPath {
-              absolutePath
+              childImageSharp {
+                gatsbyImageData(
+                  formats: [AUTO, WEBP, AVIF]
+                  placeholder: BLURRED
+                  quality: 90
+                  layout: CONSTRAINED
+                )
+              }
             }
+          }
+          fields {
+            slug
           }
         }
       }

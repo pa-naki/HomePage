@@ -205,35 +205,45 @@ const AllProducts = ({
   const products = data.types.edges;
   return (
     <Wrapper>
-      <TagsList
-        count={sitesToShow}
-        filters={filters}
-        setFilters={setFilters}
-        aggregatedCategories={aggregatedCategories}
-        categoryKeys={categoryKeys}
-      />
-      <SeriesList
-        count={sitesToShow}
-        series={series}
-        setSeries={setSeries}
-        aggregatedSeries={aggregatedSeries}
-        seriesKeys={seriesKeys}
-      />
-      <MaterialsList
-        materialFilters={materialFilters}
-        setMaterialFilters={setMaterialFilters}
-        aggregatedMaterials={aggregatedMaterials}
-        materialsKeys={materialsKeys}
-      />
-
-      <SearchQuery products={products} items={items} />
+      <div className="productSection">
+        <div className="tagAside">
+          <TagsList
+            count={sitesToShow}
+            filters={filters}
+            setFilters={setFilters}
+            aggregatedCategories={aggregatedCategories}
+            categoryKeys={categoryKeys}
+          />
+          <SeriesList
+            count={sitesToShow}
+            series={series}
+            setSeries={setSeries}
+            aggregatedSeries={aggregatedSeries}
+            seriesKeys={seriesKeys}
+          />
+          <MaterialsList
+            materialFilters={materialFilters}
+            setMaterialFilters={setMaterialFilters}
+            aggregatedMaterials={aggregatedMaterials}
+            materialsKeys={materialsKeys}
+          />
+        </div>
+        <SearchQuery products={products} items={items} />
+      </div>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.section`
-  display: flex;
-  justify-content: space-between;
+  .productSection {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    .tagAside {
+      display: flex;
+      width: 30%;
+    }
+  }
 `;
 
 export default AllProducts;

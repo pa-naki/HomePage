@@ -16,6 +16,7 @@ const SearchQuery = ({ products = [], items }) => {
             material,
             packing,
             product,
+            slug,
             property,
             application,
           } = oneProduct;
@@ -37,7 +38,8 @@ const SearchQuery = ({ products = [], items }) => {
                 ionic={ionic}
                 packing={packing}
                 key={id}
-                className="selected"
+                material={material.join(' ')}
+                slug={slug}
               />
             );
           }
@@ -52,7 +54,8 @@ const SearchQuery = ({ products = [], items }) => {
               ionic={ionic}
               packing={packing}
               key={id}
-              className="selected"
+              material={material.join(' ')}
+              slug={slug}
             />
           );
         })}
