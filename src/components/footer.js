@@ -11,11 +11,13 @@ const Footer = () => {
       <figure className="footerMap">
         <figcaption className="footerMapInfo">
           <div className="footerMapLogo">
-            <StaticImage
-              src="../images/daiwa_logo2.png"
-              className="logo"
-              alt="logo"
-            />
+            <Link to="/">
+              <StaticImage
+                src="../images/daiwa_logo2.png"
+                className="logo"
+                alt="logo"
+              />
+            </Link>
           </div>
           <address className="footerFirstMapAddress">
             〒533-0006 大阪市東淀川区上新庄3-1-11
@@ -88,11 +90,11 @@ const Wrapper = styled.footer`
   }
   .footerMap {
     height: auto;
-  }
-  .footerMapInfo {
-    font-size: 14px;
-  }
-  .footerMapLogo {
+    .footerMapInfo {
+      font-size: 14px;
+      .footerMapLogo {
+      }
+    }
   }
   .logo {
   }
