@@ -1,31 +1,32 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { HeddingSection } from '../../../templates/styles';
 import Assessment from './Assessment';
 import Product from './Product';
 
 const Promotion = () => {
-  const [viewProduct, setViewProduct] = useState(false);
-  const trueViewProduct = () => {
-    setViewProduct(false);
-  };
-  const falseViewProduct = () => {
-    setViewProduct(true);
-  };
   return (
     <Wrapper>
-      <div className="container">
-        <button onClick={trueViewProduct}>
-          <h2>大和化学の製品</h2>
-        </button>
-        <button onClick={falseViewProduct}>
-          <h2>評価技術センター</h2>
-        </button>
-      </div>
-      {viewProduct ? <Assessment /> : <Product />}
+      <HeddingSection
+        heddingTitle="大和化学の製品"
+        styleTemplate="title"
+        className="topAllProduct"
+      >
+        <div className="product-cards">
+          <Product />
+          <Assessment />
+        </div>
+      </HeddingSection>
     </Wrapper>
   );
 };
 
-const Wrapper = styled.section``;
+const Wrapper = styled.div`
+  .product-cards {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+`;
 
 export default Promotion;
