@@ -125,6 +125,9 @@ const Interview = () => {
           );
         })}
       </Swiper>
+      <Link to="/recruit/interview" className="goAllInterview">
+        一覧ページはこちら
+      </Link>
     </Wrapper>
   );
 };
@@ -137,6 +140,7 @@ const Wrapper = styled.section`
     text-align: center;
   }
   .mySwiper2 {
+    margin-bottom: 15px;
   }
   .inSwiper {
     display: flex;
@@ -153,6 +157,11 @@ const Wrapper = styled.section`
 
   .mySwiper .swiper-slide-thumb-active {
     opacity: 1;
+  }
+
+  .goAllInterview {
+    display: block;
+    text-align: right;
   }
 `;
 

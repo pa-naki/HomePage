@@ -26,23 +26,6 @@ const Promotion = () => {
   );
 };
 
-const Wrapper = styled.section`
-  width: 100vw;
-  height: 100vh;
-  margin-top: 20px;
-  background-color: #ffd;
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 90px;
-    button {
-      height: 100%;
-      h2 {
-        margin: 5px auto;
-      }
-    }
-  }
-`;
+const Wrapper = styled.section``;
 
 export default Promotion;
