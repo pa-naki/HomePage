@@ -1,7 +1,5 @@
-import { StaticImage } from 'gatsby-plugin-image';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import backGroundImage from 'gatsby-background-image';
 
 const Philosophy = () => {
   // const changeImageUrl = () => {
@@ -9,70 +7,77 @@ const Philosophy = () => {
   // };
   return (
     <Wrapper>
-      <div>
-        <h1>私たちが目指していること</h1>
-        <ol>
-          <li>
-            <button>日々挑戦と創造に努力</button>
-          </li>
-
-          <li>
-            <button>信頼と和、人材育成</button>
-          </li>
-
-          <li>
-            <button>健康と安全、社員の豊かな暮らし</button>
-          </li>
-
-          <li>
-            <button>会社の発展と地域社会への貢献</button>
-          </li>
-        </ol>
+      <div className="title">
+        <h1>心がけていること</h1>
       </div>
-      {/* <StaticImage src={'../../../images/slide02.jpg'} className="image" /> */}
+      <div className="main">
+        <div>
+          <p>約70年に渡ってこだわり抜いてきた品質</p>
+          <p>私たちの礎となっている考え方です</p>
+        </div>
+        <ul>
+          <li>
+            <h3>日々挑戦と創造に努力</h3>
+          </li>
+
+          <li>
+            <h3>信頼と和、人材育成</h3>
+          </li>
+
+          <li>
+            <h3>健康と安全、社員の豊かな暮らし</h3>
+          </li>
+
+          <li>
+            <h3>会社の発展と地域社会への貢献</h3>
+          </li>
+        </ul>
+      </div>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.section`
-  width: 100vw;
-  height: 100vh;
-  font-size: 2rem;
-  font-weight: 700;
-  text-align: left;
-  position: relative;
-  div {
-    position: absolute;
-    z-index: 4;
-    top: 10px;
-    left: 300px;
+  background-color: black;
+  color: white;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  .title {
+    height: 7rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
     h1 {
-      margin-top: 3rem;
+      margin: 0;
     }
-    ol {
-      height: 80vh;
-      width: 50vw;
-      margin: 0 45% 5%;
-      list-style: none;
+  }
+  .main {
+    display: flex;
+    padding: 5rem;
+    div {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      p {
+        font-size: 1.7rem;
+        color: white;
+      }
+    }
+    ul {
+      width: 40%;
       li {
-        height: 25%;
-        display: flex;
-        button {
-          display: inline-block;
-          width: 100%;
-          font-size: 2.5rem;
-          justify-content: center;
+        &:not(:first-child) {
+          margin-top: 30px;
+        }
+        padding: 15px;
+        h3 {
+          margin: 0;
           text-align: right;
         }
       }
     }
-  }
-  .image {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 60%;
-    z-index: 1;
   }
 `;
 

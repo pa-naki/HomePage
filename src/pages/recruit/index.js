@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
 
 import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
@@ -58,6 +59,11 @@ const home = ({ location }) => {
   return (
     <Layout>
       <Seo title="recruit_home" />
+      <StaticImage
+        src="../../images/top/slide02.jpg"
+        layout="fullWidth"
+        placeholder="blurred"
+      />
       <PathTree pathTree={location.pathname} />
       <Wrapper>
         <Cards arrayItems={recruitDetailItem} />
@@ -66,8 +72,6 @@ const home = ({ location }) => {
   );
 };
 
-const Wrapper = styled.div`
-  width: initial;
-`;
+const Wrapper = styled.div``;
 
 export default home;

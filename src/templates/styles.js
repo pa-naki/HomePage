@@ -1,3 +1,4 @@
+import { faSleigh } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -7,9 +8,12 @@ export const HeddingSection = ({
   styleTemplate,
   heddingWidth,
   HeddingTag,
+  SecondTag,
+  secondTitle,
 }) => {
   HeddingTag = HeddingTag ? HeddingTag : 'h2';
   const styleWidth = heddingWidth ? heddingWidth : '50%';
+  SecondTag = SecondTag ? SecondTag : false;
   switch (styleTemplate) {
     case 'stripe':
       return (
@@ -27,6 +31,7 @@ export const HeddingSection = ({
           >
             {heddingTitle}
           </HeddingTag>
+          {SecondTag && <SecondTag style={{}}>{secondTitle}</SecondTag>}
           {children}
         </H2Wrapper>
       );
@@ -42,6 +47,17 @@ export const HeddingSection = ({
           >
             {heddingTitle}
           </HeddingTag>
+          {SecondTag && (
+            <SecondTag
+              style={{
+                width: `calc(${styleWidth} - 10%)`,
+                marginLeft: `5%`,
+                color: `#6a6a70`,
+              }}
+            >
+              {secondTitle}
+            </SecondTag>
+          )}
           {children}
         </H2Wrapper>
       );

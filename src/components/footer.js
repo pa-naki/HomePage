@@ -24,9 +24,9 @@ const Footer = () => {
             <br />
             大阪本社･工場
             <br />
-            <button>
+            <button className="google-map-link">
               <a href="https://g.page/daiwa-chemical?share" target={'_blank'}>
-                Google Map
+                Google Mapへ
               </a>
             </button>
           </address>
@@ -35,9 +35,9 @@ const Footer = () => {
             <br />
             東京支社
             <br />
-            <button>
+            <button className="google-map-link">
               <a href="https://goo.gl/maps/jbbpvnx222gRuJBv7" target={'_blank'}>
-                Google Map
+                Google Mapへ
               </a>
             </button>
           </address>
@@ -75,23 +75,34 @@ const Footer = () => {
 };
 
 const Wrapper = styled.footer`
-  background-color: #b9b1b1e5;
+  background-color: black;
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
   padding: 1.5rem 0.5rem;
   align-items: center;
+  color: white;
+  padding: 5rem 0;
+  .google-map-link {
+    background-color: currentColor;
+  }
   li {
     list-style: none;
   }
   a {
-    color: yellow;
+    color: white;
     text-decoration: none;
+    &:hover {
+      border-bottom: 1px solid whitesmoke;
+    }
   }
   .footerMap {
     height: auto;
     .footerMapInfo {
       font-size: 14px;
+      address {
+        margin-top: 10px;
+      }
       .footerMapLogo {
       }
     }

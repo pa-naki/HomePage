@@ -1,15 +1,17 @@
 import { graphql, Link } from 'gatsby';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import { GatsbyImage, StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 import styled from 'styled-components';
-import Layout from '../../components/Layout';
-import DisplayTemplate from '../../templates/display-template';
 
+import Layout from '../../components/Layout';
+import Seo from '../../components/Seo';
+import DisplayTemplate from '../../templates/display-template';
 import PathTree from '../../templates/path-tree';
 
 const interview = props => {
   return (
     <Layout>
+      <Seo title="interview" />
       <PathTree pathTree={props.location.pathname} />
       <DisplayTemplate>
         <Wrapper>

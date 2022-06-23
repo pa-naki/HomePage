@@ -6,6 +6,7 @@ import { Link } from 'gatsby';
 import Video from '../components/Video';
 import { Philosophy, Promotion, Interview } from '../components/idea/top';
 import TopNews from '../components/TopNews';
+import ModalVideo from '../components/ModalVideo';
 // import image from "../components/image";
 // import homeImg from "../images/home.jpg"
 // import jigyonaiyoImg from "../images/jigyo-naiyo.svg";
@@ -15,6 +16,7 @@ const IndexPage = ({ location }) => {
     <Layout pathname={location.pathname} notTemplate={true}>
       <SEO title="Home" />
       <Video />
+      <ModalVideo />
       <TopNews />
       <Philosophy />
       <Promotion />
