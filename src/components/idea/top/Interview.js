@@ -134,6 +134,7 @@ const Interview = () => {
 
 const Wrapper = styled.section`
   background-color: whitesmoke;
+  margin: 100px 0;
   h1 {
     padding-top: 20px;
     margin-bottom: 40px;

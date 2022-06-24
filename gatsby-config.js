@@ -10,6 +10,7 @@ module.exports = {
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
   plugins: [
+    `gatsby-plugin-no-index`,
     `gatsby-plugin-modal-routing`,
     `gatsby-plugin-transition-link`,
     {

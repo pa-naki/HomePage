@@ -33,20 +33,61 @@ const ProductCard = ({
   packing,
   type,
   material,
+  typeVisible,
+  featureVisible,
+  propertyVisible,
+  applicationVisible,
+  ionicVisible,
+  packingVisible,
+  seriesVisible,
+  materialVisible,
 }) => {
+  console.log(
+    'typeVisible',
+    typeVisible,
+    'featureVisible',
+    featureVisible,
+    'propertyVisible',
+    propertyVisible,
+    'applicationVisible',
+    applicationVisible,
+    'ionicVisible',
+    ionicVisible,
+    'packingVisible',
+    packingVisible,
+    'seriesVisible',
+    seriesVisible,
+    'materialVisible',
+    materialVisible
+  );
   return (
     <Wrapper>
       <Link to={`/search/${slug}/`}>
         <table>
           <tbody>
             <TableTree colLength={2} col1="製品名" col2={product} />
-            <TableTree colLength={2} col1="機能" col2={type} />
-            <TableTree colLength={2} col1="特徴" col2={feature} />
-            <TableTree colLength={2} col1="性状" col2={property} />
-            <TableTree colLength={2} col1="素材･用途" col2={application} />
-            <TableTree colLength={2} col1="イオン性" col2={ionic} />
-            <TableTree colLength={2} col1="荷姿" col2={packing} />
-            <TableTree colLength={2} col1="素材" col2={material} />
+            {typeVisible && <TableTree colLength={2} col1="機能" col2={type} />}
+            {featureVisible && (
+              <TableTree colLength={2} col1="特徴" col2={feature} />
+            )}
+            {propertyVisible && (
+              <TableTree colLength={2} col1="性状" col2={property} />
+            )}
+            {applicationVisible && (
+              <TableTree colLength={2} col1="素材･用途" col2={application} />
+            )}
+            {ionicVisible && (
+              <TableTree colLength={2} col1="イオン性" col2={ionic} />
+            )}
+            {packingVisible && (
+              <TableTree colLength={2} col1="荷姿" col2={packing} />
+            )}
+            {materialVisible && (
+              <TableTree colLength={2} col1="素材" col2={material} />
+            )}
+            {seriesVisible && (
+              <TableTree colLength={2} col1="シリーズ名" col2={series} />
+            )}
           </tbody>
         </table>
       </Link>
@@ -66,6 +107,7 @@ const Wrapper = styled.section`
     text-decoration: none;
     color: black;
     height: auto;
+    width: 100%;
     &:hover {
       tbody {
         opacity: 0.7;
@@ -74,7 +116,8 @@ const Wrapper = styled.section`
     }
   }
   table {
-    height: auto;
+    height: 100%;
+    width: 100%;
     font-size: 12px;
     border: 1px solid black;
     border-collapse: collapse;

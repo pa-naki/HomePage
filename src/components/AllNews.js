@@ -24,7 +24,7 @@ const query = graphql`
   }
 `;
 
-const TopNews = () => {
+const AllNews = () => {
   const data = useStaticQuery(query);
   let newsItems = data.allMicrocmsNews.nodes;
 
@@ -92,7 +92,7 @@ const TopNews = () => {
             </button>
           )}
         </p>
-        {newsItems.slice(0, 5).map((news, index) => {
+        {newsItems.map((news, index) => {
           const { category, content, link, id, publishedAt, slug, title } =
             news;
           return (
@@ -120,12 +120,6 @@ const TopNews = () => {
             </Link>
           );
         })}
-        <div className="goAllNewsPage">
-          <Link to="/news">
-            一覧を見る
-            <MdSegment style={{}} />
-          </Link>
-        </div>
       </div>
     </Wrapper>
   );
@@ -227,4 +221,4 @@ const Wrapper = styled.section`
   }
 `;
 
-export default TopNews;
+export default AllNews;

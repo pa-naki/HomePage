@@ -11,6 +11,7 @@ const Promotion = () => {
         heddingTitle="大和化学の製品"
         styleTemplate="title"
         className="topAllProduct"
+        HeddingTag="h1"
       >
         <div className="product-cards">
           <Product />
@@ -22,6 +23,9 @@ const Promotion = () => {
 };
 
 const Wrapper = styled.div`
+  h1 {
+    margin: 30px auto;
+  }
   .product-cards {
     display: flex;
     justify-content: space-around;

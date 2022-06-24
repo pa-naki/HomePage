@@ -3,7 +3,18 @@ import styled from 'styled-components';
 import ProductCard from './ProductCard';
 
 let typeName = [];
-const SearchQuery = ({ products = [], items }) => {
+const SearchQuery = ({
+  products = [],
+  items,
+  typeVisible,
+  featureVisible,
+  propertyVisible,
+  materialVisible,
+  applicationVisible,
+  ionicVisible,
+  packingVisible,
+  seriesVisible,
+}) => {
   return (
     <Wrapper>
       <div>
@@ -40,6 +51,14 @@ const SearchQuery = ({ products = [], items }) => {
                 key={id}
                 material={material.join(' ')}
                 slug={slug}
+                typeVisible={typeVisible}
+                featureVisible={featureVisible}
+                propertyVisible={propertyVisible}
+                materialVisible={materialVisible}
+                applicationVisible={applicationVisible}
+                ionicVisible={ionicVisible}
+                packingVisible={packingVisible}
+                seriesVisible={seriesVisible}
               />
             );
           }
@@ -56,6 +75,14 @@ const SearchQuery = ({ products = [], items }) => {
               key={id}
               material={material.join(' ')}
               slug={slug}
+              typeVisible={typeVisible}
+              featureVisible={featureVisible}
+              propertyVisible={propertyVisible}
+              materialVisible={materialVisible}
+              applicationVisible={applicationVisible}
+              ionicVisible={ionicVisible}
+              packingVisible={packingVisible}
+              seriesVisible={seriesVisible}
             />
           );
         })}

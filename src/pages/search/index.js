@@ -1,12 +1,14 @@
 import React, { createRef, useEffect, useState } from 'react';
 import { graphql, Link, navigate } from 'gatsby';
+import styled from 'styled-components';
+import qs from 'qs';
 
 import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
 import AllProducts from '../../components/AllProducts';
-import qs from 'qs';
-
+import { CheckButton } from '../../templates/styles';
 import PathTree from '../../templates/path-tree';
+import { MdClose } from 'react-icons/md';
 // import { scrollToAnchor } from '../../util/scroll-to-anchor';
 // import FilteredProduct from '../../util/productlist/filtered-product';
 
@@ -46,27 +48,113 @@ const SearchIndex = ({ data, location }) => {
     // console.log('updateFilters:', updateFilters(filters));
   }, [filters, location]);
 
+  const [typeVisible, setTypeVisible] = useState(true);
+  const [featureVisible, setFeatureVisible] = useState(true);
+  const [propertyVisible, setPropertyVisible] = useState(true);
+  const [materialVisible, setMaterialVisible] = useState(true);
+  const [applicationVisible, setApplicationVisible] = useState(true);
+  const [ionicVisible, setIonicVisible] = useState(true);
+  const [packingVisible, setPackingVisible] = useState(true);
+  const [seriesVisible, setSeriesVisible] = useState(true);
+  const [filterListVisible, setFilterListVisible] = useState(false);
   return (
     <Layout>
       <Seo title="Search" />
       <PathTree pathTree={location.pathname} />
-      <AllProducts
-        filters={filters}
-        setFilters={updateFilters}
-        data={data}
-        series={series}
-        setSeries={setSeries}
-        materialFilters={materialFilters}
-        setMaterialFilters={setMaterialFilters}
-      />
-      {/* <FilteredProduct
-        filters={filters}
-        setFilters={updateFilters}
-        data={data}
-      /> */}
+      <Wrapper>
+        <div className={`filter-nav ${filterListVisible ? 'active' : ''}`}>
+          <CheckButton
+            buttonText="機能"
+            TorFProperty={typeVisible}
+            clickFunction={setTypeVisible}
+          />
+          <CheckButton
+            buttonText="特徴"
+            TorFProperty={featureVisible}
+            clickFunction={setFeatureVisible}
+          />
+          <CheckButton
+            buttonText="性状"
+            TorFProperty={propertyVisible}
+            clickFunction={setPropertyVisible}
+          />
+          <CheckButton
+            buttonText="用途"
+            TorFProperty={applicationVisible}
+            clickFunction={setApplicationVisible}
+          />
+          <CheckButton
+            buttonText="イオン性"
+            TorFProperty={ionicVisible}
+            clickFunction={setIonicVisible}
+          />
+          <CheckButton
+            buttonText="荷姿"
+            TorFProperty={packingVisible}
+            clickFunction={setPackingVisible}
+          />
+          <CheckButton
+            buttonText="素材"
+            TorFProperty={materialVisible}
+            clickFunction={setMaterialVisible}
+          />
+          <CheckButton
+            buttonText="シリーズ名"
+            TorFProperty={seriesVisible}
+            clickFunction={setSeriesVisible}
+          />
+          <button
+            onClick={() => {
+              setFilterListVisible(!filterListVisible);
+            }}
+          >
+            <MdClose />
+          </button>
+        </div>
+        <button
+          onClick={() => {
+            setFilterListVisible(!filterListVisible);
+          }}
+        >
+          open
+        </button>
+        <AllProducts
+          filters={filters}
+          setFilters={updateFilters}
+          data={data}
+          series={series}
+          setSeries={setSeries}
+          materialFilters={materialFilters}
+          setMaterialFilters={setMaterialFilters}
+          typeVisible={typeVisible}
+          featureVisible={featureVisible}
+          propertyVisible={propertyVisible}
+          materialVisible={materialVisible}
+          applicationVisible={applicationVisible}
+          ionicVisible={ionicVisible}
+          packingVisible={packingVisible}
+          seriesVisible={seriesVisible}
+        />
+      </Wrapper>
     </Layout>
   );
 };
+
+const Wrapper = styled.div`
+  .filter-nav {
+    position: fixed;
+    background-color: #dfdfdf;
+    width: 100%;
+    height: 50vh;
+    bottom: -120%;
+    left: 0;
+    z-index: 999;
+    transition: all 0.6s;
+  }
+  .active {
+    bottom: 0;
+  }
+`;
 
 export default SearchIndex;
 

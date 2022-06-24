@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md';
+
 export const HeddingSection = ({
   children,
   heddingTitle,
@@ -26,7 +28,7 @@ export const HeddingSection = ({
               borderTop: `5px dotted green`,
               borderBottom: `5px dotted green`,
               width: `80%`,
-              margin: `0 auto`,
+              margin: `100px auto`,
             }}
           >
             {heddingTitle}
@@ -88,6 +90,21 @@ const H2Wrapper = styled.section`
   h2 {
   }
 `;
+
+export const CheckButton = ({ TorFProperty, buttonText, clickFunction }) => {
+  return (
+    <>
+      <button
+        onClick={() => {
+          clickFunction(preProperty => !preProperty);
+        }}
+      >
+        {TorFProperty ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+        {buttonText}
+      </button>
+    </>
+  );
+};
 
 const styles = () => {
   return <Wrapper></Wrapper>;

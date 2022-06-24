@@ -90,6 +90,14 @@ const AllProducts = ({
   setSeries,
   materialFilters,
   setMaterialFilters,
+  typeVisible,
+  featureVisible,
+  propertyVisible,
+  materialVisible,
+  applicationVisible,
+  ionicVisible,
+  packingVisible,
+  seriesVisible,
 }) => {
   const [search, setSearch] = React.useState(``);
   const [sitesToShow, setSitesToShow] = React.useState(DEFAULT_SITES_TO_SHOW);
@@ -228,7 +236,18 @@ const AllProducts = ({
             materialsKeys={materialsKeys}
           />
         </div>
-        <SearchQuery products={products} items={items} />
+        <SearchQuery
+          products={products}
+          items={items}
+          typeVisible={typeVisible}
+          featureVisible={featureVisible}
+          propertyVisible={propertyVisible}
+          materialVisible={materialVisible}
+          applicationVisible={applicationVisible}
+          ionicVisible={ionicVisible}
+          packingVisible={packingVisible}
+          seriesVisible={seriesVisible}
+        />
       </div>
     </Wrapper>
   );
