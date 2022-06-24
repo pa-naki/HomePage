@@ -1,30 +1,27 @@
-import * as React from "react";
-import { Row, Col, Card } from "react-bootstrap";
-import Layout from "../components/layout";
-import SEO from "../components/seo"
-import { Link } from "gatsby";
+import * as React from 'react';
+import Layout from '../components/Layout';
+import SEO from '../components/Seo';
+import Video from '../components/Video';
+import { Philosophy, Promotion, Interview } from '../components/idea/top';
+import TopNews from '../components/TopNews';
+import ModalVideo from '../components/ModalVideo';
+import ContactCard from '../components/ContactCard';
 // import image from "../components/image";
 // import homeImg from "../images/home.jpg"
 // import jigyonaiyoImg from "../images/jigyo-naiyo.svg";
 
-const IndexPage = () => {
+const IndexPage = ({ location }) => {
   return (
-    <Layout>
+    <Layout pathname={location.pathname} notTemplate={true}>
       <SEO title="Home" />
-      <img src="" alt="大和化学紹介写真(一定時間切替)"></img>
-      <img src="" alt="強炭化革命"></img>
-      <div>
-        <div>
-          <ul>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>  
-          </ul>
-        </div>
-      </div>
+      <Video />
+      <TopNews />
+      <Philosophy />
+      <Promotion />
+      <Interview />
+      <ContactCard />
     </Layout>
-  )
-}
+  );
+};
 
 export default IndexPage;

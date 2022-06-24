@@ -1,2 +1,36 @@
 {
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.suggest.showKeywords": false,
+  "editor.suggest.showWords": false,
+  "editor.snippetSuggestions": "top",
+  "editor.suggestSelection": "recentlyUsedByPrefix",
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.tabSize": 2,
+  "explorer.confirmDelete": false,
+  "emmet.includeLanguages": {
+    "ejs": "html",
+    "javascript": "javascriptreact"
+  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "html.format.wrapAttributesIndentSize": 2,
+  "prettier.jsxBracketSameLine": true,
+  "files.autoSave": "onFocusChange",
+  "files.trimTrailingWhitespace": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.editor.tabSizing": "shrink",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "javascript.inlayHints.parameterNames.enabled": "all",
+  "typescript.inlayHints.parameterNames.enabled": "all",
+  "editor.cursorStyle": "block",
+  "workbench.colorCustomizations": {
+    "editorCursor.foreground": "#f858f07f",
+    "terminalCursor.foreground": "#f858f07f"
+  },
+  "editor.cursorBlinking": "expand",
+  "editor.cursorSmoothCaretAnimation": true,
+  "workbench.tree.renderIndentGuides": "always",
+  "workbench.tree.indent": 16
 }

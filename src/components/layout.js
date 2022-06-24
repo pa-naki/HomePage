@@ -5,53 +5,42 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import React, { useContext } from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-import { GatsbyProvider } from "../context/context"
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
+import { useStaticQuery, graphql } from 'gatsby';
+import { GatsbyContext } from '../context/context';
 
-import Header from "./header"
+import { Header, Sidebar, Navigation, Footer } from './index';
+import styled from 'styled-components';
 
-const Layout = ({ children }) => {
-  // const data = useStaticQuery(graphql`
-  //   query SiteTitleQuery {
-  //     site {
-  //       siteMetadata {
-  //         title
-  //       }
-  //     }
-  //   }
-  // // `)
+const Layout = ({ children, notTemplate }) => {
+  const data = useStaticQuery(graphql`
+    query SiteTitleQuery {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `);
+  const { isSidebarOpen } = useContext(GatsbyContext);
   return (
     <>
-      {/* <Header siteTitle={data.site.siteMetadata?.title || `Title`} /> */}
-      <GatsbyProvider>
-        <Header /> 
-      </GatsbyProvider>
-      <div
-        style={{
-          margin: `0 auto`,
-          // maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
+      {/* <Navigation /> */}
+      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+      {isSidebarOpen && <Sidebar />}
+      {notTemplate ? <>{children}</> : <Wrapper>{children}</Wrapper>}
+      <Footer />
     </>
-  )
-}
+  );
+};
+
+const Wrapper = styled.main`
+  margin-top: 70px;
+`;
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;

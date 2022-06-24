@@ -1,14 +1,20 @@
-import * as React from "react"
+import * as React from 'react';
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Layout from '../components/Layout';
+import Seo from '../components/Seo';
+import DisplayTemplate from '../templates/display-template';
 
-const NotFoundPage = () => (
+import PathTree from '../templates/path-tree';
+
+const NotFoundPage = ({ location }) => (
   <Layout>
     <Seo title="404: Not found" />
-    <h1>404: Not Found</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <PathTree pathTree={location.pathname} />
+    <DisplayTemplate>
+      <h1>404: Not Found</h1>
+      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    </DisplayTemplate>
   </Layout>
-)
+);
 
-export default NotFoundPage
+export default NotFoundPage;

@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -6,6 +10,28 @@ module.exports = {
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
   plugins: [
+    `gatsby-plugin-no-index`,
+    `gatsby-plugin-modal-routing`,
+    `gatsby-plugin-transition-link`,
+    {
+      resolve: 'gatsby-source-microcms',
+      options: {
+        apiKey: process.env.MICROCMS_API_KEY,
+        serviceId: process.env.MICROCMS_SERVICEID,
+        apis: [
+          {
+            endpoint: 'products',
+          },
+          {
+            endpoint: 'categories',
+          },
+          {
+            endpoint: 'news',
+          },
+        ],
+      },
+    },
+    `gatsby-transformer-remark`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     {
@@ -15,12 +41,19 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `blog`,
+        path: `${__dirname}/src/interview`,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
+        name: `大和化学工業株式会社`,
         short_name: `starter`,
         start_url: `/`,
         background_color: `#663399`,
@@ -35,4 +68,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};

@@ -1,16 +1,22 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import * as React from 'react';
+import { Link } from 'gatsby';
 
-import Layout from "../../components/layout"
-import Seo from "../../components/seo"
+import Layout from '../../components/Layout';
+import Seo from '../../components/Seo';
 
-const details_kinouyaku = () => (
+import PathTree from '../../templates/path-tree';
+import DisplayTemplate from '../../templates/display-template';
+
+const kinouyaku = ({ location }) => (
   <Layout>
     <Seo title="details_kinouyaku" />
-    <h1>Hi from the details_kinouyaku</h1>
-    <p>Welcome to details_kinouyaku</p>
-    <Link to="/">Go back to the homepage</Link>
+    <PathTree pathTree={location.pathname} />
+    <DisplayTemplate>
+      <h1>Hi from the details_kinouyaku</h1>
+      <p>Welcome to details_kinouyaku</p>
+      <Link to="/">Go back to the homepage</Link>
+    </DisplayTemplate>
   </Layout>
-)
+);
 
-export default details_kinouyaku
+export default kinouyaku;

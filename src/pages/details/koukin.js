@@ -1,16 +1,22 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import * as React from 'react';
+import { Link } from 'gatsby';
 
-import Layout from "../../components/layout"
-import Seo from "../../components/seo"
+import Layout from '../../components/Layout';
+import Seo from '../../components/Seo';
 
-const details_koukin = () => (
+import PathTree from '../../templates/path-tree';
+import DisplayTemplate from '../../templates/display-template';
+
+const koukin = ({ location }) => (
   <Layout>
     <Seo title="details_koukin" />
-    <h1>Hi from the details_koukin</h1>
-    <p>Welcome to details_koukin</p>
-    <Link to="/">Go back to the homepage</Link>
+    <PathTree pathTree={location.pathname} />
+    <DisplayTemplate>
+      <h1>Hi from the details_koukin</h1>
+      <p>Welcome to details_koukin</p>
+      <Link to="/">Go back to the homepage</Link>
+    </DisplayTemplate>
   </Layout>
-)
+);
 
-export default details_koukin
+export default koukin;

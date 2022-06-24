@@ -1,16 +1,175 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import React from 'react';
+import Layout from '../../components/Layout';
+import PathTree from '../../templates/path-tree';
 
-import Layout from "../../components/layout"
-import Seo from "../../components/seo"
+const kinou = ({ location }) => {
+  return (
+    <Layout>
+      <PathTree pathTree={location.pathname} />
+      <li>backet</li>
+      <li>backet</li>
+      <li>backet</li>
+    </Layout>
+  );
+};
 
-const search_kinou = () => (
-  <Layout>
-    <Seo title="search_kinou" />
-    <h1>Hi from the search_kinou</h1>
-    <p>Welcome to search_kinou</p>
-    <Link to="/">Go back to the homepage</Link>
-  </Layout>
-)
+export default kinou;
 
-export default search_kinou
+// import React, { createRef, useEffect, useState } from 'react';
+// import { graphql, Link, navigate } from 'gatsby';
+
+// import Layout from '../../components/Layout';
+// import Seo from '../../components/Seo';
+// import AllProducts from '../../components/AllProducts';
+// import qs from 'qs';
+
+// import PathTree from '../../templates/path-tree';
+// // import { scrollToAnchor } from '../../util/scroll-to-anchor';
+// // import FilteredProduct from '../../util/productlist/filtered-product';
+
+// const Kinou = ({ data, location }) => {
+//   const [filters, setFilters] = useState([]);
+//   const [series, setSeries] = useState([]);
+//   const [materialFilters, setMaterialFilters] = useState([]);
+//   // const searchKinou = createRef();
+
+//   const updateFilters = filters => {
+//     setFilters([].concat(filters));
+//   };
+
+//   const updateSeries = series => {
+//     setSeries([].concat(series));
+//   };
+
+//   const updateMaterials = materials => {
+//     setMaterialFilters([].concat(materialFilters));
+//   };
+
+//   useEffect(() => {
+//     const { search = ``, pathname } = location;
+//     const queryString = qs.stringify({ filters });
+
+//     if (search && search.replace(/^\?/, ``) !== queryString) {
+//       navigate(`${pathname}?${queryString}`, { replace: true });
+//       return;
+//     }
+
+//     const { filters: incomingFilters } = qs.parse(search.replace(`?`, ``));
+//     if (incomingFilters && incomingFilters.length) {
+//       updateFilters(filters);
+//     }
+//     console.log('qs:', queryString);
+//     // console.log('incomingFilters:', incomingFilters);
+//     // console.log('updateFilters:', updateFilters(filters));
+//   }, [filters, location]);
+
+//   return (
+//     <Layout>
+//       <Seo title="Kinou" />
+//       <PathTree pathTree={location.pathname} />
+//       <AllProducts
+//         filters={filters}
+//         setFilters={updateFilters}
+//         data={data}
+//         series={series}
+//         setSeries={setSeries}
+//         materialFilters={materialFilters}
+//         setMaterialFilters={setMaterialFilters}
+//       />
+//       {/* <FilteredProduct
+//         filters={filters}
+//         setFilters={updateFilters}
+//         data={data}
+//       /> */}
+//     </Layout>
+//   );
+// };
+
+// export default Kinou;
+
+// export const query = graphql`
+//   query searchKinou {
+//     types: allMicrocmsProducts(sort: { fields: halfProduct, order: ASC }) {
+//       totalCount
+//       nodes {
+//         type {
+//           name
+//         }
+//         halfProduct
+//         feature
+//         application
+//         ionic
+//         material
+//         slug
+//         packing
+//         product
+//         id
+//         series {
+//           series
+//         }
+//         property
+//       }
+//       edges {
+//         node {
+//           id
+//           feature
+//           ionic
+//           material
+//           packing
+//           product
+//           slug
+//           property
+//           series {
+//             series
+//           }
+//           type {
+//             name
+//           }
+//           application
+//         }
+//       }
+//     }
+//     allMicrocmsProducts(sort: { fields: halfProduct, order: ASC }) {
+//       totalCount
+//       nodes {
+//         type {
+//           name
+//         }
+//         halfProduct
+//         feature
+//         application
+//         ionic
+//         material
+//         slug
+//         packing
+//         product
+//         series {
+//           series
+//         }
+//         property
+//         id
+//       }
+//       edges {
+//         node {
+//           id
+//           feature
+//           ionic
+//           material
+//           packing
+//           slug
+//           product
+//           property
+//           series {
+//             series
+//           }
+//           type {
+//             name
+//           }
+//           application
+//         }
+//       }
+//     }
+//   }
+// `;
+
+// filter: { type: { elemMatch: { name: { in: "Types" } } } }

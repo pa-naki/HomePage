@@ -20,20 +20,22 @@ nav {
   z-index: 99;
 }
 
-@media(max-width: 920px) {
+@media (max-width: 920px) {
   .isSideOpen {
     left: 0;
   }
-  
+
   .isSideClose {
     left: -100%;
   }
-  
+
   .isOpen {
     display: block;
   }
-  
+
   .isClose {
     display: none;
+
+    background: #5a057ce5;
   }
 }
