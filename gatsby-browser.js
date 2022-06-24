@@ -7,4 +7,4 @@
 // You can delete this file if you're not using it
 const wrap = require('./root-wrapper');
 
-export const wrapRootElement = wrap.wrapRootElement;
+exports.wrapRootElement = wrap.wrapRootElement;
