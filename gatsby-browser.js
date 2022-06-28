@@ -5,6 +5,6 @@
  */
 
 // You can delete this file if you're not using it
-const wrap = require('./root-wrapper');
+import { wrapRootElement as wrap } from './root-wrapper';
 
-exports.wrapRootElement = wrap.wrapRootElement;
+export default wrapRootElement = wrap;

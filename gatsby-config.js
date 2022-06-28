@@ -11,7 +11,6 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-no-index`,
-    `gatsby-plugin-modal-routing`,
     `gatsby-plugin-transition-link`,
     {
       resolve: 'gatsby-source-microcms',
