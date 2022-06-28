@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Link } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 
 import Layout from '../../components/Layout';
@@ -8,7 +7,6 @@ import styled from 'styled-components';
 
 import Cards from '../../templates/cards';
 import PathTree from '../../templates/path-tree';
-import DisplayTemplate from '../../templates/display-template';
 
 const home = ({ location }) => {
   const recruitDetailItem = [
