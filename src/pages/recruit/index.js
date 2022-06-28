@@ -6,7 +6,7 @@ import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
 import styled from 'styled-components';
 
-import Cards from '../../templates/Cards';
+import Cards from '../../templates/cards';
 import PathTree from '../../templates/path-tree';
 import DisplayTemplate from '../../templates/display-template';
 
