@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 import { GatsbyContext } from '../context/context';
 
-import { Header, Sidebar, Navigation, Footer } from './index';
+import { Header, Sidebar, Footer } from './index';
 import styled from 'styled-components';
 
 const Layout = ({ children, notTemplate }) => {

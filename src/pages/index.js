@@ -4,7 +4,6 @@ import SEO from '../components/Seo';
 import Video from '../components/Video';
 import { Philosophy, Promotion, Interview } from '../components/idea/top';
 import TopNews from '../components/TopNews';
-import ModalVideo from '../components/ModalVideo';
 import ContactCard from '../components/ContactCard';
 // import image from "../components/image";
 // import homeImg from "../images/home.jpg"
