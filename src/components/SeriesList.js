@@ -14,13 +14,10 @@ const SeriesList = ({
   aggregatedSeries,
   seriesKeys,
 }) => {
-  console.log(seriesKeys);
-  console.log(aggregatedSeries);
   return (
     <Wrapper>
       {series.length > 0 && <button onClick={() => setSeries([])}>削除</button>}
       {/* {NewSeries.map((NewTag, index) => { */}
-      {console.log(series)}
       {seriesKeys.map(c => (
         <button
           key={c}

@@ -5,6 +5,7 @@ import TagsList from './TagsList';
 import Fuse from 'fuse.js';
 import SeriesList from './SeriesList';
 import MaterialsList from './MaterialsList';
+import AggregatedCategory from '../util/Aggregated-category';
 
 export const filterByCategories = (list, categories) => {
   const items = list.reduce((aggregated, node) => {
@@ -90,14 +91,7 @@ const AllProducts = ({
   setSeries,
   materialFilters,
   setMaterialFilters,
-  typeVisible,
-  featureVisible,
-  propertyVisible,
-  materialVisible,
-  applicationVisible,
-  ionicVisible,
-  packingVisible,
-  seriesVisible,
+  tableVisibleArray,
 }) => {
   const [search, setSearch] = React.useState(``);
   const [sitesToShow, setSitesToShow] = React.useState(DEFAULT_SITES_TO_SHOW);
@@ -121,55 +115,57 @@ const AllProducts = ({
     items = filterByMaterials(items, materialFilters);
   }
 
-  const aggregatedCategories = items.reduce((result, node) => {
-    // extract list of categories for node
-    // items: [{"name": "App"}, {"name": "E-commerce"}]
-    // nodeCategories: ["App", "E-commerce"]
-    const nodeCategories = node.type.map(obj => obj.name);
-    // detect if site is open source by checking sourceUrl
+  // const aggregatedCategories = items.reduce((result, node) => {
+  //   // extract list of categories for node
+  //   // items: [{"name": "App"}, {"name": "E-commerce"}]
+  //   // nodeCategories: ["App", "E-commerce"]
+  //   const nodeCategories = node.type.map(obj => obj.name);
+  //   // detect if site is open source by checking sourceUrl
 
-    nodeCategories.forEach(category => {
-      // if we already have the category recorded, increase count
-      if (result[category]) {
-        result[category] = result[category] + 1;
-      } else {
-        // record first encounter of category
-        result[category] = 1;
-      }
-    });
+  //   nodeCategories.forEach(category => {
+  //     // if we already have the category recorded, increase count
+  //     if (result[category]) {
+  //       result[category] = result[category] + 1;
+  //     } else {
+  //       // record first encounter of category
+  //       result[category] = 1;
+  //     }
+  //   });
 
-    // sort categories so they appear in alphabetical order on page
-    node.type.sort((obj1, obj2) =>
-      obj1.name.toLowerCase().localeCompare(obj2.name.toLowerCase())
-    );
+  //   // sort categories so they appear in alphabetical order on page
+  //   node.type.sort((obj1, obj2) =>
+  //     obj1.name.toLowerCase().localeCompare(obj2.name.toLowerCase())
+  //   );
 
-    return result;
-  }, {});
+  //   return result;
+  // }, {});
+  const aggregatedCategories = AggregatedCategory(items, 'type', 'name');
 
-  const aggregatedSeries = items.reduce((result, node) => {
-    // extract list of Series for node
-    // items: [{"name": "App"}, {"name": "E-commerce"}]
-    // nodeSeries: ["App", "E-commerce"]
-    const nodeSeries = node.series.series.map(obj => obj);
-    // detect if site is open source by checking sourceUrl
+  // const aggregatedSeries = items.reduce((result, node) => {
+  //   // extract list of Series for node
+  //   // items: [{"name": "App"}, {"name": "E-commerce"}]
+  //   // nodeSeries: ["App", "E-commerce"]
+  //   const nodeSeries = node.series.series.map(obj => obj);
+  //   // detect if site is open source by checking sourceUrl
 
-    nodeSeries.forEach(series => {
-      // if we already have the series recorded, increase count
-      if (result[series]) {
-        result[series] = result[series] + 1;
-      } else {
-        // record first encounter of series
-        result[series] = 1;
-      }
-    });
+  //   nodeSeries.forEach(series => {
+  //     // if we already have the series recorded, increase count
+  //     if (result[series]) {
+  //       result[series] = result[series] + 1;
+  //     } else {
+  //       // record first encounter of series
+  //       result[series] = 1;
+  //     }
+  //   });
 
-    // sort Series so they appear in alphabetical order on page
-    node.series.series.sort((obj1, obj2) =>
-      obj1.toLowerCase().localeCompare(obj2.toLowerCase())
-    );
+  //   // sort Series so they appear in alphabetical order on page
+  //   node.series.series.sort((obj1, obj2) =>
+  //     obj1.toLowerCase().localeCompare(obj2.toLowerCase())
+  //   );
 
-    return result;
-  }, {});
+  //   return result;
+  // }, {});
+  const aggregatedSeries = AggregatedCategory(items, 'series', '', 'series');
 
   const aggregatedMaterials = items.reduce((result, node) => {
     // extract list of Materials for node
@@ -209,7 +205,6 @@ const AllProducts = ({
     str1.toLowerCase().localeCompare(str2.toLowerCase())
   );
 
-  console.log('items', items);
   const products = data.types.edges;
   return (
     <Wrapper>
@@ -239,14 +234,7 @@ const AllProducts = ({
         <SearchQuery
           products={products}
           items={items}
-          typeVisible={typeVisible}
-          featureVisible={featureVisible}
-          propertyVisible={propertyVisible}
-          materialVisible={materialVisible}
-          applicationVisible={applicationVisible}
-          ionicVisible={ionicVisible}
-          packingVisible={packingVisible}
-          seriesVisible={seriesVisible}
+          tableVisibleArray={tableVisibleArray}
         />
       </div>
     </Wrapper>

@@ -10,15 +10,12 @@ const MaterialsList = ({
   aggregatedMaterials,
   materialsKeys,
 }) => {
-  console.log(materialsKeys);
-  console.log(aggregatedMaterials);
   return (
     <Wrapper>
       {materialFilters.length > 0 && (
         <button onClick={() => setMaterialFilters([])}>削除</button>
       )}
       {/* {NewSeries.map((NewTag, index) => { */}
-      {console.log(materialFilters)}
       {materialsKeys.map(c => (
         <button
           key={c}

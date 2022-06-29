@@ -2,6 +2,7 @@ import { Link } from 'gatsby';
 import propTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
+import keyReturn from '../util/keyReturn';
 
 const TableTree = ({ colLength, col1, col2, col3, col4 }) => {
   if (colLength === 2) {
@@ -24,70 +25,74 @@ const TableTree = ({ colLength, col1, col2, col3, col4 }) => {
 
 const ProductCard = ({
   product,
-  series,
-  feature,
-  property,
-  application,
-  ionic,
+  oneProduct,
+  typeName,
   slug,
-  packing,
-  type,
-  material,
-  typeVisible,
-  featureVisible,
-  propertyVisible,
-  applicationVisible,
-  ionicVisible,
-  packingVisible,
-  seriesVisible,
-  materialVisible,
+  tableVisibleArray,
 }) => {
-  console.log(
-    'typeVisible',
-    typeVisible,
-    'featureVisible',
-    featureVisible,
-    'propertyVisible',
-    propertyVisible,
-    'applicationVisible',
-    applicationVisible,
-    'ionicVisible',
-    ionicVisible,
-    'packingVisible',
-    packingVisible,
-    'seriesVisible',
-    seriesVisible,
-    'materialVisible',
-    materialVisible
-  );
+  const setTableArray = keyReturn(tableVisibleArray);
   return (
     <Wrapper>
       <Link to={`/search/${slug}/`}>
         <table>
           <tbody>
             <TableTree colLength={2} col1="製品名" col2={product} />
-            {typeVisible && <TableTree colLength={2} col1="機能" col2={type} />}
-            {featureVisible && (
+            {setTableArray.map((TableRow, index) => {
+              const setKey = TableRow.key;
+              const substringKey = setKey.substring(0, setKey.length - 7);
+              const setFeature = v => {
+                switch (substringKey) {
+                  case 'material':
+                    return v.join(' ');
+                  case 'series':
+                    return v.series;
+                  case 'type':
+                    if (typeName.length > 0) {
+                      return typeName.join(' ');
+                    } else {
+                      return v[0].name;
+                    }
+                  default:
+                    return v;
+                }
+              };
+              return (
+                <React.Fragment key={index}>
+                  {tableVisibleArray[setKey] && (
+                    <TableTree
+                      colLength={2}
+                      col1={TableRow.jName}
+                      col2={setFeature(oneProduct[substringKey])}
+                    />
+                  )}
+                </React.Fragment>
+              );
+            })}
+
+            {/* {tableVisibleArray['typeVisible'] && (
+              <TableTree colLength={2} col1="機能" col2={type} />
+            )}
+            {tableVisibleArray['featureVisible'] && (
               <TableTree colLength={2} col1="特徴" col2={feature} />
             )}
-            {propertyVisible && (
+            {tableVisibleArray['propertyVisible'] && (
               <TableTree colLength={2} col1="性状" col2={property} />
             )}
-            {applicationVisible && (
+            {tableVisibleArray['applicationVisible'] && (
               <TableTree colLength={2} col1="素材･用途" col2={application} />
             )}
-            {ionicVisible && (
+            {tableVisibleArray['ionicVisible'] && (
               <TableTree colLength={2} col1="イオン性" col2={ionic} />
             )}
-            {packingVisible && (
+            {tableVisibleArray['packingVisible'] && (
               <TableTree colLength={2} col1="荷姿" col2={packing} />
             )}
-            {materialVisible && (
+            {tableVisibleArray['materialVisible'] && (
               <TableTree colLength={2} col1="素材" col2={material} />
             )}
-            {seriesVisible && (
+            {tableVisibleArray['seriesVisible'] && (
               <TableTree colLength={2} col1="シリーズ名" col2={series} />
-            )}
+            )} */}
           </tbody>
         </table>
       </Link>

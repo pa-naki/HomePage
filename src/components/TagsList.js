@@ -16,15 +16,12 @@ const TagsList = ({
   categoryKeys,
 }) => {
   const NewTags = setupTags(products);
-  console.log(categoryKeys);
-  console.log(aggregatedCategories);
   return (
     <Wrapper>
       {filters.length > 0 && (
         <button onClick={() => setFilters([])}>削除</button>
       )}
       {/* {NewTags.map((NewTag, index) => { */}
-      {console.log(filters)}
       {categoryKeys.map(c => (
         <button
           key={c}

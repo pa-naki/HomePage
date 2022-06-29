@@ -3,35 +3,13 @@ import styled from 'styled-components';
 import ProductCard from './ProductCard';
 
 let typeName = [];
-const SearchQuery = ({
-  products = [],
-  items,
-  typeVisible,
-  featureVisible,
-  propertyVisible,
-  materialVisible,
-  applicationVisible,
-  ionicVisible,
-  packingVisible,
-  seriesVisible,
-}) => {
+const SearchQuery = ({ items, tableVisibleArray }) => {
   return (
     <Wrapper>
       <div>
         {/* {products.map((oneProduct, index) => { */}
-        {items.map((oneProduct, index) => {
-          const {
-            id,
-            feature,
-            ionic,
-            material,
-            packing,
-            product,
-            slug,
-            property,
-            application,
-          } = oneProduct;
-          const { series } = oneProduct.series;
+        {items.map(oneProduct => {
+          const { id, product, slug } = oneProduct;
           const typeLength = oneProduct.type.length;
           typeName = [];
           if (typeLength > 1) {
@@ -41,48 +19,22 @@ const SearchQuery = ({
             return (
               <ProductCard
                 product={product}
-                series={series}
-                type={typeName.join(' ')}
-                feature={feature}
-                property={property}
-                application={application}
-                ionic={ionic}
-                packing={packing}
+                oneProduct={oneProduct}
                 key={id}
-                material={material.join(' ')}
+                typeName={typeName}
                 slug={slug}
-                typeVisible={typeVisible}
-                featureVisible={featureVisible}
-                propertyVisible={propertyVisible}
-                materialVisible={materialVisible}
-                applicationVisible={applicationVisible}
-                ionicVisible={ionicVisible}
-                packingVisible={packingVisible}
-                seriesVisible={seriesVisible}
+                tableVisibleArray={tableVisibleArray}
               />
             );
           }
           return (
             <ProductCard
               product={product}
-              series={series}
-              type={oneProduct.type[0].name}
-              feature={feature}
-              property={property}
-              application={application}
-              ionic={ionic}
-              packing={packing}
+              oneProduct={oneProduct}
+              typeName={typeName}
               key={id}
-              material={material.join(' ')}
               slug={slug}
-              typeVisible={typeVisible}
-              featureVisible={featureVisible}
-              propertyVisible={propertyVisible}
-              materialVisible={materialVisible}
-              applicationVisible={applicationVisible}
-              ionicVisible={ionicVisible}
-              packingVisible={packingVisible}
-              seriesVisible={seriesVisible}
+              tableVisibleArray={tableVisibleArray}
             />
           );
         })}

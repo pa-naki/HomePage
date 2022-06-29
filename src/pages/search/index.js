@@ -11,6 +11,7 @@ import PathTree from '../../templates/path-tree';
 import { MdClose } from 'react-icons/md';
 // import { scrollToAnchor } from '../../util/scroll-to-anchor';
 // import FilteredProduct from '../../util/productlist/filtered-product';
+import CheckArrayButton from '../../util/Check-array-button';
 
 const SearchIndex = ({ data, location }) => {
   const [filters, setFilters] = useState([]);
@@ -18,17 +19,17 @@ const SearchIndex = ({ data, location }) => {
   const [materialFilters, setMaterialFilters] = useState([]);
   // const searchKinou = createRef();
 
-  const updateFilters = filters => {
+  const updateFilters = (filters, setFunction) => {
     setFilters([].concat(filters));
   };
 
-  const updateSeries = series => {
-    setSeries([].concat(series));
-  };
+  // const updateSeries = series => {
+  //   setSeries([].concat(series));
+  // };
 
-  const updateMaterials = materials => {
-    setMaterialFilters([].concat(materialFilters));
-  };
+  // const updateMaterials = materials => {
+  //   setMaterialFilters([].concat(materialFilters));
+  // };
 
   useEffect(() => {
     const { search = ``, pathname } = location;
@@ -43,19 +44,21 @@ const SearchIndex = ({ data, location }) => {
     if (incomingFilters && incomingFilters.length) {
       updateFilters(filters);
     }
-    console.log('qs:', queryString);
+    // console.log('qs:', queryString);
     // console.log('incomingFilters:', incomingFilters);
     // console.log('updateFilters:', updateFilters(filters));
   }, [filters, location]);
 
-  const [typeVisible, setTypeVisible] = useState(true);
-  const [featureVisible, setFeatureVisible] = useState(true);
-  const [propertyVisible, setPropertyVisible] = useState(true);
-  const [materialVisible, setMaterialVisible] = useState(true);
-  const [applicationVisible, setApplicationVisible] = useState(true);
-  const [ionicVisible, setIonicVisible] = useState(true);
-  const [packingVisible, setPackingVisible] = useState(true);
-  const [seriesVisible, setSeriesVisible] = useState(true);
+  const [tableVisibleArray, setTableVisibleArray] = useState({
+    typeVisible: true,
+    featureVisible: true,
+    propertyVisible: true,
+    materialVisible: true,
+    applicationVisible: true,
+    ionicVisible: true,
+    packingVisible: true,
+    seriesVisible: true,
+  });
   const [filterListVisible, setFilterListVisible] = useState(false);
   return (
     <Layout>
@@ -63,45 +66,9 @@ const SearchIndex = ({ data, location }) => {
       <PathTree pathTree={location.pathname} />
       <Wrapper>
         <div className={`filter-nav ${filterListVisible ? 'active' : ''}`}>
-          <CheckButton
-            buttonText="機能"
-            TorFProperty={typeVisible}
-            clickFunction={setTypeVisible}
-          />
-          <CheckButton
-            buttonText="特徴"
-            TorFProperty={featureVisible}
-            clickFunction={setFeatureVisible}
-          />
-          <CheckButton
-            buttonText="性状"
-            TorFProperty={propertyVisible}
-            clickFunction={setPropertyVisible}
-          />
-          <CheckButton
-            buttonText="用途"
-            TorFProperty={applicationVisible}
-            clickFunction={setApplicationVisible}
-          />
-          <CheckButton
-            buttonText="イオン性"
-            TorFProperty={ionicVisible}
-            clickFunction={setIonicVisible}
-          />
-          <CheckButton
-            buttonText="荷姿"
-            TorFProperty={packingVisible}
-            clickFunction={setPackingVisible}
-          />
-          <CheckButton
-            buttonText="素材"
-            TorFProperty={materialVisible}
-            clickFunction={setMaterialVisible}
-          />
-          <CheckButton
-            buttonText="シリーズ名"
-            TorFProperty={seriesVisible}
-            clickFunction={setSeriesVisible}
+          <CheckArrayButton
+            setObject={tableVisibleArray}
+            clickFunction={setTableVisibleArray}
           />
           <button
             onClick={() => {
@@ -126,14 +93,7 @@ const SearchIndex = ({ data, location }) => {
           setSeries={setSeries}
           materialFilters={materialFilters}
           setMaterialFilters={setMaterialFilters}
-          typeVisible={typeVisible}
-          featureVisible={featureVisible}
-          propertyVisible={propertyVisible}
-          materialVisible={materialVisible}
-          applicationVisible={applicationVisible}
-          ionicVisible={ionicVisible}
-          packingVisible={packingVisible}
-          seriesVisible={seriesVisible}
+          tableVisibleArray={tableVisibleArray}
         />
       </Wrapper>
     </Layout>
