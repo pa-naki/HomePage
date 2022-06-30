@@ -1,44 +1,42 @@
 import React from 'react';
 import styled from 'styled-components';
 import { MdCheckBoxOutlineBlank, MdCheckBox } from 'react-icons/md';
-import setupTags from '../util/setupTags';
-import { Link } from 'gatsby';
-import qs from 'qs';
 
 const TagsList = ({
-  products = [],
-  items,
-  count,
-  filters,
-  setFilters,
-  onCategoryClick,
-  aggregatedCategories,
-  categoryKeys,
+  categoryFilters,
+  setCategoryFilters,
+  aggregatedAllCategory,
 }) => {
-  const NewTags = setupTags(products);
+  const categoryKeys = Object.keys(aggregatedAllCategory).sort((str1, str2) =>
+    str1.toLowerCase().localeCompare(str2.toLowerCase())
+  );
   return (
     <Wrapper>
-      {filters.length > 0 && (
-        <button onClick={() => setFilters([])}>削除</button>
+      {categoryFilters.length > 0 && (
+        <button onClick={() => setCategoryFilters([])}>削除</button>
       )}
       {/* {NewTags.map((NewTag, index) => { */}
       {categoryKeys.map(c => (
         <button
           key={c}
-          className={filters.includes(c) ? `selected` : ``}
+          className={categoryFilters.includes(c) ? `selected` : ``}
           onClick={() => {
-            if (filters.includes(c)) {
-              setFilters(filters.filter(f => f !== c));
+            if (categoryFilters.includes(c)) {
+              setCategoryFilters(categoryFilters.filter(f => f !== c));
             } else {
-              setFilters([...filters, c]);
+              setCategoryFilters([...categoryFilters, c]);
             }
           }}
         >
           <div>
-            {filters.includes(c) ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+            {categoryFilters.includes(c) ? (
+              <MdCheckBox />
+            ) : (
+              <MdCheckBoxOutlineBlank />
+            )}
           </div>
           <div /*sx={{ mr: `auto` }}*/>{c}</div>
-          <div>{aggregatedCategories[c]}</div>
+          <div>{aggregatedAllCategory[c]}</div>
         </button>
       ))}
     </Wrapper>
