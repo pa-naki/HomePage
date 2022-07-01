@@ -17,19 +17,21 @@ const SearchIndex = ({ data, location }) => {
   const [filters, setFilters] = useState([]);
   const [series, setSeries] = useState([]);
   const [materialFilters, setMaterialFilters] = useState([]);
-  // const searchKinou = createRef();
+  const [allFilters, setAllFilters] = useState({
+    propertyFilters: [],
+    applicationFilters: [],
+    ionicFilters: [],
+    packingFilters: [],
+  });
+  // const [featureFilters, setFeatureFilters] = useState([]);
+  // const [propertyFilters, setPropertyFilters] = useState([]);
+  // const [applicationFilters, setApplicationFilters] = useState([]);
+  // const [ionicFilters, setIonicFilters] = useState([]);
+  // const [packingFilters, setPackingFilters] = useState([]);
 
   const updateFilters = (filters, setFunction) => {
     setFilters([].concat(filters));
   };
-
-  // const updateSeries = series => {
-  //   setSeries([].concat(series));
-  // };
-
-  // const updateMaterials = materials => {
-  //   setMaterialFilters([].concat(materialFilters));
-  // };
 
   useEffect(() => {
     const { search = ``, pathname } = location;
@@ -65,26 +67,15 @@ const SearchIndex = ({ data, location }) => {
       <Seo title="Search" />
       <PathTree pathTree={location.pathname} />
       <Wrapper>
-        <div className={`filter-nav ${filterListVisible ? 'active' : ''}`}>
-          <CheckArrayButton
-            setObject={tableVisibleArray}
-            clickFunction={setTableVisibleArray}
-          />
+        <div className="absoluteRightBottom">
           <button
             onClick={() => {
               setFilterListVisible(!filterListVisible);
             }}
           >
-            <MdClose />
+            検索はこちら
           </button>
         </div>
-        <button
-          onClick={() => {
-            setFilterListVisible(!filterListVisible);
-          }}
-        >
-          open
-        </button>
         <AllProducts
           filters={filters}
           setFilters={updateFilters}
@@ -93,7 +84,12 @@ const SearchIndex = ({ data, location }) => {
           setSeries={setSeries}
           materialFilters={materialFilters}
           setMaterialFilters={setMaterialFilters}
+          allFilters={allFilters}
+          setAllFilters={setAllFilters}
           tableVisibleArray={tableVisibleArray}
+          setTableVisibleArray={setTableVisibleArray}
+          filterListVisible={filterListVisible}
+          setFilterListVisible={setFilterListVisible}
         />
       </Wrapper>
     </Layout>
@@ -113,6 +109,17 @@ const Wrapper = styled.div`
   }
   .active {
     bottom: 0;
+  }
+  .absoluteRightBottom {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    button {
+      border-radius: 50%;
+      padding: 30px;
+      font-size: 3rem;
+      cursor: zoom-in;
+    }
   }
 `;
 

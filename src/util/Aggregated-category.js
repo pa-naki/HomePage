@@ -13,37 +13,43 @@ const AggregatedCategory = (items, category, propertyName, secondCategory) => {
       } else {
         nodeCategories = node[category].map(obj => obj);
       }
+      nodeCategories.forEach(category => {
+        // if we already have the category recorded, increase count
+        if (result[category]) {
+          result[category] = result[category] + 1;
+        } else {
+          // record first encounter of category
+          result[category] = 1;
+        }
+      });
+      if (propertyName && propertyName.length > 0) {
+        node[category].sort((obj1, obj2) =>
+          obj1[propertyName]
+            .toLowerCase()
+            .localeCompare(obj2[propertyName].toLowerCase())
+        );
+      } else if (secondCategory && secondCategory.length > 0) {
+        node[category][secondCategory].sort((obj1, obj2) =>
+          obj1.toLowerCase().localeCompare(obj2.toLowerCase())
+        );
+      } else {
+        node[category].sort((obj1, obj2) =>
+          obj1.toLowerCase().localeCompare(obj2.toLowerCase())
+        );
+      }
+    } else {
+      nodeCategories = node[category];
+
+      if (result[nodeCategories]) {
+        result[nodeCategories] = result[nodeCategories] + 1;
+      } else {
+        // record first encounter of nodeCategories
+        result[nodeCategories] = 1;
+      }
     }
-    console.log(nodeCategories);
     // detect if site is open source by checking sourceUrl
 
-    nodeCategories.forEach(category => {
-      // if we already have the category recorded, increase count
-      if (result[category]) {
-        result[category] = result[category] + 1;
-      } else {
-        // record first encounter of category
-        result[category] = 1;
-      }
-    });
-
     // sort categories so they appear in alphabetical order on page
-
-    if (propertyName.length > 0 && propertyName) {
-      node[category].sort((obj1, obj2) =>
-        obj1[propertyName]
-          .toLowerCase()
-          .localeCompare(obj2[propertyName].toLowerCase())
-      );
-    } else if (secondCategory && secondCategory.length > 0) {
-      node[category][secondCategory].sort((obj1, obj2) =>
-        obj1.toLowerCase().localeCompare(obj2.toLowerCase())
-      );
-    } else {
-      node[category].sort((obj1, obj2) =>
-        obj1.toLowerCase().localeCompare(obj2.toLowerCase())
-      );
-    }
 
     return result;
   }, {});

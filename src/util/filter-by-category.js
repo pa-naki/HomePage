@@ -7,7 +7,7 @@ export const filterByAllCategories = (
   secondCategory
 ) => {
   const items = list.reduce((aggregated, node) => {
-    nodeCategories = '';
+    nodeCategories = [];
     if (node[firstCategory]) {
       if (typeof node[firstCategory] === 'object') {
         if (propertyName && propertyName.length > 0) {
@@ -18,7 +18,7 @@ export const filterByAllCategories = (
           nodeCategories = node[firstCategory].map(obj => obj);
         }
       } else {
-        nodeCategories = node[firstCategory];
+        nodeCategories.push(node[firstCategory]);
       }
       const filterdCategories = nodeCategories.filter(c =>
         filterCategory.includes(c)

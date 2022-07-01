@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { MdCheckBoxOutlineBlank, MdCheckBox } from 'react-icons/md';
 
-const TagsList = ({
+const AllTagsList = ({
   categoryFilters,
   setCategoryFilters,
+  categoryFiltersName,
   aggregatedAllCategory,
 }) => {
   const categoryKeys = Object.keys(aggregatedAllCategory).sort((str1, str2) =>
@@ -13,7 +14,16 @@ const TagsList = ({
   return (
     <Wrapper>
       {categoryFilters.length > 0 && (
-        <button onClick={() => setCategoryFilters([])}>削除</button>
+        <button
+          onClick={() =>
+            setCategoryFilters(prestate => ({
+              ...prestate,
+              [categoryFiltersName]: [],
+            }))
+          }
+        >
+          削除
+        </button>
       )}
       {/* {NewTags.map((NewTag, index) => { */}
       {categoryKeys.map(c => (
@@ -22,9 +32,15 @@ const TagsList = ({
           className={categoryFilters.includes(c) ? `selected` : ``}
           onClick={() => {
             if (categoryFilters.includes(c)) {
-              setCategoryFilters(categoryFilters.filter(f => f !== c));
+              setCategoryFilters(prestate => ({
+                ...prestate,
+                [categoryFiltersName]: categoryFilters.filter(f => f !== c),
+              }));
             } else {
-              setCategoryFilters([...categoryFilters, c]);
+              setCategoryFilters(prestate => ({
+                ...prestate,
+                [categoryFiltersName]: [...categoryFilters, c],
+              }));
             }
           }}
         >
@@ -58,4 +74,4 @@ const Wrapper = styled.aside`
   }
 `;
 
-export default TagsList;
+export default AllTagsList;

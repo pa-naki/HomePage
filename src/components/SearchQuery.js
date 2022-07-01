@@ -46,7 +46,7 @@ const SearchQuery = ({ items, tableVisibleArray }) => {
 const Wrapper = styled.article`
   display: flex;
   justify-content: right;
-  width: 70%;
+  width: 100%;
   div {
     width: 100%;
     display: flex;
