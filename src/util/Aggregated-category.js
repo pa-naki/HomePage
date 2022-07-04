@@ -6,7 +6,7 @@ const AggregatedCategory = (items, category, propertyName, secondCategory) => {
     // items: [{"name": "App"}, {"name": "E-commerce"}]
     // nodeCategories: ["App", "E-commerce"]
     if (typeof node[category] === 'object') {
-      if (propertyName.length > 0 && propertyName) {
+      if (propertyName && propertyName.length > 0) {
         nodeCategories = node[category].map(obj => obj[propertyName]);
       } else if (secondCategory && secondCategory.length > 0) {
         nodeCategories = node[category][secondCategory].map(obj => obj);

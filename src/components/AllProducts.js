@@ -54,6 +54,7 @@ const AllProducts = ({
   const applicationFilters = allFilters.applicationFilters;
   const ionicFilters = allFilters.ionicFilters;
   const packingFilters = allFilters.packingFilters;
+  const attentionFilters = allFilters.attentionFilters;
 
   let items = data.allMicrocmsProducts.nodes;
 
@@ -85,6 +86,9 @@ const AllProducts = ({
   if (packingFilters && packingFilters.length > 0) {
     items = filterByAllCategories(items, packingFilters, 'packing');
   }
+  if (attentionFilters) {
+    items = items.filter(v => Boolean(v.attention));
+  }
 
   const aggregatedTypes = AggregatedCategory(items, 'type', 'name');
   const aggregatedSeries = AggregatedCategory(items, 'series', '', 'series');
@@ -100,15 +104,17 @@ const AllProducts = ({
     <Wrapper>
       <div className="productSection">
         <div className={`filter-nav ${filterListVisible ? 'active' : ''}`}>
-          <div>
+          <div className="visibleList">
             <CheckArrayButton
               setObject={tableVisibleArray}
               clickFunction={setTableVisibleArray}
+              className={'check-array-button'}
             />
             <button
               onClick={() => {
                 setFilterListVisible(false);
               }}
+              className={filterListVisible ? 'filter-close-button' : 'none'}
             >
               <MdClose />
             </button>
@@ -160,6 +166,16 @@ const AllProducts = ({
               setCategoryFilters={setAllFilters}
               aggregatedAllCategory={aggregatedPacking}
             />
+            <input
+              type="checkbox"
+              onClick={() => {
+                setAllFilters(prevstate => ({
+                  ...prevstate,
+                  attentionFilters: !allFilters['attentionFilters'],
+                }));
+              }}
+              value="注目の製品"
+            />
           </div>
         </div>
         <SearchQuery
@@ -186,12 +202,36 @@ const Wrapper = styled.section`
       left: 0;
       z-index: 999;
       transition: all 0.6s;
+      .visibleList {
+        position: relative;
+        display: flex;
+        flex-flow: row wrap;
+        .check-array-button {
+          flex: 1 0 130px;
+          font-size: 1.3rem;
+          margin: auto;
+        }
+        .filter-close-button {
+          position: fixed;
+          right: 0;
+          top: 0;
+          height: 80px;
+          font-size: 5rem;
+          box-sizing: border-box;
+        }
+        .none {
+          display: none;
+          opacity: 0;
+        }
+      }
     }
     .active {
       bottom: 0;
     }
     .tagAside {
       display: flex;
+      width: 100vw;
+      height: auto;
     }
   }
 `;

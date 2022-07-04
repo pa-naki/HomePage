@@ -22,6 +22,7 @@ const SearchIndex = ({ data, location }) => {
     applicationFilters: [],
     ionicFilters: [],
     packingFilters: [],
+    attentionFilters: false,
   });
   // const [featureFilters, setFeatureFilters] = useState([]);
   // const [propertyFilters, setPropertyFilters] = useState([]);
@@ -60,6 +61,7 @@ const SearchIndex = ({ data, location }) => {
     ionicVisible: true,
     packingVisible: true,
     seriesVisible: true,
+    attentionVisible: true,
   });
   const [filterListVisible, setFilterListVisible] = useState(false);
   return (
@@ -67,7 +69,7 @@ const SearchIndex = ({ data, location }) => {
       <Seo title="Search" />
       <PathTree pathTree={location.pathname} />
       <Wrapper>
-        <div className="absoluteRightBottom">
+        <div className="absoluteBottom">
           <button
             onClick={() => {
               setFilterListVisible(!filterListVisible);
@@ -104,16 +106,18 @@ const Wrapper = styled.div`
     height: 50vh;
     bottom: -120%;
     left: 0;
-    z-index: 999;
+    z-index: 900;
     transition: all 0.6s;
+    overflow: scroll;
   }
   .active {
     bottom: 0;
   }
-  .absoluteRightBottom {
+  .absoluteBottom {
     position: fixed;
     right: 0;
     bottom: 0;
+    z-index: 900;
     button {
       border-radius: 50%;
       padding: 30px;
@@ -140,6 +144,7 @@ export const query = graphql`
         material
         slug
         packing
+        attention
         product
         id
         series {
@@ -154,6 +159,7 @@ export const query = graphql`
           ionic
           material
           packing
+          attention
           product
           slug
           property
@@ -178,6 +184,7 @@ export const query = graphql`
         application
         ionic
         material
+        attention
         slug
         packing
         product
@@ -195,6 +202,7 @@ export const query = graphql`
           material
           packing
           slug
+          attention
           product
           property
           series {

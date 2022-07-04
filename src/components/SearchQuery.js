@@ -24,6 +24,7 @@ const SearchQuery = ({ items, tableVisibleArray }) => {
                 typeName={typeName}
                 slug={slug}
                 tableVisibleArray={tableVisibleArray}
+                className={'product'}
               />
             );
           }
@@ -35,6 +36,7 @@ const SearchQuery = ({ items, tableVisibleArray }) => {
               key={id}
               slug={slug}
               tableVisibleArray={tableVisibleArray}
+              className={'product'}
             />
           );
         })}
@@ -51,6 +53,35 @@ const Wrapper = styled.article`
     width: 100%;
     display: flex;
     flex-flow: row wrap;
+    .product {
+      flex: 0 0 450px;
+      margin: 2rem auto;
+      text-decoration: none;
+      color: black;
+      height: auto;
+      width: 100%;
+      &:hover {
+        tbody {
+          opacity: 0.7;
+          background-color: whitesmoke;
+        }
+      }
+      table {
+        height: 100%;
+        width: 100%;
+        font-size: 12px;
+        border: 1px solid black;
+        border-collapse: collapse;
+        td {
+          border: 1px solid black;
+          white-space: nowrap;
+          text-align: center;
+        }
+        th {
+          border: 1px solid black;
+        }
+      }
+    }
   }
 `;
 

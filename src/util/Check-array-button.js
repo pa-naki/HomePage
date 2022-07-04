@@ -2,8 +2,9 @@ import React from 'react';
 import productArray from './productArray';
 import { MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md';
 import keyReturn from './keyReturn';
+import styled from 'styled-components';
 
-const CheckArrayButton = ({ setObject, clickFunction }) => {
+const CheckArrayButton = ({ setObject, clickFunction, className }) => {
   const setArray = keyReturn(setObject);
 
   return (
@@ -18,6 +19,7 @@ const CheckArrayButton = ({ setObject, clickFunction }) => {
                 [setKey]: !setObject[setKey],
               }));
             }}
+            className={className}
             key={index}
           >
             {setObject[setKey] ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
@@ -28,5 +30,7 @@ const CheckArrayButton = ({ setObject, clickFunction }) => {
     </>
   );
 };
+
+const Wrapper = styled.button``;
 
 export default CheckArrayButton;

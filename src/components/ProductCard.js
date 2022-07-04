@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import keyReturn from '../util/keyReturn';
+import { FiAward } from 'react-icons/fi';
 
 const TableTree = ({ colLength, col1, col2, col3, col4 }) => {
   if (colLength === 2) {
@@ -29,33 +30,63 @@ const ProductCard = ({
   typeName,
   slug,
   tableVisibleArray,
+  className,
 }) => {
   const setTableArray = keyReturn(tableVisibleArray);
+  let attentionTorF;
   return (
-    <Wrapper>
-      <Link to={`/search/${slug}/`}>
-        <table>
-          <tbody>
-            <TableTree colLength={2} col1="製品名" col2={product} />
-            {setTableArray.map((TableRow, index) => {
-              const setKey = TableRow.key;
-              const substringKey = setKey.substring(0, setKey.length - 7);
-              const setFeature = v => {
-                switch (substringKey) {
-                  case 'material':
-                    return v.join(' ');
-                  case 'series':
-                    return v.series;
-                  case 'type':
-                    if (typeName.length > 0) {
-                      return typeName.join(' ');
-                    } else {
-                      return v[0].name;
-                    }
-                  default:
-                    return v;
-                }
-              };
+    <Link to={`/search/${slug}/`} className={className}>
+      <table style={{ position: 'relative' }}>
+        <tbody>
+          <TableTree colLength={2} col1="製品名" col2={product} />
+          {setTableArray.map((TableRow, index) => {
+            const setKey = TableRow.key;
+            const substringKey = setKey.substring(0, setKey.length - 7);
+            const setFeature = v => {
+              switch (substringKey) {
+                case 'material':
+                  return v.join(' ');
+                case 'application':
+                  return v.join(' ');
+                case 'ionic':
+                  return v.join(' ');
+                case 'packing':
+                  return v.join(' ');
+                case 'attention':
+                  attentionTorF = v;
+                  return;
+                case 'series':
+                  return v.series;
+                case 'type':
+                  if (typeName.length > 0) {
+                    return typeName.join(' ');
+                  } else {
+                    return v[0].name;
+                  }
+                default:
+                  return v;
+              }
+            };
+            if (substringKey === 'attention') {
+              setFeature(oneProduct[substringKey]);
+              return (
+                <tr>
+                  {attentionTorF && (
+                    <FiAward
+                      style={{
+                        border: 'none',
+                        position: 'absolute',
+                        top: 0,
+                        right: 0,
+                        fontSize: '2rem',
+                        color: 'white',
+                        backgroundColor: 'red',
+                      }}
+                    />
+                  )}
+                </tr>
+              );
+            } else {
               return (
                 <React.Fragment key={index}>
                   {tableVisibleArray[setKey] && (
@@ -67,9 +98,10 @@ const ProductCard = ({
                   )}
                 </React.Fragment>
               );
-            })}
+            }
+          })}
 
-            {/* {tableVisibleArray['typeVisible'] && (
+          {/* {tableVisibleArray['typeVisible'] && (
               <TableTree colLength={2} col1="機能" col2={type} />
             )}
             {tableVisibleArray['featureVisible'] && (
@@ -93,49 +125,48 @@ const ProductCard = ({
             {tableVisibleArray['seriesVisible'] && (
               <TableTree colLength={2} col1="シリーズ名" col2={series} />
             )} */}
-          </tbody>
-        </table>
-      </Link>
-    </Wrapper>
+        </tbody>
+      </table>
+    </Link>
   );
 };
 
-const Wrapper = styled.section`
-  display: flex;
-  width: 30%;
-  min-width: 30%;
-  &:not(:nth-child(3n-2)) {
-    margin: 2rem auto;
-  }
-  margin: 2rem auto 2rem 0;
-  a {
-    text-decoration: none;
-    color: black;
-    height: auto;
-    width: 100%;
-    &:hover {
-      tbody {
-        opacity: 0.7;
-        background-color: whitesmoke;
-      }
-    }
-  }
-  table {
-    height: 100%;
-    width: 100%;
-    font-size: 12px;
-    border: 1px solid black;
-    border-collapse: collapse;
-    td {
-      border: 1px solid black;
-      white-space: nowrap;
-      text-align: center;
-    }
-    th {
-      border: 1px solid black;
-    }
-  }
-`;
+// const Wrapper = styled.section`
+//   display: flex;
+//   width: 30%;
+//   min-width: 30%;
+//   &:not(:nth-child(3n-2)) {
+//     margin: 2rem auto;
+//   }
+//   margin: 2rem auto 2rem 0;
+// a {
+//   text-decoration: none;
+//   color: black;
+//   height: auto;
+//   width: 100%;
+//   &:hover {
+//     tbody {
+//       opacity: 0.7;
+//       background-color: whitesmoke;
+//     }
+//   }
+// }
+// table {
+//   height: 100%;
+//   width: 100%;
+//   font-size: 12px;
+//   border: 1px solid black;
+//   border-collapse: collapse;
+//   td {
+//     border: 1px solid black;
+//     white-space: nowrap;
+//     text-align: center;
+//   }
+//   th {
+//     border: 1px solid black;
+//   }
+// }
+// `;
 
 ProductCard.propTypes = {
   product: propTypes.string,
