@@ -6,18 +6,14 @@ import qs from 'qs';
 import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
 import AllProducts from '../../components/AllProducts';
-import { CheckButton } from '../../templates/styles';
 import PathTree from '../../templates/path-tree';
-import { MdClose } from 'react-icons/md';
-// import { scrollToAnchor } from '../../util/scroll-to-anchor';
-// import FilteredProduct from '../../util/productlist/filtered-product';
-import CheckArrayButton from '../../util/Check-array-button';
 
 const SearchIndex = ({ data, location }) => {
   const [filters, setFilters] = useState([]);
-  const [series, setSeries] = useState([]);
-  const [materialFilters, setMaterialFilters] = useState([]);
   const [allFilters, setAllFilters] = useState({
+    typeFilters: [],
+    seriesFilters: [],
+    materialFilters: [],
     propertyFilters: [],
     applicationFilters: [],
     ionicFilters: [],
@@ -63,6 +59,7 @@ const SearchIndex = ({ data, location }) => {
     seriesVisible: true,
     attentionVisible: true,
   });
+
   const [filterListVisible, setFilterListVisible] = useState(false);
   return (
     <Layout>
@@ -82,10 +79,6 @@ const SearchIndex = ({ data, location }) => {
           filters={filters}
           setFilters={updateFilters}
           data={data}
-          series={series}
-          setSeries={setSeries}
-          materialFilters={materialFilters}
-          setMaterialFilters={setMaterialFilters}
           allFilters={allFilters}
           setAllFilters={setAllFilters}
           tableVisibleArray={tableVisibleArray}
@@ -99,28 +92,13 @@ const SearchIndex = ({ data, location }) => {
 };
 
 const Wrapper = styled.div`
-  .filter-nav {
-    position: fixed;
-    background-color: #dfdfdf;
-    width: 100%;
-    height: 50vh;
-    bottom: -120%;
-    left: 0;
-    z-index: 900;
-    transition: all 0.6s;
-    overflow: scroll;
-  }
-  .active {
-    bottom: 0;
-  }
   .absoluteBottom {
     position: fixed;
-    right: 0;
+    width: 100%;
     bottom: 0;
     z-index: 900;
     button {
-      border-radius: 50%;
-      padding: 30px;
+      width: 100%;
       font-size: 3rem;
       cursor: zoom-in;
     }

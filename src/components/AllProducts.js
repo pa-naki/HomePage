@@ -1,14 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import SearchQuery from './SearchQuery';
-import TagsList from './TagsList';
 import Fuse from 'fuse.js';
 import AggregatedCategory from '../util/Aggregated-category';
 import { filterByAllCategories } from '../util/filter-by-category';
 import AllTagsList from './AllTagsList';
 import { MdClose } from 'react-icons/md';
-import { CheckButton } from '../templates/styles';
-import CheckArrayButton from '../util/Check-array-button';
+import CheckArrayButton from './share/Check-array-button';
 
 const DEFAULT_SITES_TO_SHOW = 6;
 const defaultOptions = {
@@ -33,12 +31,6 @@ const defaultOptions = {
 };
 const AllProducts = ({
   data,
-  filters,
-  setFilters,
-  series,
-  setSeries,
-  materialFilters,
-  setMaterialFilters,
   allFilters,
   setAllFilters,
   tableVisibleArray,
@@ -50,11 +42,16 @@ const AllProducts = ({
   const [sitesToShow, setSitesToShow] = React.useState(DEFAULT_SITES_TO_SHOW);
   const fuse = new Fuse(data.allMicrocmsProducts.nodes, defaultOptions);
 
-  const propertyFilters = allFilters.propertyFilters;
-  const applicationFilters = allFilters.applicationFilters;
-  const ionicFilters = allFilters.ionicFilters;
-  const packingFilters = allFilters.packingFilters;
-  const attentionFilters = allFilters.attentionFilters;
+  const {
+    typeFilters,
+    seriesFilters,
+    materialFilters,
+    propertyFilters,
+    applicationFilters,
+    ionicFilters,
+    packingFilters,
+    attentionFilters,
+  } = allFilters;
 
   let items = data.allMicrocmsProducts.nodes;
 
@@ -62,12 +59,12 @@ const AllProducts = ({
     items = fuse.search(search);
   }
 
-  if (filters && filters.length > 0) {
-    items = filterByAllCategories(items, filters, 'type', 'name');
+  if (typeFilters && typeFilters.length > 0) {
+    items = filterByAllCategories(items, typeFilters, 'type', 'name');
   }
 
-  if (series && series.length > 0) {
-    items = filterByAllCategories(items, series, 'series', '', 'series');
+  if (seriesFilters && seriesFilters.length > 0) {
+    items = filterByAllCategories(items, seriesFilters, 'series', '', 'series');
   }
 
   if (materialFilters && materialFilters.length > 0) {
@@ -103,39 +100,43 @@ const AllProducts = ({
   return (
     <Wrapper>
       <div className="productSection">
-        <div className={`filter-nav ${filterListVisible ? 'active' : ''}`}>
+        <aside className={`filter-nav ${filterListVisible ? 'active' : ''}`}>
           <div className="visibleList">
             <CheckArrayButton
               setObject={tableVisibleArray}
               clickFunction={setTableVisibleArray}
               className={'check-array-button'}
             />
-            <button
-              onClick={() => {
-                setFilterListVisible(false);
-              }}
-              className={filterListVisible ? 'filter-close-button' : 'none'}
-            >
-              <MdClose />
-            </button>
+            <div className={filterListVisible ? 'filter-close-button' : 'none'}>
+              <button
+                onClick={() => {
+                  setFilterListVisible(false);
+                }}
+              >
+                <MdClose />
+              </button>
+            </div>
           </div>
           <div className="tagAside">
-            <TagsList
+            <AllTagsList
               count={sitesToShow}
-              categoryFilters={filters}
-              setCategoryFilters={setFilters}
+              categoryFilters={typeFilters}
+              categoryFiltersName={'typeFilters'}
+              setCategoryFilters={setAllFilters}
               aggregatedAllCategory={aggregatedTypes}
             />
-            <TagsList
+            <AllTagsList
               count={sitesToShow}
-              categoryFilters={series}
-              setCategoryFilters={setSeries}
+              categoryFilters={seriesFilters}
+              categoryFiltersName={'seriesFilters'}
+              setCategoryFilters={setAllFilters}
               aggregatedAllCategory={aggregatedSeries}
             />
-            <TagsList
+            <AllTagsList
               count={sitesToShow}
               categoryFilters={materialFilters}
-              setCategoryFilters={setMaterialFilters}
+              categoryFiltersName={'materialFilters'}
+              setCategoryFilters={setAllFilters}
               aggregatedAllCategory={aggregatedMaterials}
             />
             <AllTagsList
@@ -166,18 +167,20 @@ const AllProducts = ({
               setCategoryFilters={setAllFilters}
               aggregatedAllCategory={aggregatedPacking}
             />
-            <input
-              type="checkbox"
-              onClick={() => {
-                setAllFilters(prevstate => ({
-                  ...prevstate,
-                  attentionFilters: !allFilters['attentionFilters'],
-                }));
-              }}
-              value="注目の製品"
-            />
+            <label className="attention-checkbox">
+              <input
+                type="checkbox"
+                onClick={() => {
+                  setAllFilters(prevstate => ({
+                    ...prevstate,
+                    attentionFilters: !allFilters['attentionFilters'],
+                  }));
+                }}
+              />
+              注目の製品
+            </label>
           </div>
-        </div>
+        </aside>
         <SearchQuery
           products={products}
           items={items}
@@ -197,14 +200,15 @@ const Wrapper = styled.section`
       position: fixed;
       background-color: #dfdfdf;
       width: 100%;
-      height: 50vh;
+      height: 40vh;
       bottom: -120%;
       left: 0;
       z-index: 999;
       transition: all 0.6s;
+      overflow-x: auto !important;
       .visibleList {
-        position: relative;
         display: flex;
+        min-width: 725px;
         flex-flow: row wrap;
         .check-array-button {
           flex: 1 0 130px;
@@ -214,10 +218,16 @@ const Wrapper = styled.section`
         .filter-close-button {
           position: fixed;
           right: 0;
-          top: 0;
-          height: 80px;
-          font-size: 5rem;
-          box-sizing: border-box;
+          top: 50%;
+          text-align: right;
+          button {
+            height: 72px;
+            font-size: 4rem;
+            box-sizing: border-box;
+            svg {
+              display: block;
+            }
+          }
         }
         .none {
           display: none;
@@ -230,8 +240,11 @@ const Wrapper = styled.section`
     }
     .tagAside {
       display: flex;
-      width: 100vw;
+      min-width: 725px;
       height: auto;
+      .attention-checkbox {
+        position: absolute;
+      }
     }
   }
 `;

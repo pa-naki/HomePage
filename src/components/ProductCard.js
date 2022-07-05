@@ -70,19 +70,21 @@ const ProductCard = ({
             if (substringKey === 'attention') {
               setFeature(oneProduct[substringKey]);
               return (
-                <tr>
+                <tr key={index}>
                   {attentionTorF && (
-                    <FiAward
-                      style={{
-                        border: 'none',
-                        position: 'absolute',
-                        top: 0,
-                        right: 0,
-                        fontSize: '2rem',
-                        color: 'white',
-                        backgroundColor: 'red',
-                      }}
-                    />
+                    <td>
+                      <FiAward
+                        style={{
+                          border: 'none',
+                          position: 'absolute',
+                          top: 0,
+                          right: 0,
+                          fontSize: '2rem',
+                          color: 'white',
+                          backgroundColor: 'red',
+                        }}
+                      />
+                    </td>
                   )}
                 </tr>
               );

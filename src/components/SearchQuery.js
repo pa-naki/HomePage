@@ -17,27 +17,29 @@ const SearchQuery = ({ items, tableVisibleArray }) => {
               typeName.push(productType.name);
             });
             return (
+              <React.Fragment key={id}>
+                <ProductCard
+                  product={product}
+                  oneProduct={oneProduct}
+                  typeName={typeName}
+                  slug={slug}
+                  tableVisibleArray={tableVisibleArray}
+                  className={'product'}
+                />
+              </React.Fragment>
+            );
+          }
+          return (
+            <React.Fragment key={id}>
               <ProductCard
                 product={product}
                 oneProduct={oneProduct}
-                key={id}
                 typeName={typeName}
                 slug={slug}
                 tableVisibleArray={tableVisibleArray}
                 className={'product'}
               />
-            );
-          }
-          return (
-            <ProductCard
-              product={product}
-              oneProduct={oneProduct}
-              typeName={typeName}
-              key={id}
-              slug={slug}
-              tableVisibleArray={tableVisibleArray}
-              className={'product'}
-            />
+            </React.Fragment>
           );
         })}
       </div>
@@ -54,7 +56,7 @@ const Wrapper = styled.article`
     display: flex;
     flex-flow: row wrap;
     .product {
-      flex: 0 0 450px;
+      flex: 0 1 460px;
       margin: 2rem auto;
       text-decoration: none;
       color: black;

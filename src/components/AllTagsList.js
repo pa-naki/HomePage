@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { MdCheckBoxOutlineBlank, MdCheckBox } from 'react-icons/md';
+import productArray from '../util/productArray';
 
 const AllTagsList = ({
   categoryFilters,
@@ -11,8 +12,15 @@ const AllTagsList = ({
   const categoryKeys = Object.keys(aggregatedAllCategory).sort((str1, str2) =>
     str1.toLowerCase().localeCompare(str2.toLowerCase())
   );
+  const substringKey = categoryFiltersName.substring(
+    0,
+    categoryFiltersName.length - 7
+  );
+  const jName = productArray[substringKey];
+
   return (
     <Wrapper>
+      <h3>{jName}</h3>
       {categoryFilters.length > 0 && (
         <button
           onClick={() =>
@@ -59,13 +67,19 @@ const AllTagsList = ({
   );
 };
 
-const Wrapper = styled.aside`
-  min-width: 10%;
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   line-height: 1.67;
+  white-space: nowrap;
+  margin: 25px auto;
+  flex: 1 0 auto;
+  h3 {
+    text-align: center;
+  }
   button {
     display: flex;
+    flex: 0 0 10%;
     align-items: center;
     height: 2.5rem;
     &:not(:first-child) {

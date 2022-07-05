@@ -1,7 +1,6 @@
 import React from 'react';
-import productArray from './productArray';
 import { MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md';
-import keyReturn from './keyReturn';
+import keyReturn from '../../util/keyReturn';
 import styled from 'styled-components';
 
 const CheckArrayButton = ({ setObject, clickFunction, className }) => {
@@ -11,6 +10,10 @@ const CheckArrayButton = ({ setObject, clickFunction, className }) => {
     <>
       {setArray.map((setproduct, index) => {
         const setKey = setproduct.key;
+        const substringKey = setKey.substring(0, setKey.length - 7);
+        if (substringKey === 'attention') {
+          return;
+        }
         return (
           <button
             onClick={() => {
@@ -30,7 +33,5 @@ const CheckArrayButton = ({ setObject, clickFunction, className }) => {
     </>
   );
 };
-
-const Wrapper = styled.button``;
 
 export default CheckArrayButton;
