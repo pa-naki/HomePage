@@ -27,7 +27,6 @@ const Wrapper = styled.div`
   width: 480px;
   border: 1px solid black;
   border-radius: 10%;
-  overflow: hidden;
 `;
 
 export default Assessment;

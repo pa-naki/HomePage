@@ -1,15 +1,17 @@
-import React, { createRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { graphql, Link, navigate } from 'gatsby';
-import styled from 'styled-components';
 import qs from 'qs';
 
 import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
 import AllProducts from '../../components/AllProducts';
 import PathTree from '../../templates/path-tree';
+import Sticky from '../../styles/sticky.styled';
 
 const SearchIndex = ({ data, location }) => {
+  const navRef = useRef(null);
   const [filters, setFilters] = useState([]);
+  const [navPositionTop, setNavPositionTop] = useState(null);
   const [allFilters, setAllFilters] = useState({
     typeFilters: [],
     seriesFilters: [],
@@ -20,6 +22,19 @@ const SearchIndex = ({ data, location }) => {
     packingFilters: [],
     attentionFilters: false,
   });
+  // const getScrollPosition = id => {
+  //   const rect = document.getElementById(id).getBoundingClientRect();
+  //   const top = Math.round(rect.top);
+  //   const bottom = Math.round(rect.bottom);
+  //   setNavPositionTop(top);
+  //   console.log('rect', rect);
+  // };
+
+  // useEffect(() => {
+  //   window.addEventListener('scroll', () => {
+  //     getScrollPosition('nav-wrapper', navRef);
+  //   });
+  // }, []);
   // const [featureFilters, setFeatureFilters] = useState([]);
   // const [propertyFilters, setPropertyFilters] = useState([]);
   // const [applicationFilters, setApplicationFilters] = useState([]);
@@ -65,16 +80,15 @@ const SearchIndex = ({ data, location }) => {
     <Layout>
       <Seo title="Search" />
       <PathTree pathTree={location.pathname} />
-      <Wrapper>
-        <div className="absoluteBottom">
-          <button
-            onClick={() => {
-              setFilterListVisible(!filterListVisible);
-            }}
-          >
-            検索はこちら
-          </button>
-        </div>
+      <div
+        style={{
+          border: `3px solid black`,
+          display: `flex`,
+          flexDirection: `column`,
+          height: `80%`,
+        }}
+        id="Sticky"
+      >
         <AllProducts
           filters={filters}
           setFilters={updateFilters}
@@ -86,24 +100,20 @@ const SearchIndex = ({ data, location }) => {
           filterListVisible={filterListVisible}
           setFilterListVisible={setFilterListVisible}
         />
-      </Wrapper>
+        {/* <Sticky id="nav-wrapper" ref={navRef} navPositionTop={navPositionTop}> */}
+        <Sticky navPositionTop={navPositionTop}>
+          <button
+            onClick={() => {
+              setFilterListVisible(!filterListVisible);
+            }}
+          >
+            検索はこちら
+          </button>
+        </Sticky>
+      </div>
     </Layout>
   );
 };
-
-const Wrapper = styled.div`
-  .absoluteBottom {
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    z-index: 900;
-    button {
-      width: 100%;
-      font-size: 3rem;
-      cursor: zoom-in;
-    }
-  }
-`;
 
 export default SearchIndex;
 

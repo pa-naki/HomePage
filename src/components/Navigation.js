@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'gatsby';
 // import './styles.css';
-import './demo.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './demo.css';
 import '../util/font-awesome';
 import { StaticImage } from 'gatsby-plugin-image';
 import * as styles from './Navigation.module.css';
@@ -80,6 +80,7 @@ const Navigation = () => {
 
 const Wrapper = styled.nav`
   position: fixed;
+  top: 0;
   z-index: 997;
 `;
 

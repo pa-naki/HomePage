@@ -192,6 +192,8 @@ const AllProducts = ({
 };
 
 const Wrapper = styled.section`
+  display: flex;
+  flex-direction: column;
   .productSection {
     display: flex;
     justify-content: space-between;

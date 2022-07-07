@@ -10,8 +10,10 @@ import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 import { GatsbyContext } from '../context/context';
 
+import Navigation from './Navigation';
 import { Header, Sidebar, Footer } from './index';
 import styled from 'styled-components';
+import './global-style.css';
 
 const Layout = ({ children, notTemplate }) => {
   const data = useStaticQuery(graphql`
@@ -25,13 +27,14 @@ const Layout = ({ children, notTemplate }) => {
   `);
   const { isSidebarOpen } = useContext(GatsbyContext);
   return (
-    <>
+    <div>
       {/* <Navigation /> */}
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+      {/* <Header siteTitle={data.site.siteMetadata?.title || `Title`} /> */}
+      <Navigation />
       {isSidebarOpen && <Sidebar />}
-      {notTemplate ? <>{children}</> : <Wrapper>{children}</Wrapper>}
+      {notTemplate ? <div>{children}</div> : <Wrapper>{children}</Wrapper>}
       <Footer />
-    </>
+    </div>
   );
 };
 
