@@ -25,6 +25,7 @@ const Product = () => {
 
 const Wrapper = styled.div`
   width: 480px;
+  overflow: hidden;
   border: 1px solid black;
   border-radius: 10%;
 `;

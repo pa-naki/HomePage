@@ -10,8 +10,8 @@ import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 import { GatsbyContext } from '../context/context';
 
-import Navigation from './Navigation';
-import { Header, Sidebar, Footer } from './index';
+import Navigation from './Header/Navigation';
+import { Sidebar, Footer } from './index';
 import styled from 'styled-components';
 import './global-style.css';
 
@@ -39,7 +39,7 @@ const Layout = ({ children, notTemplate }) => {
 };
 
 const Wrapper = styled.main`
-  margin-top: 70px;
+  margin-top: 200px;
 `;
 
 Layout.propTypes = {

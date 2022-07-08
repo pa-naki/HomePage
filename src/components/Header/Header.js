@@ -1,9 +1,5 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
-// import Navigation from "./header/Navigation.js";
-import { GatsbyProvider } from '../context/context';
-import Navigation from './Navigation';
-import Sidebar from './Sidebar';
+import Navigation from './Header/Navigation';
 
 import styled from 'styled-components';
 

@@ -9,7 +9,6 @@ import PathTree from '../../templates/path-tree';
 import Sticky from '../../styles/sticky.styled';
 
 const SearchIndex = ({ data, location }) => {
-  const navRef = useRef(null);
   const [filters, setFilters] = useState([]);
   const [navPositionTop, setNavPositionTop] = useState(null);
   const [allFilters, setAllFilters] = useState({
