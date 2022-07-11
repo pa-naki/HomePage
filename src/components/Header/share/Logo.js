@@ -8,7 +8,7 @@ const Logo = () => {
     <Wrapper>
       <Link to="/">
         <StaticImage
-          src="../../images/daiwa_logo2.png"
+          src="../../../images/daiwa_logo2.png"
           alt="daiwakagaku logo"
           placeholder="tracedSVG"
           formats={['auto', 'webp', 'avif']}

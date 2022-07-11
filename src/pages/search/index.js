@@ -86,7 +86,6 @@ const SearchIndex = ({ data, location }) => {
           flexDirection: `column`,
           height: `80%`,
         }}
-        id="Sticky"
       >
         <AllProducts
           filters={filters}
@@ -104,6 +103,9 @@ const SearchIndex = ({ data, location }) => {
           <button
             onClick={() => {
               setFilterListVisible(!filterListVisible);
+            }}
+            style={{
+              background: `#def9e7`,
             }}
           >
             検索はこちら

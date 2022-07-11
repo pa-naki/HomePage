@@ -37,7 +37,12 @@ const AllTagsList = ({
       {categoryKeys.map(c => (
         <button
           key={c}
-          className={categoryFilters.includes(c) ? `selected` : ``}
+          // className={categoryFilters.includes(c) ? `selected` : ``}
+          title={
+            categoryFilters.includes(c)
+              ? c + 'をフィルターから外す'
+              : c + 'でフィルターをかける'
+          }
           onClick={() => {
             if (categoryFilters.includes(c)) {
               setCategoryFilters(prestate => ({
@@ -79,9 +84,10 @@ const Wrapper = styled.div`
   }
   button {
     display: flex;
-    flex: 0 0 10%;
+    flex: 0 0 45px;
     align-items: center;
     height: 2.5rem;
+    padding: 3px;
     &:not(:first-child) {
       margin-top: 0.5rem;
     }

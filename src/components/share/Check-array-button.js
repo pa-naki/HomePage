@@ -1,7 +1,6 @@
 import React from 'react';
 import { MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md';
 import keyReturn from '../../util/keyReturn';
-import styled from 'styled-components';
 
 const CheckArrayButton = ({ setObject, clickFunction, className }) => {
   const setArray = keyReturn(setObject);
@@ -24,6 +23,11 @@ const CheckArrayButton = ({ setObject, clickFunction, className }) => {
             }}
             className={className}
             key={index}
+            title={`${
+              setObject[setKey]
+                ? setproduct.jName + 'をテーブルから外す'
+                : setproduct.jName + 'をテーブルに加える'
+            }`}
           >
             {setObject[setKey] ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
             {setproduct.jName}

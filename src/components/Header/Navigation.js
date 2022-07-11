@@ -15,10 +15,10 @@ const Navigation = () => {
   return (
     <Wrapper>
       <div className="navbar">
-        <button className="listMenu" onClick={showSidebar}>
-          <BiMenu />
-        </button>
         <Logo />
+        <button className="listMenu" onClick={showSidebar}>
+          <BiMenu className="listLogo" />
+        </button>
         <div className="navLinks">
           <div className="sidebarLogo">
             <BiX className="xMark" onClick={showSidebar} />
@@ -45,6 +45,9 @@ const Wrapper = styled.nav`
     justify-content: space-between;
     .listMenu {
       display: none;
+      font-size: 3rem;
+      height: 3rem;
+      width: 3rem;
     }
     .navLinks {
       flex: 1 1 auto;
@@ -60,6 +63,16 @@ const Wrapper = styled.nav`
     @media screen and (min-width: 768px) and (max-width: 1024px) {
       .navLinks {
         margin-left: 5%;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .listMenu {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .navLinks {
+        display: none;
       }
     }
   }

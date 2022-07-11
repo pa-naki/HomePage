@@ -101,6 +101,9 @@ const AllProducts = ({
     <Wrapper>
       <div className="productSection">
         <aside className={`filter-nav ${filterListVisible ? 'active' : ''}`}>
+          <span>
+            各チェックを選択することでテーブルの列数を変更することが出来ます
+          </span>
           <div className="visibleList">
             <CheckArrayButton
               setObject={tableVisibleArray}
@@ -200,7 +203,7 @@ const Wrapper = styled.section`
     margin-top: 3rem;
     .filter-nav {
       position: fixed;
-      background-color: #dfdfdf;
+      background-color: #def9e7;
       width: 100%;
       height: 40vh;
       bottom: -120%;
@@ -246,6 +249,7 @@ const Wrapper = styled.section`
       height: auto;
       .attention-checkbox {
         position: absolute;
+        left: 50%;
       }
     }
   }

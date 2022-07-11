@@ -39,7 +39,7 @@ const Layout = ({ children, notTemplate }) => {
 };
 
 const Wrapper = styled.main`
-  margin-top: 200px;
+  margin-top: 100px;
 `;
 
 Layout.propTypes = {

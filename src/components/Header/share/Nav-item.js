@@ -58,6 +58,22 @@ const Wrapper = styled.ul`
       color: black;
       text-decoration: none;
       font-weight: bolder;
+      position: relative;
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 0;
+        bottom: 0;
+        height: 2px;
+        margin: -5px 0;
+        left: 0;
+        background-color: black;
+        transition: all 0.2s ease-in 0s;
+      }
+      &:hover:after {
+        width: 100%;
+      }
     }
     @media screen and (min-width: 768px) and (max-width: 1024px) {
       flex: 1 1 auto;
