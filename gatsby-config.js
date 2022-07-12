@@ -1,6 +1,11 @@
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
+const {
+  and,
+  contains,
+  exists,
+} = require('gatsby-source-microcms/src/query-builder');
 
 module.exports = {
   siteMetadata: {

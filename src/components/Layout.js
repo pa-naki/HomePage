@@ -12,10 +12,10 @@ import { GatsbyContext } from '../context/context';
 
 import Navigation from './Header/Navigation';
 import { Sidebar, Footer } from './index';
-import styled from 'styled-components';
 import './global-style.css';
+import styled from 'styled-components';
 
-const Layout = ({ children, notTemplate }) => {
+const Layout = ({ children, displayWidth, pathTree }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -30,16 +30,18 @@ const Layout = ({ children, notTemplate }) => {
     <div>
       {/* <Navigation /> */}
       {/* <Header siteTitle={data.site.siteMetadata?.title || `Title`} /> */}
-      <Navigation />
+      <header>
+        <Navigation />
+      </header>
       {isSidebarOpen && <Sidebar />}
-      {notTemplate ? <div>{children}</div> : <Wrapper>{children}</Wrapper>}
+      <Wrapper>{children}</Wrapper>
       <Footer />
     </div>
   );
 };
 
-const Wrapper = styled.main`
-  margin-top: 100px;
+const Wrapper = styled.div`
+  margin-top: ${props => (props.marginTop ? props.marginTop : '100px')};
 `;
 
 Layout.propTypes = {

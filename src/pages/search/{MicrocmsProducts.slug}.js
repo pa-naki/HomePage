@@ -9,7 +9,9 @@ import { HeddingSection } from '../../templates/styles';
 import productArray from '../../util/productArray';
 import styled from 'styled-components';
 import Seo from '../../components/Seo';
-const ProductsTemplate = ({ location, data }) => {
+// const ProductsTemplate = ({ location, data }) => {
+const ProductsTemplate = props => {
+  const data = props.data;
   const {
     application,
     attention,
@@ -22,6 +24,8 @@ const ProductsTemplate = ({ location, data }) => {
     series,
     type,
   } = data.microcmsProducts;
+  console.log(props);
+  const location = props.location;
   const typeJoin = type.map(value => value.name);
   const productItems = data.microcmsProducts;
   const productKeys = Object.keys(productItems);
@@ -163,7 +167,7 @@ const Wrapper = styled.section`
 export default ProductsTemplate;
 
 export const query = graphql`
-  query productQuery($slug: String!) {
+  query productQuery($slug: String!, $type: [String]) {
     microcmsProducts(slug: { eq: $slug }) {
       application
       attention
@@ -179,6 +183,19 @@ export const query = graphql`
       }
       type {
         name
+      }
+    }
+    related: allMicrocmsProducts(
+      filter: {
+        slug: { ne: $slug }
+        type: { elemMatch: { name: { in: $type } } }
+      }
+    ) {
+      nodes {
+        product
+        type {
+          name
+        }
       }
     }
   }

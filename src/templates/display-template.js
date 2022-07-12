@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const DisplayTemplate = ({ children }) => {
-  return <Wrapper>{children}</Wrapper>;
+const DisplayTemplate = ({ children, displayWidth }) => {
+  return <Wrapper displayWidth={displayWidth}>{children}</Wrapper>;
 };
 
-const Wrapper = styled.section`
-  width: 90%;
-  margin: 2rem auto 0;
+const Wrapper = styled.div`
+  width: ${props => (props.displayWidth ? props.displayWidth : '90%')};
+  margin: 0 auto;
 `;
 
 export default DisplayTemplate;

@@ -38,3 +38,19 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 };
+
+exports.createResolvers = ({ createResolvers }) => {
+  const resolvers = {
+    microcmsProducts: {
+      nodes: {
+        test: {
+          type: 'String!',
+          resolve: async (source, args, context, info) => {
+            return `test ok`;
+          },
+        },
+      },
+    },
+  };
+  createResolvers(resolvers);
+};
