@@ -1,29 +1,22 @@
 import * as React from 'react';
-
+import styled from 'styled-components';
+import {
+  affiliates,
+  ogGroupAffiliates,
+} from '../../components/share/affiliates';
 import Layout from '../../components/Layout';
 import Seo from '../../components/Seo';
-
 import PathTree from '../../templates/path-tree';
 import DisplayTemplate from '../../templates/display-template';
 import { HeddingSection } from '../../templates/styles';
-import styled from 'styled-components';
 import { LinkCards } from '../../styles/cardsStyle';
 
 const affiliated = ({ location }) => {
-  const affiliates = [
-    {
-      id: 1,
-      category: '関係会社',
-      href: 'http://www.lsdaiwa.com/',
-      title: <span>無&#38177;昱大精細化工有限公司</span>,
-      explanation: '中国の関係会社です。',
-    },
-  ];
   return (
     <Layout>
       <Seo title="Affiliated" />
       <PathTree pathTree={location.pathname} />
-      <Wrapper>
+      <>
         <DisplayTemplate>
           <HeddingSection
             heddingTitle="グループ企業"
@@ -35,55 +28,45 @@ const affiliated = ({ location }) => {
               styleTemplate="stripe"
               heddingWidth="75%"
             >
-              <ul>
-                <LinkCards
-                  href={affiliates[0].href}
-                  title={affiliates[0].title}
-                  explanation={affiliates[0].explanation}
-                />
-                <li>
-                  <a
-                    href="http://www.wadaikin.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    江西和大金実業有限公司
-                  </a>
-                </li>
-              </ul>
+              <Wrapper>
+                {affiliates.map((link, index) => {
+                  const { category, href, icon, title, explanation, address } =
+                    link;
+                  return (
+                    <LinkCards
+                      key={index}
+                      href={href}
+                      icon={icon}
+                      category={category}
+                      title={title}
+                      address={address}
+                      explanation={explanation}
+                    />
+                  );
+                })}
+              </Wrapper>
             </HeddingSection>
             <HeddingSection
               heddingTitle="■国内オー・ジーグループ"
               styleTemplate="stripe"
               heddingWidth="75%"
             >
-              <ul>
-                <li>
-                  <a
-                    href="http://www.ogcorp.co.jp/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    オージー株式会社
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="http://www.ogcorp.co.jp/group/chatani.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    茶谷産業株式会社
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="http://www.ogcorp.co.jp/company/group/%E3%82%AA%E3%83%BC%E3%82%B8%E3%83%BC%E3%83%95%E3%82%A3%E3%83%AB%E3%83%A0%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE/"
-                    target="_blank"
-                  >
-                    オージーフィルム株式会社
-                  </a>
-                </li>
+              <Wrapper>
+                {ogGroupAffiliates.map((link, index) => {
+                  const { category, href, icon, title, explanation, address } =
+                    link;
+                  return (
+                    <LinkCards
+                      key={index}
+                      href={href}
+                      icon={icon}
+                      category={category}
+                      title={title}
+                      address={address}
+                      explanation={explanation}
+                    />
+                  );
+                })}
                 <li>
                   <a
                     href="http://www.ogcorp.co.jp/group/yamago.html"
@@ -183,7 +166,7 @@ const affiliated = ({ location }) => {
                     株式会社ノアック
                   </a>
                 </li>
-              </ul>
+              </Wrapper>
             </HeddingSection>
             <HeddingSection
               heddingTitle="■海外オー・ジーグループ"
@@ -276,23 +259,14 @@ const affiliated = ({ location }) => {
             </HeddingSection>
           </HeddingSection>
         </DisplayTemplate>
-      </Wrapper>
+      </>
     </Layout>
   );
 };
 
-const Wrapper = styled.section`
-  ul {
-    margin-left: 1rem;
-  }
-  a {
-    text-decoration: none;
-    color: var(--clr-primary-nav);
-    line-height: 1.8;
-    &:hover {
-      opacity: 0.6;
-    }
-  }
+const Wrapper = styled.ul`
+  display: flex;
+  flex-flow: row wrap;
 `;
 
 export default affiliated;
