@@ -67,105 +67,6 @@ const affiliated = ({ location }) => {
                     />
                   );
                 })}
-                <li>
-                  <a
-                    href="http://www.ogcorp.co.jp/group/yamago.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    山五化成工業株式会社
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="http://www.ogcorp.co.jp/group/ogkagaku.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    オージー化学工業株式会社
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="http://www.ogcorp.co.jp/group/suzu_kawa.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    鈴川化学工業株式会社
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="http://www.ogcorp.co.jp/group/toakasei.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    東亜化成株式会社
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="http://www.ogcorp.co.jp/group/daido.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    大同産業株式会社
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="http://www.ogcorp.co.jp/group/fo_tech.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    株式会社エフ・オー・テック
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="http://www.ogcorp.co.jp/group/ogwakayama.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    オー・ジー和歌山株式会社
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="http://www.ogcorp.co.jp/group/yamato.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    株式会社やまとトレーディング
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="http://www.ogcorp.co.jp/group/og_nagase.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    オー・ジー長瀬カラーケミカル株式会社
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="http://www.ogcorp.co.jp/group/chuwa.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    中和化学薬品株式会社
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="http://www.ogcorp.co.jp/group/noack.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    株式会社ノアック
-                  </a>
-                </li>
               </Wrapper>
             </HeddingSection>
             <HeddingSection
@@ -174,15 +75,6 @@ const affiliated = ({ location }) => {
               heddingWidth="75%"
             >
               <ul>
-                <li>
-                  <a
-                    href="http://www.ogcorp.co.jp/group/oga.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    OSAKAGODO AMERICA INC.
-                  </a>
-                </li>
                 <li>
                   <a
                     href="http://www.ogcorp.co.jp/group/ogq.html"

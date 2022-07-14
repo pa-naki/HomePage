@@ -14,6 +14,7 @@ import Navigation from './Header/Navigation';
 import { Sidebar, Footer } from './index';
 import './global-style.css';
 import styled from 'styled-components';
+import { getCurrentLangKey } from 'ptz-i18n';
 
 const Layout = ({ children, displayWidth, pathTree }) => {
   const data = useStaticQuery(graphql`
@@ -26,6 +27,7 @@ const Layout = ({ children, displayWidth, pathTree }) => {
     }
   `);
   const { isSidebarOpen } = useContext(GatsbyContext);
+
   return (
     <div>
       {/* <Navigation /> */}
