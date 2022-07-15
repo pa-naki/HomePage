@@ -8,36 +8,52 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
-import { GatsbyContext } from '../context/context';
+import styled from 'styled-components';
+import { getCurrentLangKey, getLangs, getUrlForLang } from 'ptz-i18n';
+import { IntlProvider } from 'react-intl';
+import 'intl';
 
+import { GatsbyContext } from '../context/context';
 import Navigation from './Header/Navigation';
 import { Sidebar, Footer } from './index';
+import SelectLanguage from './Header/selectLanguage';
 import './global-style.css';
-import styled from 'styled-components';
-import { getCurrentLangKey } from 'ptz-i18n';
 
-const Layout = ({ children, displayWidth, pathTree }) => {
+const Layout = ({ children, i18nMessages, location }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
           title
+          languages {
+            defaultLangKey
+            langs
+          }
         }
       }
     }
   `);
   const { isSidebarOpen } = useContext(GatsbyContext);
-
+  const url = location.pathname;
+  const { langs, defaultLangKey } = data.site.siteMetadata.languages;
+  const langKey = getCurrentLangKey(langs, defaultLangKey, url);
+  const homeLink = `/${langKey}/`.replace(`/${defaultLangKey}/`, '/');
+  const langsMenu = getLangs(langs, langKey, getUrlForLang(homeLink, url)).map(
+    item => ({ ...item, link: item.link.replace(`/${defaultLangKey}/`, '/') })
+  );
   return (
     <div>
-      {/* <Navigation /> */}
-      {/* <Header siteTitle={data.site.siteMetadata?.title || `Title`} /> */}
-      <header>
-        <Navigation />
-      </header>
-      {isSidebarOpen && <Sidebar />}
-      <Wrapper>{children}</Wrapper>
-      <Footer />
+      <IntlProvider locale={langKey} messages={i18nMessages}>
+        <SelectLanguage langs={langsMenu} />
+        {/* <Navigation /> */}
+        {/* <Header siteTitle={data.site.siteMetadata?.title || `Title`} /> */}
+        <header>
+          <Navigation />
+        </header>
+        {isSidebarOpen && <Sidebar />}
+        <Wrapper>{children}</Wrapper>
+        <Footer />
+      </IntlProvider>
     </div>
   );
 };
