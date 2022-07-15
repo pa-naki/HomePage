@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'gatsby';
-import '../../util/font-awesome';
 import { GatsbyContext } from '../../context/context';
 import styled from 'styled-components';
 import Logo from './share/Logo';

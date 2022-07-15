@@ -1,19 +1,14 @@
 import React, { useContext } from 'react';
 import { Link } from 'gatsby';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import '../util/font-awesome';
 import { GatsbyContext } from '../context/context';
 import styled from 'styled-components';
-import { icon } from '@fortawesome/fontawesome-svg-core';
 
 const Sidebar = () => {
   const { navLinks, showSidebar, hideSidebar } = useContext(GatsbyContext);
   return (
     <Wrapper>
       <div className="container">
-        <button onClick={hideSidebar}>
-          <FontAwesomeIcon icon={'fa-xmark'} />
-        </button>
+        <button onClick={hideSidebar}>xmark</button>
         <div className="links">
           {navLinks.map((nuvlink, index) => {
             const { url, label, subMenu } = nuvlink;
