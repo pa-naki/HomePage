@@ -9,9 +9,9 @@ import ContactCard from '../components/ContactCard';
 // import homeImg from "../images/home.jpg"
 // import jigyonaiyoImg from "../images/jigyo-naiyo.svg";
 
-const IndexPage = ({ location }) => {
+const IndexPage = () => {
   return (
-    <Layout pathname={location.pathname} notTemplate={true}>
+    <Layout displayWidth={'100%'}>
       <SEO title="Home" />
       <Video />
       <TopNews />

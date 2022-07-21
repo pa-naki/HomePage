@@ -8,12 +8,14 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
-import { GatsbyContext } from '../context/context';
-
-import { Header, Sidebar, Footer } from './index';
 import styled from 'styled-components';
 
-const Layout = ({ children, notTemplate }) => {
+import { GatsbyContext } from '../context/context';
+import Navigation from './Header/Navigation';
+import { Sidebar, Footer } from './index';
+import './global-style.css';
+
+const Layout = ({ children, location, marginTop }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -23,20 +25,24 @@ const Layout = ({ children, notTemplate }) => {
       }
     }
   `);
+
   const { isSidebarOpen } = useContext(GatsbyContext);
   return (
-    <>
+    <div>
       {/* <Navigation /> */}
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+      {/* <Header siteTitle={data.site.siteMetadata?.title || `Title`} /> */}
+      <header>
+        <Navigation />
+      </header>
       {isSidebarOpen && <Sidebar />}
-      {notTemplate ? <>{children}</> : <Wrapper>{children}</Wrapper>}
+      <Wrapper marginTop={marginTop}>{children}</Wrapper>
       <Footer />
-    </>
+    </div>
   );
 };
 
-const Wrapper = styled.main`
-  margin-top: 70px;
+const Wrapper = styled.div`
+  margin-top: ${props => (props.marginTop ? props.marginTop : '100px')};
 `;
 
 Layout.propTypes = {

@@ -16,7 +16,7 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "html.format.wrapAttributesIndentSize": 2,
   "prettier.jsxBracketSameLine": true,
-  "files.autoSave": "onFocusChange",
+  "files.autoSave": "off",
   "files.trimTrailingWhitespace": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.editor.tabSizing": "shrink",

@@ -3,35 +3,13 @@ import styled from 'styled-components';
 import ProductCard from './ProductCard';
 
 let typeName = [];
-const SearchQuery = ({
-  products = [],
-  items,
-  typeVisible,
-  featureVisible,
-  propertyVisible,
-  materialVisible,
-  applicationVisible,
-  ionicVisible,
-  packingVisible,
-  seriesVisible,
-}) => {
+const SearchQuery = ({ items, tableVisibleArray }) => {
   return (
     <Wrapper>
       <div>
         {/* {products.map((oneProduct, index) => { */}
-        {items.map((oneProduct, index) => {
-          const {
-            id,
-            feature,
-            ionic,
-            material,
-            packing,
-            product,
-            slug,
-            property,
-            application,
-          } = oneProduct;
-          const { series } = oneProduct.series;
+        {items.map(oneProduct => {
+          const { id, product, slug } = oneProduct;
           const typeLength = oneProduct.type.length;
           typeName = [];
           if (typeLength > 1) {
@@ -39,51 +17,29 @@ const SearchQuery = ({
               typeName.push(productType.name);
             });
             return (
-              <ProductCard
-                product={product}
-                series={series}
-                type={typeName.join(' ')}
-                feature={feature}
-                property={property}
-                application={application}
-                ionic={ionic}
-                packing={packing}
-                key={id}
-                material={material.join(' ')}
-                slug={slug}
-                typeVisible={typeVisible}
-                featureVisible={featureVisible}
-                propertyVisible={propertyVisible}
-                materialVisible={materialVisible}
-                applicationVisible={applicationVisible}
-                ionicVisible={ionicVisible}
-                packingVisible={packingVisible}
-                seriesVisible={seriesVisible}
-              />
+              <React.Fragment key={id}>
+                <ProductCard
+                  product={product}
+                  oneProduct={oneProduct}
+                  typeName={typeName}
+                  slug={slug}
+                  tableVisibleArray={tableVisibleArray}
+                  className={'product'}
+                />
+              </React.Fragment>
             );
           }
           return (
-            <ProductCard
-              product={product}
-              series={series}
-              type={oneProduct.type[0].name}
-              feature={feature}
-              property={property}
-              application={application}
-              ionic={ionic}
-              packing={packing}
-              key={id}
-              material={material.join(' ')}
-              slug={slug}
-              typeVisible={typeVisible}
-              featureVisible={featureVisible}
-              propertyVisible={propertyVisible}
-              materialVisible={materialVisible}
-              applicationVisible={applicationVisible}
-              ionicVisible={ionicVisible}
-              packingVisible={packingVisible}
-              seriesVisible={seriesVisible}
-            />
+            <React.Fragment key={id}>
+              <ProductCard
+                product={product}
+                oneProduct={oneProduct}
+                typeName={typeName}
+                slug={slug}
+                tableVisibleArray={tableVisibleArray}
+                className={'product'}
+              />
+            </React.Fragment>
           );
         })}
       </div>
@@ -94,11 +50,40 @@ const SearchQuery = ({
 const Wrapper = styled.article`
   display: flex;
   justify-content: right;
-  width: 70%;
+  width: 100%;
   div {
     width: 100%;
     display: flex;
     flex-flow: row wrap;
+    .product {
+      flex: 0 1 460px;
+      margin: 2rem auto;
+      text-decoration: none;
+      color: black;
+      height: auto;
+      width: 100%;
+      &:hover {
+        tbody {
+          opacity: 0.7;
+          background-color: whitesmoke;
+        }
+      }
+      table {
+        height: 100%;
+        width: 100%;
+        font-size: 12px;
+        border: 1px solid black;
+        border-collapse: collapse;
+        td {
+          border: 1px solid black;
+          white-space: nowrap;
+          text-align: center;
+        }
+        th {
+          border: 1px solid black;
+        }
+      }
+    }
   }
 `;
 

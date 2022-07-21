@@ -81,6 +81,8 @@ const Wrapper = styled.footer`
   margin-top: 2rem;
   padding: 1.5rem 0.5rem;
   align-items: center;
+  position: relative;
+  z-index: 800;
   color: white;
   padding: 5rem 0;
   .google-map-link {

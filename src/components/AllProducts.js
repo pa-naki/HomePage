@@ -1,66 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import SearchQuery from './SearchQuery';
-import TagsList from './TagsList';
 import Fuse from 'fuse.js';
-import SeriesList from './SeriesList';
-import MaterialsList from './MaterialsList';
+import AggregatedCategory from '../util/Aggregated-category';
+import { filterByAllCategories } from '../util/filter-by-category';
+import AllTagsList from './AllTagsList';
+import { MdClose } from 'react-icons/md';
+import CheckArrayButton from './share/Check-array-button';
 
-export const filterByCategories = (list, categories) => {
-  const items = list.reduce((aggregated, node) => {
-    if (node.type) {
-      const nodeCategories = node.type.map(obj => obj.name);
-      const filteredCategories = nodeCategories.filter(c =>
-        categories.includes(c)
-      );
-      if (filteredCategories.length === categories.length) {
-        aggregated.push(node);
-      }
-
-      return aggregated;
-    }
-
-    return aggregated;
-  }, []);
-
-  return items;
-};
-export const filterBySeries = (list, seriesCategory) => {
-  const items = list.reduce((aggregated, node) => {
-    if (node.series) {
-      const nodeSeries = node.series.series.map(obj => obj);
-      const filteredSeries = nodeSeries.filter(c => seriesCategory.includes(c));
-      if (filteredSeries.length === seriesCategory.length) {
-        aggregated.push(node);
-      }
-
-      return aggregated;
-    }
-
-    return aggregated;
-  }, []);
-
-  return items;
-};
-export const filterByMaterials = (list, materialsCategory) => {
-  const items = list.reduce((aggregated, node) => {
-    if (node.material) {
-      const nodeMaterials = node.material.map(obj => obj);
-      const filteredMaterials = nodeMaterials.filter(c =>
-        materialsCategory.includes(c)
-      );
-      if (filteredMaterials.length === materialsCategory.length) {
-        aggregated.push(node);
-      }
-
-      return aggregated;
-    }
-
-    return aggregated;
-  }, []);
-
-  return items;
-};
 const DEFAULT_SITES_TO_SHOW = 6;
 const defaultOptions = {
   shouldSort: true,
@@ -84,24 +31,27 @@ const defaultOptions = {
 };
 const AllProducts = ({
   data,
-  filters,
-  setFilters,
-  series,
-  setSeries,
-  materialFilters,
-  setMaterialFilters,
-  typeVisible,
-  featureVisible,
-  propertyVisible,
-  materialVisible,
-  applicationVisible,
-  ionicVisible,
-  packingVisible,
-  seriesVisible,
+  allFilters,
+  setAllFilters,
+  tableVisibleArray,
+  setTableVisibleArray,
+  filterListVisible,
+  setFilterListVisible,
 }) => {
   const [search, setSearch] = React.useState(``);
   const [sitesToShow, setSitesToShow] = React.useState(DEFAULT_SITES_TO_SHOW);
   const fuse = new Fuse(data.allMicrocmsProducts.nodes, defaultOptions);
+
+  const {
+    typeFilters,
+    seriesFilters,
+    materialFilters,
+    propertyFilters,
+    applicationFilters,
+    ionicFilters,
+    packingFilters,
+    attentionFilters,
+  } = allFilters;
 
   let items = data.allMicrocmsProducts.nodes;
 
@@ -109,144 +59,135 @@ const AllProducts = ({
     items = fuse.search(search);
   }
 
-  if (filters && filters.length > 0) {
-    items = filterByCategories(items, filters);
+  if (typeFilters && typeFilters.length > 0) {
+    items = filterByAllCategories(items, typeFilters, 'type', 'name');
   }
 
-  if (series && series.length > 0) {
-    items = filterBySeries(items, series);
+  if (seriesFilters && seriesFilters.length > 0) {
+    items = filterByAllCategories(items, seriesFilters, 'series', '', 'series');
   }
 
   if (materialFilters && materialFilters.length > 0) {
-    items = filterByMaterials(items, materialFilters);
+    items = filterByAllCategories(items, materialFilters, 'material');
   }
 
-  const aggregatedCategories = items.reduce((result, node) => {
-    // extract list of categories for node
-    // items: [{"name": "App"}, {"name": "E-commerce"}]
-    // nodeCategories: ["App", "E-commerce"]
-    const nodeCategories = node.type.map(obj => obj.name);
-    // detect if site is open source by checking sourceUrl
+  if (propertyFilters && propertyFilters.length > 0) {
+    items = filterByAllCategories(items, propertyFilters, 'property');
+  }
+  if (applicationFilters && applicationFilters.length > 0) {
+    items = filterByAllCategories(items, applicationFilters, 'application');
+  }
+  if (ionicFilters && ionicFilters.length > 0) {
+    items = filterByAllCategories(items, ionicFilters, 'ionic');
+  }
+  if (packingFilters && packingFilters.length > 0) {
+    items = filterByAllCategories(items, packingFilters, 'packing');
+  }
+  if (attentionFilters) {
+    items = items.filter(v => Boolean(v.attention));
+  }
 
-    nodeCategories.forEach(category => {
-      // if we already have the category recorded, increase count
-      if (result[category]) {
-        result[category] = result[category] + 1;
-      } else {
-        // record first encounter of category
-        result[category] = 1;
-      }
-    });
-
-    // sort categories so they appear in alphabetical order on page
-    node.type.sort((obj1, obj2) =>
-      obj1.name.toLowerCase().localeCompare(obj2.name.toLowerCase())
-    );
-
-    return result;
-  }, {});
-
-  const aggregatedSeries = items.reduce((result, node) => {
-    // extract list of Series for node
-    // items: [{"name": "App"}, {"name": "E-commerce"}]
-    // nodeSeries: ["App", "E-commerce"]
-    const nodeSeries = node.series.series.map(obj => obj);
-    // detect if site is open source by checking sourceUrl
-
-    nodeSeries.forEach(series => {
-      // if we already have the series recorded, increase count
-      if (result[series]) {
-        result[series] = result[series] + 1;
-      } else {
-        // record first encounter of series
-        result[series] = 1;
-      }
-    });
-
-    // sort Series so they appear in alphabetical order on page
-    node.series.series.sort((obj1, obj2) =>
-      obj1.toLowerCase().localeCompare(obj2.toLowerCase())
-    );
-
-    return result;
-  }, {});
-
-  const aggregatedMaterials = items.reduce((result, node) => {
-    // extract list of Materials for node
-    // items: [{"name": "App"}, {"name": "E-commerce"}]
-    // nodeMaterials: ["App", "E-commerce"]
-    const nodeMaterials = node.material.map(obj => obj);
-    // detect if site is open source by checking sourceUrl
-
-    nodeMaterials.forEach(material => {
-      // if we already have the material recorded, increase count
-      if (result[material]) {
-        result[material] = result[material] + 1;
-      } else {
-        // record first encounter of material
-        result[material] = 1;
-      }
-    });
-
-    // sort Materials so they appear in alphabetical order on page
-    node.material.sort((obj1, obj2) =>
-      obj1.toLowerCase().localeCompare(obj2.toLowerCase())
-    );
-
-    return result;
-  }, {});
-
+  const aggregatedTypes = AggregatedCategory(items, 'type', 'name');
+  const aggregatedSeries = AggregatedCategory(items, 'series', '', 'series');
+  const aggregatedMaterials = AggregatedCategory(items, 'material', '');
+  const aggregatedProperty = AggregatedCategory(items, 'property');
+  const aggregatedApplication = AggregatedCategory(items, 'application');
+  const aggregatedIonic = AggregatedCategory(items, 'ionic');
+  const aggregatedPacking = AggregatedCategory(items, 'packing');
   // get sorted set of categories to generate list with
-  const categoryKeys = Object.keys(aggregatedCategories).sort((str1, str2) =>
-    str1.toLowerCase().localeCompare(str2.toLowerCase())
-  );
 
-  const seriesKeys = Object.keys(aggregatedSeries).sort((str1, str2) =>
-    str1.toLowerCase().localeCompare(str2.toLowerCase())
-  );
-
-  const materialsKeys = Object.keys(aggregatedMaterials).sort((str1, str2) =>
-    str1.toLowerCase().localeCompare(str2.toLowerCase())
-  );
-
-  console.log('items', items);
   const products = data.types.edges;
   return (
     <Wrapper>
       <div className="productSection">
-        <div className="tagAside">
-          <TagsList
-            count={sitesToShow}
-            filters={filters}
-            setFilters={setFilters}
-            aggregatedCategories={aggregatedCategories}
-            categoryKeys={categoryKeys}
-          />
-          <SeriesList
-            count={sitesToShow}
-            series={series}
-            setSeries={setSeries}
-            aggregatedSeries={aggregatedSeries}
-            seriesKeys={seriesKeys}
-          />
-          <MaterialsList
-            materialFilters={materialFilters}
-            setMaterialFilters={setMaterialFilters}
-            aggregatedMaterials={aggregatedMaterials}
-            materialsKeys={materialsKeys}
-          />
-        </div>
+        <aside className={`filter-nav ${filterListVisible ? 'active' : ''}`}>
+          <span>
+            各チェックを選択することでテーブルの列数を変更することが出来ます
+          </span>
+          <div className="visibleList">
+            <CheckArrayButton
+              setObject={tableVisibleArray}
+              clickFunction={setTableVisibleArray}
+              className={'check-array-button'}
+            />
+            <div className={filterListVisible ? 'filter-close-button' : 'none'}>
+              <button
+                onClick={() => {
+                  setFilterListVisible(false);
+                }}
+              >
+                <MdClose />
+              </button>
+            </div>
+          </div>
+          <div className="tagAside">
+            <AllTagsList
+              count={sitesToShow}
+              categoryFilters={typeFilters}
+              categoryFiltersName={'typeFilters'}
+              setCategoryFilters={setAllFilters}
+              aggregatedAllCategory={aggregatedTypes}
+            />
+            <AllTagsList
+              count={sitesToShow}
+              categoryFilters={seriesFilters}
+              categoryFiltersName={'seriesFilters'}
+              setCategoryFilters={setAllFilters}
+              aggregatedAllCategory={aggregatedSeries}
+            />
+            <AllTagsList
+              count={sitesToShow}
+              categoryFilters={materialFilters}
+              categoryFiltersName={'materialFilters'}
+              setCategoryFilters={setAllFilters}
+              aggregatedAllCategory={aggregatedMaterials}
+            />
+            <AllTagsList
+              count={sitesToShow}
+              categoryFilters={propertyFilters}
+              categoryFiltersName={'propertyFilters'}
+              setCategoryFilters={setAllFilters}
+              aggregatedAllCategory={aggregatedProperty}
+            />
+            <AllTagsList
+              count={sitesToShow}
+              categoryFilters={applicationFilters}
+              categoryFiltersName={'applicationFilters'}
+              setCategoryFilters={setAllFilters}
+              aggregatedAllCategory={aggregatedApplication}
+            />
+            <AllTagsList
+              count={sitesToShow}
+              categoryFilters={ionicFilters}
+              categoryFiltersName={'ionicFilters'}
+              setCategoryFilters={setAllFilters}
+              aggregatedAllCategory={aggregatedIonic}
+            />
+            <AllTagsList
+              count={sitesToShow}
+              categoryFilters={packingFilters}
+              categoryFiltersName={'packingFilters'}
+              setCategoryFilters={setAllFilters}
+              aggregatedAllCategory={aggregatedPacking}
+            />
+            <label className="attention-checkbox">
+              <input
+                type="checkbox"
+                onClick={() => {
+                  setAllFilters(prevstate => ({
+                    ...prevstate,
+                    attentionFilters: !allFilters['attentionFilters'],
+                  }));
+                }}
+              />
+              注目の製品
+            </label>
+          </div>
+        </aside>
         <SearchQuery
           products={products}
           items={items}
-          typeVisible={typeVisible}
-          featureVisible={featureVisible}
-          propertyVisible={propertyVisible}
-          materialVisible={materialVisible}
-          applicationVisible={applicationVisible}
-          ionicVisible={ionicVisible}
-          packingVisible={packingVisible}
-          seriesVisible={seriesVisible}
+          tableVisibleArray={tableVisibleArray}
         />
       </div>
     </Wrapper>
@@ -254,13 +195,62 @@ const AllProducts = ({
 };
 
 const Wrapper = styled.section`
+  display: flex;
+  flex-direction: column;
   .productSection {
     display: flex;
     justify-content: space-between;
     margin-top: 3rem;
+    .filter-nav {
+      position: fixed;
+      background-color: #def9e7;
+      width: 100%;
+      height: 40vh;
+      bottom: -120%;
+      left: 0;
+      z-index: 999;
+      transition: all 0.6s;
+      overflow-x: auto !important;
+      .visibleList {
+        display: flex;
+        min-width: 725px;
+        flex-flow: row wrap;
+        .check-array-button {
+          flex: 1 0 130px;
+          font-size: 1.3rem;
+          margin: auto;
+        }
+        .filter-close-button {
+          position: fixed;
+          right: 0;
+          top: 50%;
+          text-align: right;
+          button {
+            height: 72px;
+            font-size: 4rem;
+            box-sizing: border-box;
+            svg {
+              display: block;
+            }
+          }
+        }
+        .none {
+          display: none;
+          opacity: 0;
+        }
+      }
+    }
+    .active {
+      bottom: 0;
+    }
     .tagAside {
       display: flex;
-      width: 30%;
+      min-width: 725px;
+      height: auto;
+      .attention-checkbox {
+        position: absolute;
+        left: 50%;
+      }
     }
   }
 `;

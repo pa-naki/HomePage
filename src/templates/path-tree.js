@@ -4,9 +4,12 @@ import { Link } from 'gatsby';
 
 const PathTree = ({ pathTree }) => {
   const pTree = pathTree.split('/');
+  if (pTree.length < 2) {
+    return;
+  }
   return (
     <Wrapper>
-      <div>
+      <nav>
         {pTree[1] && <Link to={'/'}>home</Link>}
         {pTree[1] && (
           <>
@@ -21,18 +24,18 @@ const PathTree = ({ pathTree }) => {
             <Link to={`/${pTree[1]}/${pTree[2]}`}>{pTree[2]}</Link>
           </>
         )}
-      </div>
+      </nav>
     </Wrapper>
   );
 };
 
-const Wrapper = styled.nav`
+const Wrapper = styled.aside`
   font-weight: 11;
   background-color: black;
   padding: 0;
   margin: 0;
   height: auto;
-  div {
+  nav {
     width: 90%;
     margin: 0 auto;
     color: white;
